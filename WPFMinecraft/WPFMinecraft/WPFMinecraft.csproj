@@ -172,7 +172,16 @@
   <ItemGroup>
     <Resource Include="Images\Button\button_long_selected.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Background\overworld_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\dark_transparant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\button_square.png" />
+    <Resource Include="Images\Button\button_square_selected.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.2\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -115,7 +115,7 @@
 
     <!-- Content -->
     <Grid Background="{StaticResource ForegroundLightBrush}">
-        <Frame x:Name="MainFrame" Content="{Binding CurrentPage,Converter={local1:ApplicationPageValueConverter}}"/>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage,Converter={local1:ApplicationPageValueConverter}}"/>
     </Grid>
     
 </Window>

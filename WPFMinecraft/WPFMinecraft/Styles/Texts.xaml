@@ -9,5 +9,12 @@
         <Setter Property="Margin" Value="0, 6"/>
         <Setter Property="FontSize" Value="30"/>
     </Style>
-    
+
+    <Style TargetType="{x:Type Label}" x:Key="MinecraftText" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource Minecraftia}"/>
+        <Setter Property="Margin" Value="0 0 0 -8"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
 </ResourceDictionary>

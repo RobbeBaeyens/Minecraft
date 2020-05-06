@@ -28,7 +28,22 @@ namespace WPFMinecraft.Pages
 
         private void ServerManagementButton_Click(object sender, RoutedEventArgs e)
         {
+            // Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
 
+            while (currParent != null && pageFrame == null)
+            {
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
+            }
+
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                windowViewModel.CurrentPage = ApplicationPage.Player;
+            }
         }
     }
 }

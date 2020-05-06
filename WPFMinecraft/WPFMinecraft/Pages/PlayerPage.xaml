@@ -9,6 +9,125 @@
       Title="PlayerPage">
 
     <Grid>
-        <Button Content="test"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Images/Background/overworld_background.jpg" 
+                        Stretch="UniformToFill"
+                        AlignmentX="Center"
+                        AlignmentY="Center"
+                        TileMode="None"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+        <Grid>
+                <Border BorderThickness="2" BorderBrush="Black" CornerRadius="10" Margin="5" Padding="5">
+                <Border.Background>
+                    <ImageBrush ImageSource="../Images/Background/dark_transparant.png" />
+                </Border.Background>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="500"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Server Name - 192.168.1.1:25565" Style="{StaticResource MinecraftText}"/>
+                        <Label Grid.Row="1" Grid.Column="0" Content="World Name" Style="{StaticResource MinecraftText}"/>
+                        <Label Grid.Row="2" Grid.Column="0" Content="5648754526476852" Style="{StaticResource MinecraftText}"/>
+                        <Label HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" Content="x:126 y:65 z:-1038" Style="{StaticResource MinecraftText}"/>
+                </Grid>
+            </Border>
+            </Grid>
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Margin="5" Style="{StaticResource MinecraftMediumLongButton}">
+                    <TextBlock Margin="0 1 0 0" Text="Effects"/>
+                </Button>
+                <Button Grid.Column="1" Margin="5" Style="{StaticResource MinecraftMediumLongButton}">
+                    <TextBlock Margin="0 1 0 0" Text="Advancements"/>
+                </Button>
+                <Button Grid.Column="2" Margin="5" Style="{StaticResource MinecraftMediumLongButton}">
+                    <TextBlock Margin="0 1 0 0" Text="Recipes"/>
+                </Button>
+            </Grid>
+        </Viewbox>
+        <Viewbox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Grid>
+                <Border BorderThickness="2" BorderBrush="Black" CornerRadius="3" Margin="5" Padding="5">
+                    <Border.Background>
+                        <ImageBrush ImageSource="../Images/Background/dark_transparant.png" />
+                    </Border.Background>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Label Grid.Row="0" Grid.Column="0" Content="Name:" Style="{StaticResource MinecraftText}"/>
+                        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Content="Steve" Style="{StaticResource MinecraftText}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="UUID:" Style="{StaticResource MinecraftText}"/>
+                        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Content="5168-uygz-4564-iuhz" Style="{StaticResource MinecraftText}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="Health:" Style="{StaticResource MinecraftText}"/>
+                        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                            <TextBlock Margin="0 -2 0 0" Text="-"/>
+                        </Button>
+                        <Button Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                            <TextBlock Margin="0 -2 0 0" Text="+"/>
+                        </Button>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="Food:" Style="{StaticResource MinecraftText}"/>
+                        <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                            <TextBlock Margin="0 -2 0 0" Text="-"/>
+                        </Button>
+                        <Button Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                            <TextBlock Margin="0 -2 0 0" Text="+"/>
+                        </Button>
+                        
+                        <Label Grid.Row="4" Grid.Column="0" Content="Armor:" Style="{StaticResource MinecraftText}"/>
+                        <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                            <TextBlock Margin="0 -2 0 0" Text="-"/>
+                        </Button>
+                        <Button Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                            <TextBlock Margin="0 -2 0 0" Text="+"/>
+                        </Button>
+                        
+                        <Button Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" Style="{StaticResource MinecraftMediumLongButton}">
+                            <TextBlock Margin="0 1 0 0" Text="Inventory"/>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Page>

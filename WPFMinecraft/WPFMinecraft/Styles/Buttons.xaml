@@ -97,4 +97,52 @@
         </Style.Triggers>
     </Style>
 
+    <!-- Minecraft MediumLong Button -->
+    <Style TargetType="{x:Type Button}" x:Key="MinecraftMediumLongButton" BasedOn="{StaticResource Hoverless}">
+        <Setter Property="Foreground" Value="#3e3e3e" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="18.75"/>
+        <Setter Property="FontFamily" Value="{StaticResource Minecraftia}"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Images/Button/button_long.png"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/Images/Button/button_long_selected.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Minecraft SmallSquare Button -->
+    <Style TargetType="{x:Type Button}" x:Key="MinecraftSmallSquareButton" BasedOn="{StaticResource Hoverless}">
+        <Setter Property="Foreground" Value="#3e3e3e" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="8" />
+        <Setter Property="Width" Value="10"/>
+        <Setter Property="Height" Value="10"/>
+        <Setter Property="FontFamily" Value="{StaticResource Minecraftia}"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Images/Button/button_square.png"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/Images/Button/button_square_selected.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>
