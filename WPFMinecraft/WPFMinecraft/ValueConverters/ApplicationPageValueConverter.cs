@@ -26,6 +26,10 @@ namespace WPFMinecraft.ValueConverters
                 case ApplicationPage.ServerManagement:
                     return new ServerManagementPage();
 
+
+                case ApplicationPage.Player:
+                    return new PlayerPage();
+
                 default:
                     Debugger.Break();
                     return null;

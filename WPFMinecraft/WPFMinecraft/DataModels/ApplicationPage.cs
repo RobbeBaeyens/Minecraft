@@ -18,6 +18,36 @@
         /// <summary>
         /// The server management page
         /// </summary>
-        ServerManagement = 2
+        ServerManagement = 2,
+
+        /// <summary>
+        /// The player page
+        /// </summary>
+        Player = 3,
+
+        /// <summary>
+        /// The inventory page
+        /// </summary>
+        Inventory = 4,
+
+        /// <summary>
+        /// The inventory manager page
+        /// </summary>
+        InventoryManager = 5,
+
+        /// <summary>
+        /// The advancements page
+        /// </summary>
+        Advancements = 6,
+
+        /// <summary>
+        /// The effects page
+        /// </summary>
+        Effects = 7,
+
+        /// <summary>
+        /// The recipes page
+        /// </summary>
+        Recipes = 8
     }
 }
