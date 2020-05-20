@@ -71,6 +71,12 @@
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\InventoryManagerPage.xaml.cs">
+      <DependentUpon>InventoryManagerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InventoryPage.xaml.cs">
+      <DependentUpon>InventoryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PlayerManagementPage.xaml.cs">
       <DependentUpon>PlayerManagementPage.xaml</DependentUpon>
     </Compile>
@@ -101,6 +107,14 @@
     <Page Include="Pages\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InventoryManagerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\InventoryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\PlayerManagementPage.xaml">
       <SubType>Designer</SubType>
@@ -199,6 +213,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Skin\skin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Props\1_slot.png" />
+    <Resource Include="Images\Props\inventory.png" />
+    <Resource Include="Images\Props\inventory_empty.png" />
+    <Resource Include="Images\Props\player_space.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.2\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" />
