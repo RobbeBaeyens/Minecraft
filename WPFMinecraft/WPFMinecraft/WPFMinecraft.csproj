@@ -68,6 +68,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataModels\ApplicationPage.cs" />
+    <Compile Include="Pages\EffectPage.xaml.cs">
+      <DependentUpon>EffectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -82,6 +85,9 @@
     </Compile>
     <Compile Include="Pages\PlayerPage.xaml.cs">
       <DependentUpon>PlayerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RecipePage.xaml.cs">
+      <DependentUpon>RecipePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ServerManagementPage.xaml.cs">
       <DependentUpon>ServerManagementPage.xaml</DependentUpon>
@@ -104,6 +110,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\EffectPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +133,10 @@
     <Page Include="Pages\PlayerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RecipePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\ServerManagementPage.xaml">
       <SubType>Designer</SubType>
@@ -219,6 +233,23 @@
     <Resource Include="Images\Props\inventory.png" />
     <Resource Include="Images\Props\inventory_empty.png" />
     <Resource Include="Images\Props\player_space.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Recipe\AddRecipe.png" />
+    <Resource Include="Images\Recipe\AddRecipe_Selected.png" />
+    <Resource Include="Images\Recipe\craftingGrid.png" />
+    <Resource Include="Images\Recipe\CraftingGridBlocks.png" />
+    <Resource Include="Images\Recipe\recipe.png" />
+    <Resource Include="Images\Recipe\RecipeBook.png" />
+    <Resource Include="Images\Recipe\RecipeBookSelected.png" />
+    <Resource Include="Images\Recipe\RecipeBook_Selecting.png" />
+    <Resource Include="Images\Recipe\RemoveRecipe.png" />
+    <Resource Include="Images\Recipe\RemoveRecipe_Selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Effects\effectBalk.png" />
+    <Resource Include="Images\Effects\effectBalkSelected.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.2\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" />

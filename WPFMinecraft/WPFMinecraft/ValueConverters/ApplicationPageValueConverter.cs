@@ -36,6 +36,12 @@ namespace WPFMinecraft.ValueConverters
                 case ApplicationPage.Player:
                     return new PlayerPage();
 
+                case ApplicationPage.Effects:
+                    return new EffectPage();
+
+                case ApplicationPage.Recipes:
+                    return new RecipePage();
+
                 default:
                     Debugger.Break();
                     return null;
