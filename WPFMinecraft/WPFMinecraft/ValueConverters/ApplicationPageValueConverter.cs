@@ -26,6 +26,12 @@ namespace WPFMinecraft.ValueConverters
                 case ApplicationPage.ServerManagement:
                     return new ServerManagementPage();
 
+                case ApplicationPage.Inventory:
+                    return new InventoryPage();
+
+                case ApplicationPage.InventoryManager:
+                    return new InventoryManagerPage();
+
 
                 case ApplicationPage.Player:
                     return new PlayerPage();
