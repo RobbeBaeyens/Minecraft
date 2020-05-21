@@ -1,0 +1,1278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MinecraftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Advancement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dimension">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Effect">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="duration" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inventory_Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inventoryId" Type="int" />
+          <Property Name="itemId" Type="int" />
+          <Property Name="row" Type="int" Nullable="false" />
+          <Property Name="column" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inventory_Player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inventoryId" Type="int" />
+          <Property Name="playerId" Type="int" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
+          <Property Name="damageValue" Type="numeric" Precision="3" Scale="1" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="uuid" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="health" Type="numeric" Precision="10" Scale="1" />
+          <Property Name="food" Type="numeric" Precision="10" Scale="1" />
+          <Property Name="armor" Type="numeric" Precision="10" Scale="1" />
+          <Property Name="skin" Type="varchar" MaxLength="255" />
+          <Property Name="posX" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="posY" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="posZ" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player_Advancement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="playerId" Type="int" />
+          <Property Name="advancementId" Type="int" />
+        </EntityType>
+        <EntityType Name="Player_Dimension">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="playerId" Type="int" />
+          <Property Name="dimensionId" Type="int" />
+        </EntityType>
+        <EntityType Name="Player_Effect">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="playerId" Type="int" />
+          <Property Name="effectId" Type="int" />
+        </EntityType>
+        <EntityType Name="Player_Recipe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="playerId" Type="int" />
+          <Property Name="recipeId" Type="int" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemId" Type="int" />
+        </EntityType>
+        <EntityType Name="Recipe_Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="row" Type="int" />
+          <Property Name="column" Type="int" />
+          <Property Name="recipeId" Type="int" />
+          <Property Name="itemId" Type="int" />
+        </EntityType>
+        <EntityType Name="Server">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ipadress" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="255" />
+          <Property Name="worldId" Type="int" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="World">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="seed" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="World_Dimension">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="worldId" Type="int" />
+          <Property Name="dimensionId" Type="int" />
+        </EntityType>
+        <EntityType Name="World_Setting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="worldId" Type="int" />
+          <Property Name="settingId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Inventory_Item_Inventory">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="Inventory_Item" Type="Self.Inventory_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Item">
+              <PropertyRef Name="inventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Item_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Inventory_Item" Type="Self.Inventory_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Item">
+              <PropertyRef Name="itemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Player_Inventory">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="Inventory_Player" Type="Self.Inventory_Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Player">
+              <PropertyRef Name="inventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Player_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Inventory_Player" Type="Self.Inventory_Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Player">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Advancement_Advancement">
+          <End Role="Advancement" Type="Self.Advancement" Multiplicity="0..1" />
+          <End Role="Player_Advancement" Type="Self.Player_Advancement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advancement">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Advancement">
+              <PropertyRef Name="advancementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Advancement_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Player_Advancement" Type="Self.Player_Advancement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Advancement">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Dimension_Dimension">
+          <End Role="Dimension" Type="Self.Dimension" Multiplicity="0..1" />
+          <End Role="Player_Dimension" Type="Self.Player_Dimension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dimension">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Dimension">
+              <PropertyRef Name="dimensionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Dimension_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Player_Dimension" Type="Self.Player_Dimension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Dimension">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Effect_Effect">
+          <End Role="Effect" Type="Self.Effect" Multiplicity="0..1" />
+          <End Role="Player_Effect" Type="Self.Player_Effect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Effect">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Effect">
+              <PropertyRef Name="effectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Effect_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Player_Effect" Type="Self.Player_Effect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Effect">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Recipe_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Player_Recipe" Type="Self.Player_Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Recipe">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Recipe_Recipe">
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+          <End Role="Player_Recipe" Type="Self.Player_Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Recipe">
+              <PropertyRef Name="recipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipe_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="itemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipe_Item_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Recipe_Item" Type="Self.Recipe_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recipe_Item">
+              <PropertyRef Name="itemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipe_Item_Recipe">
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+          <End Role="Recipe_Item" Type="Self.Recipe_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recipe_Item">
+              <PropertyRef Name="recipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Server_World">
+          <End Role="World" Type="Self.World" Multiplicity="0..1" />
+          <End Role="Server" Type="Self.Server" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="World">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Server">
+              <PropertyRef Name="worldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_World_Dimension_Dimension">
+          <End Role="Dimension" Type="Self.Dimension" Multiplicity="0..1" />
+          <End Role="World_Dimension" Type="Self.World_Dimension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dimension">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="World_Dimension">
+              <PropertyRef Name="dimensionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_World_Dimension_World">
+          <End Role="World" Type="Self.World" Multiplicity="0..1" />
+          <End Role="World_Dimension" Type="Self.World_Dimension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="World">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="World_Dimension">
+              <PropertyRef Name="worldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_World_Setting_Setting">
+          <End Role="Setting" Type="Self.Setting" Multiplicity="0..1" />
+          <End Role="World_Setting" Type="Self.World_Setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Setting">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="World_Setting">
+              <PropertyRef Name="settingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_World_Setting_World">
+          <End Role="World" Type="Self.World" Multiplicity="0..1" />
+          <End Role="World_Setting" Type="Self.World_Setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="World">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="World_Setting">
+              <PropertyRef Name="worldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MinecraftModelStoreContainer">
+          <EntitySet Name="Advancement" EntityType="Self.Advancement" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Dimension" EntityType="Self.Dimension" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Effect" EntityType="Self.Effect" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Inventory_Item" EntityType="Self.Inventory_Item" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Inventory_Player" EntityType="Self.Inventory_Player" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Player" EntityType="Self.Player" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Player_Advancement" EntityType="Self.Player_Advancement" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Player_Dimension" EntityType="Self.Player_Dimension" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Player_Effect" EntityType="Self.Player_Effect" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Player_Recipe" EntityType="Self.Player_Recipe" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Recipe_Item" EntityType="Self.Recipe_Item" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Server" EntityType="Self.Server" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="Setting" EntityType="Self.Setting" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="World" EntityType="Self.World" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="World_Dimension" EntityType="Self.World_Dimension" Schema="Minecraft" store:Type="Tables" />
+          <EntitySet Name="World_Setting" EntityType="Self.World_Setting" Schema="Minecraft" store:Type="Tables" />
+          <AssociationSet Name="FK_Inventory_Item_Inventory" Association="Self.FK_Inventory_Item_Inventory">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="Inventory_Item" EntitySet="Inventory_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Item_Item" Association="Self.FK_Inventory_Item_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Inventory_Item" EntitySet="Inventory_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Player_Inventory" Association="Self.FK_Inventory_Player_Inventory">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="Inventory_Player" EntitySet="Inventory_Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Player_Player" Association="Self.FK_Inventory_Player_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Inventory_Player" EntitySet="Inventory_Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Advancement_Advancement" Association="Self.FK_Player_Advancement_Advancement">
+            <End Role="Advancement" EntitySet="Advancement" />
+            <End Role="Player_Advancement" EntitySet="Player_Advancement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Advancement_Player" Association="Self.FK_Player_Advancement_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Advancement" EntitySet="Player_Advancement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Dimension_Dimension" Association="Self.FK_Player_Dimension_Dimension">
+            <End Role="Dimension" EntitySet="Dimension" />
+            <End Role="Player_Dimension" EntitySet="Player_Dimension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Dimension_Player" Association="Self.FK_Player_Dimension_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Dimension" EntitySet="Player_Dimension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Effect_Effect" Association="Self.FK_Player_Effect_Effect">
+            <End Role="Effect" EntitySet="Effect" />
+            <End Role="Player_Effect" EntitySet="Player_Effect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Effect_Player" Association="Self.FK_Player_Effect_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Effect" EntitySet="Player_Effect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Recipe_Player" Association="Self.FK_Player_Recipe_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Recipe" EntitySet="Player_Recipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Recipe_Recipe" Association="Self.FK_Player_Recipe_Recipe">
+            <End Role="Recipe" EntitySet="Recipe" />
+            <End Role="Player_Recipe" EntitySet="Player_Recipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_Item" Association="Self.FK_Recipe_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Recipe" EntitySet="Recipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_Item_Item" Association="Self.FK_Recipe_Item_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Recipe_Item" EntitySet="Recipe_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_Item_Recipe" Association="Self.FK_Recipe_Item_Recipe">
+            <End Role="Recipe" EntitySet="Recipe" />
+            <End Role="Recipe_Item" EntitySet="Recipe_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Server_World" Association="Self.FK_Server_World">
+            <End Role="World" EntitySet="World" />
+            <End Role="Server" EntitySet="Server" />
+          </AssociationSet>
+          <AssociationSet Name="FK_World_Dimension_Dimension" Association="Self.FK_World_Dimension_Dimension">
+            <End Role="Dimension" EntitySet="Dimension" />
+            <End Role="World_Dimension" EntitySet="World_Dimension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_World_Dimension_World" Association="Self.FK_World_Dimension_World">
+            <End Role="World" EntitySet="World" />
+            <End Role="World_Dimension" EntitySet="World_Dimension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_World_Setting_Setting" Association="Self.FK_World_Setting_Setting">
+            <End Role="Setting" EntitySet="Setting" />
+            <End Role="World_Setting" EntitySet="World_Setting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_World_Setting_World" Association="Self.FK_World_Setting_World">
+            <End Role="World" EntitySet="World" />
+            <End Role="World_Setting" EntitySet="World_Setting" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MinecraftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Advancement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Player_Advancement" Relationship="Self.FK_Player_Advancement_Advancement" FromRole="Advancement" ToRole="Player_Advancement" />
+        </EntityType>
+        <EntityType Name="Dimension">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Player_Dimension" Relationship="Self.FK_Player_Dimension_Dimension" FromRole="Dimension" ToRole="Player_Dimension" />
+          <NavigationProperty Name="World_Dimension" Relationship="Self.FK_World_Dimension_Dimension" FromRole="Dimension" ToRole="World_Dimension" />
+        </EntityType>
+        <EntityType Name="Effect">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="duration" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Player_Effect" Relationship="Self.FK_Player_Effect_Effect" FromRole="Effect" ToRole="Player_Effect" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Inventory_Item" Relationship="Self.FK_Inventory_Item_Inventory" FromRole="Inventory" ToRole="Inventory_Item" />
+          <NavigationProperty Name="Inventory_Player" Relationship="Self.FK_Inventory_Player_Inventory" FromRole="Inventory" ToRole="Inventory_Player" />
+        </EntityType>
+        <EntityType Name="Inventory_Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inventoryId" Type="Int32" />
+          <Property Name="itemId" Type="Int32" />
+          <Property Name="row" Type="Int32" Nullable="false" />
+          <Property Name="column" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Inventory" Relationship="Self.FK_Inventory_Item_Inventory" FromRole="Inventory_Item" ToRole="Inventory" />
+          <NavigationProperty Name="Item" Relationship="Self.FK_Inventory_Item_Item" FromRole="Inventory_Item" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Inventory_Player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inventoryId" Type="Int32" />
+          <Property Name="playerId" Type="Int32" />
+          <NavigationProperty Name="Inventory" Relationship="Self.FK_Inventory_Player_Inventory" FromRole="Inventory_Player" ToRole="Inventory" />
+          <NavigationProperty Name="Player" Relationship="Self.FK_Inventory_Player_Player" FromRole="Inventory_Player" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <Property Name="damageValue" Type="Decimal" Precision="3" Scale="1" />
+          <NavigationProperty Name="Inventory_Item" Relationship="Self.FK_Inventory_Item_Item" FromRole="Item" ToRole="Inventory_Item" />
+          <NavigationProperty Name="Recipe" Relationship="Self.FK_Recipe_Item" FromRole="Item" ToRole="Recipe" />
+          <NavigationProperty Name="Recipe_Item" Relationship="Self.FK_Recipe_Item_Item" FromRole="Item" ToRole="Recipe_Item" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="uuid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="health" Type="Decimal" Precision="10" Scale="1" />
+          <Property Name="food" Type="Decimal" Precision="10" Scale="1" />
+          <Property Name="armor" Type="Decimal" Precision="10" Scale="1" />
+          <Property Name="skin" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="posX" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="posY" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="posZ" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Inventory_Player" Relationship="Self.FK_Inventory_Player_Player" FromRole="Player" ToRole="Inventory_Player" />
+          <NavigationProperty Name="Player_Advancement" Relationship="Self.FK_Player_Advancement_Player" FromRole="Player" ToRole="Player_Advancement" />
+          <NavigationProperty Name="Player_Dimension" Relationship="Self.FK_Player_Dimension_Player" FromRole="Player" ToRole="Player_Dimension" />
+          <NavigationProperty Name="Player_Effect" Relationship="Self.FK_Player_Effect_Player" FromRole="Player" ToRole="Player_Effect" />
+          <NavigationProperty Name="Player_Recipe" Relationship="Self.FK_Player_Recipe_Player" FromRole="Player" ToRole="Player_Recipe" />
+        </EntityType>
+        <EntityType Name="Player_Advancement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="playerId" Type="Int32" />
+          <Property Name="advancementId" Type="Int32" />
+          <NavigationProperty Name="Advancement" Relationship="Self.FK_Player_Advancement_Advancement" FromRole="Player_Advancement" ToRole="Advancement" />
+          <NavigationProperty Name="Player" Relationship="Self.FK_Player_Advancement_Player" FromRole="Player_Advancement" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Player_Dimension">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="playerId" Type="Int32" />
+          <Property Name="dimensionId" Type="Int32" />
+          <NavigationProperty Name="Dimension" Relationship="Self.FK_Player_Dimension_Dimension" FromRole="Player_Dimension" ToRole="Dimension" />
+          <NavigationProperty Name="Player" Relationship="Self.FK_Player_Dimension_Player" FromRole="Player_Dimension" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Player_Effect">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="playerId" Type="Int32" />
+          <Property Name="effectId" Type="Int32" />
+          <NavigationProperty Name="Effect" Relationship="Self.FK_Player_Effect_Effect" FromRole="Player_Effect" ToRole="Effect" />
+          <NavigationProperty Name="Player" Relationship="Self.FK_Player_Effect_Player" FromRole="Player_Effect" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Player_Recipe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="playerId" Type="Int32" />
+          <Property Name="recipeId" Type="Int32" />
+          <NavigationProperty Name="Player" Relationship="Self.FK_Player_Recipe_Player" FromRole="Player_Recipe" ToRole="Player" />
+          <NavigationProperty Name="Recipe" Relationship="Self.FK_Player_Recipe_Recipe" FromRole="Player_Recipe" ToRole="Recipe" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemId" Type="Int32" />
+          <NavigationProperty Name="Item" Relationship="Self.FK_Recipe_Item" FromRole="Recipe" ToRole="Item" />
+          <NavigationProperty Name="Player_Recipe" Relationship="Self.FK_Player_Recipe_Recipe" FromRole="Recipe" ToRole="Player_Recipe" />
+          <NavigationProperty Name="Recipe_Item" Relationship="Self.FK_Recipe_Item_Recipe" FromRole="Recipe" ToRole="Recipe_Item" />
+        </EntityType>
+        <EntityType Name="Recipe_Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="row" Type="Int32" />
+          <Property Name="column" Type="Int32" />
+          <Property Name="recipeId" Type="Int32" />
+          <Property Name="itemId" Type="Int32" />
+          <NavigationProperty Name="Item" Relationship="Self.FK_Recipe_Item_Item" FromRole="Recipe_Item" ToRole="Item" />
+          <NavigationProperty Name="Recipe" Relationship="Self.FK_Recipe_Item_Recipe" FromRole="Recipe_Item" ToRole="Recipe" />
+        </EntityType>
+        <EntityType Name="Server">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ipadress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="worldId" Type="Int32" />
+          <NavigationProperty Name="World" Relationship="Self.FK_Server_World" FromRole="Server" ToRole="World" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="value" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="World_Setting" Relationship="Self.FK_World_Setting_Setting" FromRole="Setting" ToRole="World_Setting" />
+        </EntityType>
+        <EntityType Name="World">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="seed" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Server" Relationship="Self.FK_Server_World" FromRole="World" ToRole="Server" />
+          <NavigationProperty Name="World_Dimension" Relationship="Self.FK_World_Dimension_World" FromRole="World" ToRole="World_Dimension" />
+          <NavigationProperty Name="World_Setting" Relationship="Self.FK_World_Setting_World" FromRole="World" ToRole="World_Setting" />
+        </EntityType>
+        <EntityType Name="World_Dimension">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="worldId" Type="Int32" />
+          <Property Name="dimensionId" Type="Int32" />
+          <NavigationProperty Name="Dimension" Relationship="Self.FK_World_Dimension_Dimension" FromRole="World_Dimension" ToRole="Dimension" />
+          <NavigationProperty Name="World" Relationship="Self.FK_World_Dimension_World" FromRole="World_Dimension" ToRole="World" />
+        </EntityType>
+        <EntityType Name="World_Setting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="worldId" Type="Int32" />
+          <Property Name="settingId" Type="Int32" />
+          <NavigationProperty Name="Setting" Relationship="Self.FK_World_Setting_Setting" FromRole="World_Setting" ToRole="Setting" />
+          <NavigationProperty Name="World" Relationship="Self.FK_World_Setting_World" FromRole="World_Setting" ToRole="World" />
+        </EntityType>
+        <Association Name="FK_Player_Advancement_Advancement">
+          <End Role="Advancement" Type="Self.Advancement" Multiplicity="0..1" />
+          <End Role="Player_Advancement" Type="Self.Player_Advancement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advancement">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Advancement">
+              <PropertyRef Name="advancementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Dimension_Dimension">
+          <End Role="Dimension" Type="Self.Dimension" Multiplicity="0..1" />
+          <End Role="Player_Dimension" Type="Self.Player_Dimension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dimension">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Dimension">
+              <PropertyRef Name="dimensionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_World_Dimension_Dimension">
+          <End Role="Dimension" Type="Self.Dimension" Multiplicity="0..1" />
+          <End Role="World_Dimension" Type="Self.World_Dimension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dimension">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="World_Dimension">
+              <PropertyRef Name="dimensionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Effect_Effect">
+          <End Role="Effect" Type="Self.Effect" Multiplicity="0..1" />
+          <End Role="Player_Effect" Type="Self.Player_Effect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Effect">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Effect">
+              <PropertyRef Name="effectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Item_Inventory">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="Inventory_Item" Type="Self.Inventory_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Item">
+              <PropertyRef Name="inventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Player_Inventory">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="Inventory_Player" Type="Self.Inventory_Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Player">
+              <PropertyRef Name="inventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Item_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Inventory_Item" Type="Self.Inventory_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Item">
+              <PropertyRef Name="itemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Player_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Inventory_Player" Type="Self.Inventory_Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Player">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipe_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="itemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipe_Item_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Recipe_Item" Type="Self.Recipe_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recipe_Item">
+              <PropertyRef Name="itemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Advancement_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Player_Advancement" Type="Self.Player_Advancement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Advancement">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Dimension_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Player_Dimension" Type="Self.Player_Dimension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Dimension">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Effect_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Player_Effect" Type="Self.Player_Effect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Effect">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Recipe_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Player_Recipe" Type="Self.Player_Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Recipe">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Recipe_Recipe">
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+          <End Role="Player_Recipe" Type="Self.Player_Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Recipe">
+              <PropertyRef Name="recipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipe_Item_Recipe">
+          <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+          <End Role="Recipe_Item" Type="Self.Recipe_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recipe_Item">
+              <PropertyRef Name="recipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Server_World">
+          <End Role="World" Type="Self.World" Multiplicity="0..1" />
+          <End Role="Server" Type="Self.Server" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="World">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Server">
+              <PropertyRef Name="worldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_World_Setting_Setting">
+          <End Role="Setting" Type="Self.Setting" Multiplicity="0..1" />
+          <End Role="World_Setting" Type="Self.World_Setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Setting">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="World_Setting">
+              <PropertyRef Name="settingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_World_Dimension_World">
+          <End Role="World" Type="Self.World" Multiplicity="0..1" />
+          <End Role="World_Dimension" Type="Self.World_Dimension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="World">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="World_Dimension">
+              <PropertyRef Name="worldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_World_Setting_World">
+          <End Role="World" Type="Self.World" Multiplicity="0..1" />
+          <End Role="World_Setting" Type="Self.World_Setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="World">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="World_Setting">
+              <PropertyRef Name="worldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MinecraftEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Advancement" EntityType="Self.Advancement" />
+          <EntitySet Name="Dimension" EntityType="Self.Dimension" />
+          <EntitySet Name="Effect" EntityType="Self.Effect" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" />
+          <EntitySet Name="Inventory_Item" EntityType="Self.Inventory_Item" />
+          <EntitySet Name="Inventory_Player" EntityType="Self.Inventory_Player" />
+          <EntitySet Name="Item" EntityType="Self.Item" />
+          <EntitySet Name="Player" EntityType="Self.Player" />
+          <EntitySet Name="Player_Advancement" EntityType="Self.Player_Advancement" />
+          <EntitySet Name="Player_Dimension" EntityType="Self.Player_Dimension" />
+          <EntitySet Name="Player_Effect" EntityType="Self.Player_Effect" />
+          <EntitySet Name="Player_Recipe" EntityType="Self.Player_Recipe" />
+          <EntitySet Name="Recipe" EntityType="Self.Recipe" />
+          <EntitySet Name="Recipe_Item" EntityType="Self.Recipe_Item" />
+          <EntitySet Name="Server" EntityType="Self.Server" />
+          <EntitySet Name="Setting" EntityType="Self.Setting" />
+          <EntitySet Name="World" EntityType="Self.World" />
+          <EntitySet Name="World_Dimension" EntityType="Self.World_Dimension" />
+          <EntitySet Name="World_Setting" EntityType="Self.World_Setting" />
+          <AssociationSet Name="FK_Player_Advancement_Advancement" Association="Self.FK_Player_Advancement_Advancement">
+            <End Role="Advancement" EntitySet="Advancement" />
+            <End Role="Player_Advancement" EntitySet="Player_Advancement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Dimension_Dimension" Association="Self.FK_Player_Dimension_Dimension">
+            <End Role="Dimension" EntitySet="Dimension" />
+            <End Role="Player_Dimension" EntitySet="Player_Dimension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_World_Dimension_Dimension" Association="Self.FK_World_Dimension_Dimension">
+            <End Role="Dimension" EntitySet="Dimension" />
+            <End Role="World_Dimension" EntitySet="World_Dimension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Effect_Effect" Association="Self.FK_Player_Effect_Effect">
+            <End Role="Effect" EntitySet="Effect" />
+            <End Role="Player_Effect" EntitySet="Player_Effect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Item_Inventory" Association="Self.FK_Inventory_Item_Inventory">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="Inventory_Item" EntitySet="Inventory_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Player_Inventory" Association="Self.FK_Inventory_Player_Inventory">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="Inventory_Player" EntitySet="Inventory_Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Item_Item" Association="Self.FK_Inventory_Item_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Inventory_Item" EntitySet="Inventory_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Player_Player" Association="Self.FK_Inventory_Player_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Inventory_Player" EntitySet="Inventory_Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_Item" Association="Self.FK_Recipe_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Recipe" EntitySet="Recipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_Item_Item" Association="Self.FK_Recipe_Item_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Recipe_Item" EntitySet="Recipe_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Advancement_Player" Association="Self.FK_Player_Advancement_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Advancement" EntitySet="Player_Advancement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Dimension_Player" Association="Self.FK_Player_Dimension_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Dimension" EntitySet="Player_Dimension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Effect_Player" Association="Self.FK_Player_Effect_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Effect" EntitySet="Player_Effect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Recipe_Player" Association="Self.FK_Player_Recipe_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Recipe" EntitySet="Player_Recipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Recipe_Recipe" Association="Self.FK_Player_Recipe_Recipe">
+            <End Role="Recipe" EntitySet="Recipe" />
+            <End Role="Player_Recipe" EntitySet="Player_Recipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_Item_Recipe" Association="Self.FK_Recipe_Item_Recipe">
+            <End Role="Recipe" EntitySet="Recipe" />
+            <End Role="Recipe_Item" EntitySet="Recipe_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Server_World" Association="Self.FK_Server_World">
+            <End Role="World" EntitySet="World" />
+            <End Role="Server" EntitySet="Server" />
+          </AssociationSet>
+          <AssociationSet Name="FK_World_Setting_Setting" Association="Self.FK_World_Setting_Setting">
+            <End Role="Setting" EntitySet="Setting" />
+            <End Role="World_Setting" EntitySet="World_Setting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_World_Dimension_World" Association="Self.FK_World_Dimension_World">
+            <End Role="World" EntitySet="World" />
+            <End Role="World_Dimension" EntitySet="World_Dimension" />
+          </AssociationSet>
+          <AssociationSet Name="FK_World_Setting_World" Association="Self.FK_World_Setting_World">
+            <End Role="World" EntitySet="World" />
+            <End Role="World_Setting" EntitySet="World_Setting" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MinecraftModelStoreContainer" CdmEntityContainer="MinecraftEntities">
+          <EntitySetMapping Name="Advancement">
+            <EntityTypeMapping TypeName="MinecraftModel.Advancement">
+              <MappingFragment StoreEntitySet="Advancement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dimension">
+            <EntityTypeMapping TypeName="MinecraftModel.Dimension">
+              <MappingFragment StoreEntitySet="Dimension">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Effect">
+            <EntityTypeMapping TypeName="MinecraftModel.Effect">
+              <MappingFragment StoreEntitySet="Effect">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventory">
+            <EntityTypeMapping TypeName="MinecraftModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventory_Item">
+            <EntityTypeMapping TypeName="MinecraftModel.Inventory_Item">
+              <MappingFragment StoreEntitySet="Inventory_Item">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="inventoryId" ColumnName="inventoryId" />
+                <ScalarProperty Name="itemId" ColumnName="itemId" />
+                <ScalarProperty Name="row" ColumnName="row" />
+                <ScalarProperty Name="column" ColumnName="column" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventory_Player">
+            <EntityTypeMapping TypeName="MinecraftModel.Inventory_Player">
+              <MappingFragment StoreEntitySet="Inventory_Player">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="inventoryId" ColumnName="inventoryId" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item">
+            <EntityTypeMapping TypeName="MinecraftModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="damageValue" ColumnName="damageValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player">
+            <EntityTypeMapping TypeName="MinecraftModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="health" ColumnName="health" />
+                <ScalarProperty Name="food" ColumnName="food" />
+                <ScalarProperty Name="armor" ColumnName="armor" />
+                <ScalarProperty Name="skin" ColumnName="skin" />
+                <ScalarProperty Name="posX" ColumnName="posX" />
+                <ScalarProperty Name="posY" ColumnName="posY" />
+                <ScalarProperty Name="posZ" ColumnName="posZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player_Advancement">
+            <EntityTypeMapping TypeName="MinecraftModel.Player_Advancement">
+              <MappingFragment StoreEntitySet="Player_Advancement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="advancementId" ColumnName="advancementId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player_Dimension">
+            <EntityTypeMapping TypeName="MinecraftModel.Player_Dimension">
+              <MappingFragment StoreEntitySet="Player_Dimension">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="dimensionId" ColumnName="dimensionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player_Effect">
+            <EntityTypeMapping TypeName="MinecraftModel.Player_Effect">
+              <MappingFragment StoreEntitySet="Player_Effect">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="effectId" ColumnName="effectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player_Recipe">
+            <EntityTypeMapping TypeName="MinecraftModel.Player_Recipe">
+              <MappingFragment StoreEntitySet="Player_Recipe">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="recipeId" ColumnName="recipeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recipe">
+            <EntityTypeMapping TypeName="MinecraftModel.Recipe">
+              <MappingFragment StoreEntitySet="Recipe">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="itemId" ColumnName="itemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recipe_Item">
+            <EntityTypeMapping TypeName="MinecraftModel.Recipe_Item">
+              <MappingFragment StoreEntitySet="Recipe_Item">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="row" ColumnName="row" />
+                <ScalarProperty Name="column" ColumnName="column" />
+                <ScalarProperty Name="recipeId" ColumnName="recipeId" />
+                <ScalarProperty Name="itemId" ColumnName="itemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Server">
+            <EntityTypeMapping TypeName="MinecraftModel.Server">
+              <MappingFragment StoreEntitySet="Server">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ipadress" ColumnName="ipadress" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="worldId" ColumnName="worldId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Setting">
+            <EntityTypeMapping TypeName="MinecraftModel.Setting">
+              <MappingFragment StoreEntitySet="Setting">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="value" ColumnName="value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="World">
+            <EntityTypeMapping TypeName="MinecraftModel.World">
+              <MappingFragment StoreEntitySet="World">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="seed" ColumnName="seed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="World_Dimension">
+            <EntityTypeMapping TypeName="MinecraftModel.World_Dimension">
+              <MappingFragment StoreEntitySet="World_Dimension">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="worldId" ColumnName="worldId" />
+                <ScalarProperty Name="dimensionId" ColumnName="dimensionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="World_Setting">
+            <EntityTypeMapping TypeName="MinecraftModel.World_Setting">
+              <MappingFragment StoreEntitySet="World_Setting">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="worldId" ColumnName="worldId" />
+                <ScalarProperty Name="settingId" ColumnName="settingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
