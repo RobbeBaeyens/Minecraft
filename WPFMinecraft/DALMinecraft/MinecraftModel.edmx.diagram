@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d418f7e3f8d54e91903c65bb5c92983a" Name="Diagram1" ZoomLevel="56">
+        <EntityTypeShape EntityType="MinecraftModel.Advancement" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Dimension" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Effect" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Inventory" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Inventory_Item" Width="1.5" PointX="5.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Inventory_Player" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Item" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Player" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Player_Advancement" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Player_Dimension" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Player_Effect" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Player_Recipe" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Recipe" Width="1.5" PointX="3.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Recipe_Item" Width="1.5" PointX="6" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Server" Width="1.5" PointX="11" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Setting" Width="1.5" PointX="8.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.World" Width="1.5" PointX="8.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.World_Dimension" Width="1.5" PointX="11" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.World_Setting" Width="1.5" PointX="11" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="MinecraftModel.FK_Player_Advancement_Advancement" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Player_Dimension_Dimension" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_World_Dimension_Dimension" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Player_Effect_Effect" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Inventory_Item_Inventory" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Inventory_Player_Inventory" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Inventory_Item_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Inventory_Player_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Recipe_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Recipe_Item_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Player_Advancement_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Player_Dimension_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Player_Effect_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Player_Recipe_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Player_Recipe_Recipe" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Recipe_Item_Recipe" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_Server_World" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_World_Setting_Setting" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_World_Dimension_World" ManuallyRouted="false" />
+        <AssociationConnector Association="MinecraftModel.FK_World_Setting_World" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
