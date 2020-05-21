@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.Background>
-                <ImageBrush ImageSource="../Images/Background/wood.png"
+                <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
                         ViewportUnits="Absolute"
                         Viewport="0,0,256,256" 
                         TileMode="Tile"
