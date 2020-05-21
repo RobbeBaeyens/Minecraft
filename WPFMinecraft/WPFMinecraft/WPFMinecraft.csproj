@@ -150,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Styles\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Styles\Fonts.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -234,7 +238,9 @@
     <Resource Include="Images\Props\inventory_empty.png" />
     <Resource Include="Images\Props\player_space.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Background\spruce_planks.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Recipe\AddRecipe.png" />
     <Resource Include="Images\Recipe\AddRecipe_Selected.png" />
