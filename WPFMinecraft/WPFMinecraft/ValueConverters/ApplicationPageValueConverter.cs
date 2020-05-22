@@ -45,6 +45,12 @@ namespace WPFMinecraft.ValueConverters
                 case ApplicationPage.Settings:
                     return new WorldSettingsPage();
 
+                case ApplicationPage.GameRule:
+                    return new GameRulePage();
+
+                case ApplicationPage.MoreOption:
+                    return new MoreOptionPage();
+
                 default:
                     Debugger.Break();
                     return null;

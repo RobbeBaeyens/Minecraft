@@ -71,6 +71,9 @@
     <Compile Include="Pages\EffectPage.xaml.cs">
       <DependentUpon>EffectPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\GameRulePage.xaml.cs">
+      <DependentUpon>GameRulePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,9 @@
     </Compile>
     <Compile Include="Pages\InventoryPage.xaml.cs">
       <DependentUpon>InventoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MoreOptionPage.xaml.cs">
+      <DependentUpon>MoreOptionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PlayerManagementPage.xaml.cs">
       <DependentUpon>PlayerManagementPage.xaml</DependentUpon>
@@ -117,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\GameRulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,6 +138,10 @@
     <Page Include="Pages\InventoryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\MoreOptionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PlayerManagementPage.xaml">
       <SubType>Designer</SubType>
