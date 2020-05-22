@@ -9,6 +9,82 @@
       Title="PlayerManagementPage">
 
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
+                        ViewportUnits="Absolute"
+                        Viewport="0, 0, 256, 256"
+                        TileMode="Tile"
+                        Stretch="None"
+                        AlignmentX="Left"
+                        AlignmentY="Top">
+                <ImageBrush.Transform>
+                    <ScaleTransform ScaleX=".3" ScaleY=".3"/>
+                </ImageBrush.Transform>
+            </ImageBrush>
+        </Grid.Background>
+
+        <Viewbox VerticalAlignment="Top">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Border CornerRadius="10" Margin="5" Padding="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="300"/>
+                                <ColumnDefinition Width="600"/>
+                                <ColumnDefinition Width="600"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="150"/>
+                                <RowDefinition Height="150"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="../Images/World/isles.png" Width="200" Height="200"/>
+
+                            <StackPanel Grid.Row="0" Grid.Column="1" Width="600" VerticalAlignment="Center">
+                                <Label Background="Transparent" Foreground="White" Content="Player Name" HorizontalAlignment="Center" Margin="0 0 0 -20" FontSize="40"/>
+                                <TextBox TextAlignment="Center" Padding="0 15 0 0" FontSize="40" Grid.Column="0" Margin="38,10,38,0" Grid.Row="1" Height="70" Width="500"/>
+                            </StackPanel>
+                            <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource MinecraftMediumLongButton}" Height="75" Width="400" VerticalAlignment="Center">
+                                <TextBlock Text="Upload skin" FontSize="40" Margin="0 8 0 0"/>
+                            </Button>
+                            <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource MinecraftMediumLongButton}" Height="75" Width="400" VerticalAlignment="Center">
+                                <TextBlock Text="Add player" FontSize="40" Margin="0 8 0 0"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="1" MinWidth="1600" MaxHeight="600">
+                    <ListBox x:Name="Listbox" Background="Transparent" Margin="50,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Grid.ColumnSpan="2">
+                        <ListBoxItem Background="LightGray" BorderThickness="5" BorderBrush="Gray" Height="100" Margin="10" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" MinWidth="1450">
+                                <Image Source="../Images/World/isles.png" Margin="5" Height="75"/>
+                                <Label Padding="0 15" Margin="150 0" FontFamily="{StaticResource Minecraftia}" Content="god__of__sound" FontSize="40" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Background="LightGray" BorderThickness="5" BorderBrush="Gray" Height="100" Margin="10" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" MinWidth="1450">
+                                <Image Source="../Images/World/isles.png" Margin="5" Height="75"/>
+                                <Label Padding="0 15" Margin="150 0" FontFamily="{StaticResource Minecraftia}" Content="Bryanator96" FontSize="40" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Background="LightGray" BorderThickness="5" BorderBrush="Gray" Height="100" Margin="10" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" MinWidth="1450">
+                                <Image Source="../Images/World/isles.png" Margin="5" Height="75"/>
+                                <Label Padding="0 15" Margin="150 0" FontFamily="{StaticResource Minecraftia}" Content="LOL_Panda" FontSize="40" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Background="LightGray" BorderThickness="5" BorderBrush="Gray" Height="100" Margin="10" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" MinWidth="1450">
+                                <Image Source="../Images/World/isles.png" Margin="5" Height="75"/>
+                                <Label Padding="0 15" Margin="150 0" FontFamily="{StaticResource Minecraftia}" Content="Jeb__" FontSize="40" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Page>
