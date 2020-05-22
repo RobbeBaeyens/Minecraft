@@ -36,8 +36,6 @@ namespace WPFMinecraft.Pages
 
         public void addToInventory()
         {
-            //Label test = new Label();
-            //Inventory_grid.Children.Insert(5, test);
 
             int testInt = 0;
 
