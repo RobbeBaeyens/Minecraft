@@ -92,6 +92,9 @@
     <Compile Include="Pages\ServerManagementPage.xaml.cs">
       <DependentUpon>ServerManagementPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\WorldSettingsPage.xaml.cs">
+      <DependentUpon>WorldSettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
@@ -139,6 +142,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\ServerManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WorldSettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

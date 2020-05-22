@@ -48,6 +48,12 @@
         /// <summary>
         /// The recipes page
         /// </summary>
-        Recipes = 8
+        Recipes = 8,
+
+        /// <summary>
+        /// The settings page
+        /// </summary>
+        Settings = 9
+
     }
 }
