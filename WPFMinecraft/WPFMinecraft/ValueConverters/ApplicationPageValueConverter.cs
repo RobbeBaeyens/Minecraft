@@ -42,6 +42,9 @@ namespace WPFMinecraft.ValueConverters
                 case ApplicationPage.Recipes:
                     return new RecipePage();
 
+                case ApplicationPage.Settings:
+                    return new WorldSettingsPage();
+
                 default:
                     Debugger.Break();
                     return null;
