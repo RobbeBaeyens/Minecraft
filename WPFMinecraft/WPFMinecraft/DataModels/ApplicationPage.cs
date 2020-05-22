@@ -53,7 +53,17 @@
         /// <summary>
         /// The settings page
         /// </summary>
-        Settings = 9
+        Settings = 9,
+
+        /// <summary>
+        /// The GameRule page
+        /// </summary>
+        GameRule = 10,
+
+        /// <summary>
+        /// The MoreOption page
+        /// </summary>
+        MoreOption = 11
 
     }
 }
