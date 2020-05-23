@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d418f7e3f8d54e91903c65bb5c92983a" Name="Diagram1" ZoomLevel="56">
+      <Diagram DiagramId="d418f7e3f8d54e91903c65bb5c92983a" Name="Diagram1" ZoomLevel="70">
         <EntityTypeShape EntityType="MinecraftModel.Advancement" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MinecraftModel.Dimension" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
         <EntityTypeShape EntityType="MinecraftModel.Effect" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
