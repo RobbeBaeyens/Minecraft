@@ -122,7 +122,7 @@ namespace WPFMinecraft.ViewModel
         /// <summary>
         /// The current page of the application
         /// </summary>
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Home;
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Advancements;
 
         #endregion
 
