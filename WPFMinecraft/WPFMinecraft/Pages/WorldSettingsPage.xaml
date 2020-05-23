@@ -47,7 +47,7 @@
                     <ComboBoxItem Content="ON"/>
                 </ComboBox>
                 
-                <Label Content="Game Mode" Grid.Row="0" Grid.Column="1" FontSize="40" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,90"/>
+                <Label Content="Difficulty" Grid.Row="0" Grid.Column="1" FontSize="40" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,90"/>
                 <ComboBox SelectedIndex="0" Grid.Row="0" Grid.Column="1"  Margin="35,70,35,0" Style="{StaticResource BasicComboBox}">
                     <ComboBoxItem Content="Normal"/>
                     <ComboBoxItem Content="Hard"/>
