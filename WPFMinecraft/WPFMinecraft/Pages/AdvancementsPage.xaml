@@ -8,6 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdvancementsPage">
 
+    <!--Basis-grid voor achtergrond en viewbox-->
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
@@ -23,92 +24,338 @@
             </ImageBrush>
         </Grid.Background>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="350"/>
-        </Grid.RowDefinitions>
+        <!--Viewbox en Grid voor gehele pagina-->
+        <Viewbox Margin="20">
+            <Grid>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-        <Viewbox>
-            <Grid Width="800" Height="100">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource MinecraftLongButton}">
-                    <TextBlock Text="Grant Advancement" HorizontalAlignment="Center" Margin="0, 10, 0, 0"/>
-                </Button>
-
-                <Button Grid.Column="1" Grid.Row="0" Style="{StaticResource MinecraftLongButton}">
-                    <TextBlock Text="Revoke Advancement" HorizontalAlignment="Center" Margin="0, 10, 0, 0"/>
-                </Button>
-            </Grid>
-        </Viewbox>
-
-
-        <Viewbox Grid.Row="1" Grid.Column="0" Margin="50, 0, 50, 0">
-
-            <Grid Height="350" Width="800">
-                <Grid.Background>
-                    <ImageBrush  ImageSource="../Images/Props/Advancements_window.png"/>
-                </Grid.Background>
-
-                <Grid Margin="28, 43, 18, 23">
-                    <Grid.Background>
-                        <ImageBrush ImageSource="../Images/Background/cave.png"/>
-                    </Grid.Background>
-
-                    <Grid.Resources>
-                        <Style TargetType="{x:Type Label}">
-                            <Setter Property="Background" >
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="../Images/Props/Advancements_slot_cubic.png"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Grid.Resources>
-
+                <!--Grid voor knoppen-->
+                <Grid Width="800" Height="100" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="4" Margin="10"/>
-                    <Label Grid.Row="0" Grid.Column="5" Margin="10"/>
-                    <Label Grid.Row="0" Grid.Column="7" Margin="10"/>
+                    <!--Knop voor geselecteerde "Advancement" te geven-->
+                    <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource MinecraftLongButton}">
+                        <TextBlock Text="Grant Advancement" HorizontalAlignment="Center" Margin="0, 10, 0, 0"/>
+                    </Button>
 
-                    <Label Grid.Row="1" Grid.Column="4" Margin="10"/>
-                    <Label Grid.Row="1" Grid.Column="5" Margin="10"/>
-                    <Label Grid.Row="1" Grid.Column="6" Margin="10"/>
-                    <Label Grid.Row="1" Grid.Column="7" Margin="10"/>
-                    <Label Grid.Row="1" Grid.Column="8" Margin="10"/>
-                    
-                    <Label Grid.Row="2" Grid.Column="0" Margin="10"/>
-                    <Label Grid.Row="2" Grid.Column="1" Margin="10"/>
-                    <Label Grid.Row="2" Grid.Column="2" Margin="10"/>
-                    <Label Grid.Row="2" Grid.Column="3" Margin="10"/>
-                    <Label Grid.Row="2" Grid.Column="6" Margin="10"/>
+                    <!--Knop voor geselecteerde "Advancement" te verwijderen-->
+                    <Button Grid.Column="1" Grid.Row="0" Style="{StaticResource MinecraftLongButton}">
+                        <TextBlock Text="Revoke Advancement" HorizontalAlignment="Center" Margin="0, 10, 0, 0"/>
+                    </Button>
+                </Grid>
 
-                    <Label Grid.Row="3" Grid.Column="4" Margin="10"/>
-                    <Label Grid.Row="3" Grid.Column="5" Margin="10"/>
-                    <Label Grid.Row="3" Grid.Column="6" Margin="10"/>
+                <!--Grid voor Advancements scherm-->
+                <Grid Height="350" Width="800" Grid.Row="1">
+                    <Grid.Background>
+                        <ImageBrush  ImageSource="../Images/Props/advancements_window.png"/>
+                    </Grid.Background>
 
+                    <!--Canvas voor verlooplijnen onder de Advancements knoppen te trekken-->
+                    <Canvas>
+                        
+                        <!--Grid om de Advancements knoppen in het canvas te kunnen zetten-->
+                        <Grid Height="284" Canvas.Left="28" Canvas.Top="43" Width="754">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="../Images/Background/cave.png"
+                                        ViewportUnits="Absolute"
+                                        Viewport="0, 0, 2048, 2048"
+                                        TileMode="Tile"
+                                        Stretch="None"
+                                        AlignmentX="Left"
+                                        AlignmentY="Top"
+                                        >
+                                    <ImageBrush.Transform>
+                                        <ScaleTransform ScaleX=".22" ScaleY=".22"/>
+                                    </ImageBrush.Transform>
+                                </ImageBrush>
+                            </Grid.Background>
+
+                            <Grid.Resources>
+
+                                <!--Stijl voor normale ongeselecteerde knoppen (bruin)-->
+                                <Style TargetType="{x:Type Button}" x:Key="normalAdvancementBrown">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="../Images/Props/normal_advancement_brown.png"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                </Style>
+                                
+                                <!--Stijl voor normale geselecteerde (grijs)-->
+                                <Style TargetType="{x:Type Button}" x:Key="normalAdvancementGrey">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="../Images/Props/normal_advancement_grey.png"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                </Style>
+
+                                <!--Stijl voor de speciale ongeselecteerde knop (bruin)-->
+                                <Style TargetType="{x:Type Button}" x:Key="specialAdvancementBrown">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="../Images/Props/special_advancement_brown.png"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                </Style>
+
+                                <!--Stijl voor de speciale ongeselecteerde knop (grijs)-->
+                                <Style TargetType="{x:Type Button}" x:Key="specialAdvancementGrey">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="../Images/Props/special_advancement_grey.png"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                </Style>
+                            </Grid.Resources>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            
+                            <!--Horizontale lijnen-->
+                            
+                            <!--Lijn 1-->
+                            <Line
+		                        Grid.Row="5"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="5"
+                                X1="10" Y1="0"
+                                X2="336" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+
+                            <!--Lijn 2-->
+                            <Line
+                                Grid.Row="1"
+                                Grid.Column="4"
+                                Grid.ColumnSpan="2"
+                                X1="-2" Y1="0"
+                                X2="150" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 3-->
+                            <Line
+                                Grid.Row="3"
+                                Grid.Column="4"
+                                Grid.ColumnSpan="3"
+                                X1="-2" Y1="0"
+                                X2="250" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+
+                            <!--Lijn 4-->
+                            <Line
+                                Grid.Row="6"
+                                Grid.Column="4"
+                                Grid.ColumnSpan="3"
+                                X1="-2" Y1="0"
+                                X2="168" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 5-->
+                            <Line
+                                Grid.Row="4"
+                                Grid.Column="7"
+                                Grid.ColumnSpan="2"
+                                X1="10" Y1="0"
+                                X2="150" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 6-->
+                            <Line
+                                Grid.Row="4"
+                                Grid.Column="7"
+                                Grid.ColumnSpan="2"
+                                X1="10" Y1="0"
+                                X2="150" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 7-->
+                            <Line
+                                Grid.Row="4"
+                                Grid.Column="7"
+                                Grid.ColumnSpan="2"
+                                X1="-2" Y1="0"
+                                X2="150" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 8-->
+                            <Line
+                                Grid.Row="2"
+                                Grid.Column="7"
+                                Grid.ColumnSpan="2"
+                                X1="0" Y1="0"
+                                X2="50" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 9-->
+                            <Line
+                                Grid.Row="5"
+                                Grid.Column="6"
+                                Grid.ColumnSpan="1"
+                                X1="0" Y1="0"
+                                X2="50" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 10-->
+                            <Line
+                                Grid.Row="7"
+                                Grid.Column="6"
+                                Grid.ColumnSpan="2"
+                                X1="-2" Y1="0"
+                                X2="50" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+                            
+
+                            <!--Verticale lijnen-->
+                            
+                            <!--Lijn 1-->
+                            <Line
+                                Grid.Row="1"
+                                Grid.Column="4"
+                                Grid.RowSpan="6"
+                                X1="0" Y1="0"
+                                X2="0" Y2="178"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 2-->
+                            <Line
+                                Grid.Row="5"
+                                Grid.Column="6"
+                                Grid.RowSpan="4"
+                                X1="0" Y1="-2"
+                                X2="0" Y2="72"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 3-->
+                            <Line
+                                Grid.Row="2"
+                                Grid.Column="7"
+                                Grid.RowSpan="4"
+                                X1="0" Y1="-2"
+                                X2="0" Y2="72"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+
+                            <!--Advancements knoppen-->
+                            
+                            <!--Rij 1 (boven naar onder)-->
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="4">
+                                <Image Source="../Images/Props/AdvancementsItems/ijzeren_borstplaat.png" Margin="7"/>
+                            </Button>
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="5">
+                                <Image Source="../Images/Props/AdvancementsItems/houten_schield.png" Margin="5"/>
+                            </Button>
+                            <Button Width="65" Height="65" Style="{StaticResource specialAdvancementBrown}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="7">
+                                <Image Source="../Images/Props/AdvancementsItems/gouden_apple.png" Margin="7"/>
+                            </Button>
+
+                            <!--Rij 2-->
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="4">
+                                <Image Source="../Images/Props/AdvancementsItems/emmer_lava.png" Margin="7"/>
+                            </Button>
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5">
+                                <Image Source="../Images/Props/AdvancementsItems/obsidiaan.png" Margin="10"/>
+                            </Button>
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="6">
+                                <Image Source="../Images/Props/AdvancementsItems/vuursteen_en_ijzer.png" Margin="8"/>
+                            </Button>
+
+                            <!--Rij 3-->
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="7">
+                                <Image Source="../Images/Props/AdvancementsItems/ender_oog.png" Margin="7"/>
+                            </Button>
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="8">
+                                <Image Source="../Images/Props/AdvancementsItems/einde_steen.png" Margin="10"/>
+                            </Button>
+
+                            <!--Rij 4-->
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="0">
+                                <Image Source="../Images/Props/AdvancementsItems/gras_blok.png" Margin="10"/>
+                            </Button>
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1">
+                                <Image Source="../Images/Props/AdvancementsItems/houten_pikhouweel.png" Margin="7"/>
+                            </Button>
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2">
+                                <Image Source="../Images/Props/AdvancementsItems/stenen_pikhouweel.png" Margin="7"/>
+                            </Button>
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3">
+                                <Image Source="../Images/Props/AdvancementsItems/ijzer_klomp.png" Margin="7"/>
+                            </Button>
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="6">
+                                <Image Source="../Images/Props/AdvancementsItems/diamanten_borstplaat.png" Margin="7"/>
+                            </Button>
+
+                            <!--Rij 5-->
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="4">
+                                <Image Source="../Images/Props/AdvancementsItems/ijzeren_pikhouweel.png" Margin="7"/>
+                            </Button>
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="5">
+                                <Image Source="../Images/Props/AdvancementsItems/diamant.png" Margin="7"/>
+                            </Button>
+                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="6" Grid.RowSpan="2" Grid.Column="6">
+                                <Image Source="../Images/Props/AdvancementsItems/betoverd_boek.png" Margin="7"/>
+                            </Button>
+
+                        </Grid>
+                    </Canvas>
                 </Grid>
             </Grid>
         </Viewbox>
