@@ -24,5 +24,10 @@ namespace WPFMinecraft.Pages
         {
             InitializeComponent();
         }
+
+        private void Canvas_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -10,8 +10,10 @@
       Loaded="Page_Loaded"
       Title="InventoryManagerPage">
 
+    <!--Basis-grid voor achtergrond en viewbox-->
     <Grid>
 
+        <!--Planken achtergrond-->
         <Grid.Background>
             <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
                         ViewportUnits="Absolute"
@@ -26,7 +28,10 @@
             </ImageBrush>
         </Grid.Background>
 
+        <!--Viewbox voor gehele pagina-->
         <Viewbox>
+            
+            <!--Hoofd-Grid-->
             <Grid Height="450" Width="800">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -37,8 +42,13 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Column="0" Grid.Row="0" >
-                    <Label Background="Transparent" Foreground="White" Content="Select Item" HorizontalAlignment="Center" FontSize="40" Margin="0,20,0,0"/>
+                <!--"Linker-boven" Stackpanel voor "Select Item"-->
+                <StackPanel Grid.Column="0" Grid.Row="0">
+                    
+                    <!--Select Item (tekst)-->
+                    <Label Background="Transparent" Foreground="White" Content="Select Item" HorizontalAlignment="Center" FontSize="40" Margin="0,40,0,-20"/>
+                    
+                    <!--Combobox om voorwerpen te selecteren die in de "Inventory" gezet moeten worden-->
                     <ComboBox x:Name="cmb1" Style="{StaticResource BasicComboBox}" Margin="38,10,38,0" Width="325" Height="70">
                         <ComboBoxItem Content="111"/>
                         <ComboBoxItem Content="222"/>
@@ -52,8 +62,13 @@
                     </ComboBox>
                 </StackPanel>
 
+                <!--"Rechter-boven" Stackpanel voor "Select Item"-->
                 <StackPanel Grid.Column="1" Grid.Row="0">
-                    <Label Background="Transparent" Foreground="White" Content="Select Slot" HorizontalAlignment="Center" FontSize="40" Margin="0,20,0,0"/>
+                    
+                    <!--Select slot (tekst)-->
+                    <Label Background="Transparent" Foreground="White" Content="Select Slot" HorizontalAlignment="Center" FontSize="40" Margin="0,40,0,-20"/>
+                    
+                    <!--Combobox om het juiste vakje te selecteren in "Iventory"-->
                     <ComboBox  x:Name="cmb2"  Style="{StaticResource BasicComboBox}" Margin="38,10,38,0" Width="325" Height="70">
                         <ComboBoxItem Content="111"/>
                         <ComboBoxItem Content="222"/>
@@ -67,18 +82,20 @@
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel Grid.Row="1" Grid.Column="0">
-                    <Label Background="Transparent" Foreground="White" Content="Amount" HorizontalAlignment="Center" FontSize="40" Margin="0,20,0,0"/>
-                    <TextBox FontSize="40" Grid.Column="0" Margin="38,10,38,0" Grid.Row="1" Height="70" Width="325"/>
+                <!--"Linker-onder" Stackpanel voor "Amount"-->
+                <StackPanel Grid.Row="1" Grid.Column="0" Width="400" VerticalAlignment="Center">
+                    
+                    <!--Amount (tekst)-->
+                    <Label Background="Transparent" Foreground="White" Content="Amount" HorizontalAlignment="Center" Margin="0 0 0 -20" FontSize="40"/>
+                    
+                    <!--Tekstbox voor het in te vullen hoeveelheid van elke "Item"-->
+                    <TextBox TextAlignment="Center" Padding="0 15 0 0" FontSize="40" Grid.Column="0" Margin="38,10,38,0" Grid.Row="1" Height="70" Width="500"/>
                 </StackPanel>
 
+                <!--"Rechter-onder" Button voor voor "Items" toe te voegen aan "Inventory"-->
                 <Button Style="{StaticResource MinecraftLongButton}" Grid.Row="1" Grid.Column="1" Height="70" Margin="38,85,38,74" Width="325">
                     <TextBlock Text="Add item(s)" Margin="0, 12, 0, 0"/>
                 </Button>
-
-
-
-
             </Grid>
         </Viewbox>
     </Grid>

@@ -8,7 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InventoryPage">
 
+    <!--Basis-drid voor achtergrond en viewbox-->
     <Grid>
+        <!--Planken achtergrond-->
         <Grid.Background>
             <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
                         ViewportUnits="Absolute"
@@ -23,14 +25,17 @@
             </ImageBrush>
         </Grid.Background>
 
+        <!--Viewbox voor inventory-->
         <Viewbox>
             <Grid Height="256" Width="256">
                 <Grid.Background>
                     <ImageBrush ImageSource="../Images/Props/inventory_empty.png"/>
                 </Grid.Background>
 
+                <!--Grid voor Inventory-->
                 <Grid Margin="10,17">
 
+                    <!--Stijl toewijzen aan te gebruiken TextBlock-->
                     <Grid.Resources>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="Background" >
@@ -46,6 +51,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
+                    <!--"Bovenstaande" vakjes voor uitrusting-inventory -->
                     <Grid Margin="0,0,110,6">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="26"/>
@@ -65,6 +71,7 @@
                         <TextBlock Grid.Row="3" Grid.Column="0"/>
                         <TextBlock Grid.Row="3" Grid.Column="2"/>
 
+                        <!--Stijl voor vakje van karakter toewijzen aan tekstblock-->
                         <TextBlock Grid.Row="0" Grid.Column="1" Grid.RowSpan="4">
                             <TextBlock.Background>
                                 <ImageBrush ImageSource="../Images/Props/player_space.png"/>
@@ -73,8 +80,10 @@
 
                     </Grid>
 
+                    <!--"Onderstaande" vakjes voor algemene-inventory-->
                     <Grid x:Name="Inventory_grid" Grid.Row="1">
 
+                        <!--Stijl toewijzen aan te gebruiken TextBlock-->
                         <Grid.Resources>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Background" >
@@ -104,6 +113,9 @@
                             <RowDefinition Height="26"/>
                         </Grid.RowDefinitions>
 
+                        <!--Rijen voor algemene Inventory (in de zakken)-->
+                        
+                        <!--Rij 1 algemene Inventory-->
                         <TextBlock Grid.Row="0" Grid.Column="0"/>
                         <TextBlock Grid.Row="0" Grid.Column="1"/>
                         <TextBlock Grid.Row="0" Grid.Column="2"/>
@@ -114,6 +126,7 @@
                         <TextBlock Grid.Row="0" Grid.Column="7"/>
                         <TextBlock Grid.Row="0" Grid.Column="8"/>
 
+                        <!--Rij 2 algemene Inventory-->
                         <TextBlock Grid.Row="1" Grid.Column="0"/>
                         <TextBlock Grid.Row="1" Grid.Column="1"/>
                         <TextBlock Grid.Row="1" Grid.Column="2"/>
@@ -124,6 +137,7 @@
                         <TextBlock Grid.Row="1" Grid.Column="7"/>
                         <TextBlock Grid.Row="1" Grid.Column="8"/>
 
+                        <!--Rij 3 algemene Inventory-->
                         <TextBlock Grid.Row="2" Grid.Column="0"/>
                         <TextBlock Grid.Row="2" Grid.Column="1"/>
                         <TextBlock Grid.Row="2" Grid.Column="2"/>
@@ -134,6 +148,7 @@
                         <TextBlock Grid.Row="2" Grid.Column="7"/>
                         <TextBlock Grid.Row="2" Grid.Column="8"/>
 
+                        <!--Rij voor selecteerbare Inventory (in de handen)-->
                         <TextBlock Grid.Row="4" Grid.Column="0"/>
                         <TextBlock Grid.Row="4" Grid.Column="1"/>
                         <TextBlock Grid.Row="4" Grid.Column="2"/>
@@ -148,6 +163,7 @@
             </Grid>
         </Viewbox>
 
+        <!--Viewbox en Grid voor knop-->
         <Viewbox>
             <Grid Height="450" Width="800">
                 <Grid.ColumnDefinitions>
@@ -163,6 +179,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
+                <!--Knop voor "Inventory Manager pagina" te openen-->
                 <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource MinecraftMediumLongButton}"
                         Height="Auto" Margin="198,24,33,10" Width="Auto" Grid.ColumnSpan="2" Click="Button_Click">
                     <TextBlock Margin="0, 8, 0, 0" Text="Manage Inventory" FontSize="25"/>
