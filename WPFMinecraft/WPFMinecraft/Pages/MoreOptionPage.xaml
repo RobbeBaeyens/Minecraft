@@ -9,6 +9,8 @@
       Title="MoreOptionPage">
 
     <Grid>
+        
+        <!--Hout achtergrond-->
         <Grid.Background>
             <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
                         ViewportUnits="Absolute"
@@ -23,6 +25,7 @@
             </ImageBrush>
         </Grid.Background>
 
+        <!--viewbox zorgt ervoor dat alles responsief wordt -->
         <Viewbox>
             <Grid Width="800" Height="450">
                 <Grid.ColumnDefinitions>
@@ -34,19 +37,23 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label Content="generate structures" Grid.Row="0" Grid.Column="0" FontSize="40" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,90"/>
+                <!--Combobox van generate structures-->
+                <Label Content="generate structures" Grid.Row="0" Grid.Column="0" FontSize="30" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,90" FontFamily="{StaticResource Minecraftia}"/>
                 <ComboBox SelectedIndex="0" Grid.Row="0" Grid.Column="0" Margin="35,70,35,70" Style="{StaticResource BasicComboBox}">
                     <ComboBoxItem Content="ON"/>
                     <ComboBoxItem Content="OFF"/>
-                    
                 </ComboBox>
 
-                <Label Content="Bonus Chest" Grid.Row="1" Grid.Column="0" FontSize="40" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,90"/>
+                <!--Combobox van Bonus chest-->
+                <Label Content="Bonus Chest" Grid.Row="1" Grid.Column="0" FontSize="30" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,90" FontFamily="{StaticResource Minecraftia}"/>
                 <ComboBox SelectedIndex="0" Grid.Row="1" Grid.Column="0"  Margin="35,70,35,70" Style="{StaticResource BasicComboBox}">
                     <ComboBoxItem Content="OFF"/>
                     <ComboBoxItem Content="ON"/>
                 </ComboBox>
 
+                
+                
+                <!--Combobox van World type-->
                 <Label Content="World Type" Grid.Row="0" Grid.Column="1" FontSize="40" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,90"/>
                 <ComboBox SelectedIndex="0" Grid.Row="0" Grid.Column="1"  Margin="35,70,35,70" Style="{StaticResource BasicComboBox}">
                     <ComboBoxItem Content="Default"/>
@@ -56,7 +63,6 @@
                     <ComboBoxItem Content="Single Biome"/>
                     <ComboBoxItem Content="Caves"/>
                     <ComboBoxItem Content="Floating Isl."/>
-                    
                 </ComboBox>
             </Grid>
         </Viewbox>

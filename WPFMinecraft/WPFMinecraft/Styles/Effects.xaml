@@ -8,7 +8,7 @@
         <ResourceDictionary Source="Fonts.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-
+    <!--Style voor een listboxItem in de effecten page (hoverless Listbox)-->
     <Style TargetType="{x:Type ListBoxItem}" x:Key="HoverlessListBoxItem">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
@@ -24,6 +24,7 @@
         </Setter>
     </Style>
 
+     <!--Style voor een listboxItem in de effecten page (effectbalk)-->
     <Style TargetType="{x:Type ListBoxItem}" x:Key="effectBalk" BasedOn="{StaticResource HoverlessListBoxItem}">
         <Setter Property="Height" Value="87.945"/>
         <Setter Property="Width" Value="330"/>
@@ -53,7 +54,8 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <!--Style voor een listboxItem in de effecten page (effectbutton)-->
     <Style TargetType="{x:Type ListBoxItem}" x:Key="effectButton" BasedOn="{StaticResource HoverlessListBoxItem}">
         <Setter Property="Foreground" Value="#3e3e3e" />
         <Setter Property="BorderThickness" Value="0"/>
@@ -86,6 +88,7 @@
         </Style.Triggers>
     </Style>
 
+    <!--Style voor een button in de effecten page (buttoneffect)-->
     <Style TargetType="{x:Type Button}" x:Key="ButtonEffect" BasedOn="{StaticResource Hoverless}">
         <Setter Property="Foreground" Value="#3e3e3e"/>
         <Setter Property="VerticalContentAlignment" Value="center"/>
@@ -109,7 +112,8 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <!--Style voor een textblock in de effecten page (Text)-->
     <Style TargetType="{x:Type TextBlock}" x:Key="text">
         <Setter Property="Margin" Value="0, 10, 0, 0"/>
         <Setter Property="FontSize" Value="25" />

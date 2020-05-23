@@ -9,6 +9,8 @@
       Title="GameRulePage">
 
     <Grid>
+        
+        <!--Houte achtergrond-->
         <Grid.Background>
             <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
                         ViewportUnits="Absolute"
@@ -22,9 +24,12 @@
                 </ImageBrush.Transform>
             </ImageBrush>
         </Grid.Background>
-
+    
+        <!--Scrollviewer zorgt ervoor dat er een scroll aanwezig is -->
         <ScrollViewer>
             <Grid Height="2550">
+                
+                <!--Zorgt voor een style enkel op deze pagina-->
                 <Grid.Resources>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="FontFamily" Value="{StaticResource Minecraftia}"/>

@@ -13,6 +13,8 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
+        <!--Houten achtergrond-->
         <Grid.Background>
             <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
                         ViewportUnits="Absolute"
@@ -26,11 +28,15 @@
                 </ImageBrush.Transform>
             </ImageBrush>
         </Grid.Background>
+        
+        
         <Viewbox Grid.Column="0">
             <Grid>
                 <Button Style="{StaticResource ButtonEffect}">
                     <TextBlock Style="{StaticResource text}">Add Time</TextBlock>
                 </Button>
+                
+              <!--linkse listbox-->  
                 <ListBox x:Name="Listbox" Background="Transparent" Height="500" Width="370" Margin="0 100 0 0" HorizontalAlignment="Left" BorderBrush="Transparent">
                     <ListBoxItem Style="{StaticResource effectBalk}"></ListBoxItem>
                     <ListBoxItem Style="{StaticResource effectBalk}"></ListBoxItem>
@@ -49,6 +55,8 @@
                 <Button Style="{StaticResource ButtonEffect}" Click="Button_Click">
                     <TextBlock Style="{StaticResource text}">Add/Remove Effect</TextBlock>
                 </Button>
+                
+                <!--rechtse listbox-->
                 <ListBox x:Name="Listbox1" Background="Transparent" Height="500" Width="350" Margin="0 100 0 0"  HorizontalAlignment="Left" BorderBrush="Transparent">
                     <ListBoxItem Style="{StaticResource effectButton}">
                         <TextBlock Style="{StaticResource text}">Effecten
