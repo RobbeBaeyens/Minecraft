@@ -23,8 +23,255 @@
             </ImageBrush>
         </Grid.Background>
 
-        <Viewbox>
-            
-        </Viewbox>
+        <ScrollViewer>
+            <Grid Height="2550">
+                <Grid.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="FontFamily" Value="{StaticResource Minecraftia}"/>
+                    </Style>
+
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource Hoverless}">
+                        <Setter Property="Width" Value="665"/>
+                        <Setter Property="Height" Value="80"/>
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="../Images/Button/button_extra_long.png"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/Images/Button/button_extra_long_selected.png"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="FontFamily" Value="{StaticResource Minecraftia}"/>
+                    </Style>
+                </Grid.Resources>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+
+                </Grid.RowDefinitions>
+                
+                
+                
+                
+                
+               <!-- PLAYER Options -->
+             
+                <Label Content="player" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25"/>
+
+                <Button Grid.Row="1"  FontSize="25">
+                    <TextBlock Text="Disable elytra movement check: OFF" Margin="0,20,0,0" />
+                </Button>
+
+                <Button Grid.Row="2" FontSize="25">
+                    <TextBlock Text="Respawn immediatly: OFF" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="3" FontSize="25">
+                    <TextBlock Text="Require recipe for crafting: OFF" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="4" FontSize="25">
+                    <TextBlock Text="Deal drowning damage: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="5" FontSize="25">
+                    <TextBlock Text="Deal fall damage: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="6" FontSize="25">
+                    <TextBlock Text="Deal fire damage: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="7" FontSize="25">
+                    <TextBlock Text="Keep inventory after death: OFF" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="8" FontSize="25">
+                    <TextBlock Text="Regenerate health: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="9" FontSize="25">
+                    <TextBlock Text="Allow spectators to generate terrain: ON" Margin="0,20,0,0"/>
+                </Button>
+
+
+
+
+
+
+                <!-- MOBS Options -->
+
+                <Label Content="Mobs" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="10" Margin="0,30,0,0" />
+
+                <Button Grid.Row="11" FontSize="25">
+                    <TextBlock Text="Disable raids: OFF" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="12" FontSize="25">
+                    <TextBlock Text="Allow destructive mob actions: ON" Margin="0,20,0,0"/>
+                </Button>
+
+
+
+
+
+
+                <!-- SPAWNING Options -->
+
+                <Label Content="Spawning" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="13" Margin="0,30,0,0"/>
+
+                <Button Grid.Row="14" FontSize="25">
+                    <TextBlock Text="Spawn phantoms: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="15" FontSize="25">
+                    <TextBlock Text="Spawn mobs: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="16" FontSize="25">
+                    <TextBlock Text="Spawn pillager patrols: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="17" FontSize="25">
+                    <TextBlock Text="Spawn wandering traders: ON" Margin="0,20,0,0"/>
+                </Button>
+
+
+
+
+
+
+                <!-- DROPS Options -->
+
+                <Label Content="Drops" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="18" Margin="0,30,0,0"/>
+
+                <Button Grid.Row="19" FontSize="25">
+                    <TextBlock Text="Drop entity equipment: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="20" FontSize="25">
+                    <TextBlock Text="Drop mob loot: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="21" FontSize="25">
+                    <TextBlock Text="Drop blocks: ON" Margin="0,20,0,0"/>
+                </Button>
+
+
+
+
+
+
+
+
+
+
+                <!-- WORLD UPDATES Options -->
+                <Label Content="World updates" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="22" Margin="0,30,0,0"/>
+
+                <Button Grid.Row="23" FontSize="25">
+                    <TextBlock Text="Advance in-game time: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="24" FontSize="25">
+                    <TextBlock Text="Update fire: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="25" FontSize="25">
+                    <TextBlock Text="Update weather: ON" Margin="0,20,0,0"/>
+                </Button>
+
+
+
+
+
+
+
+
+                <!-- CHAT Options -->
+
+                <Label Content="Chat" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="26" Margin="0,30,0,0" />
+
+                <Button Grid.Row="27" FontSize="25">
+                    <TextBlock Text="Announce advancements: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="28" FontSize="25">
+                    <TextBlock Text="Broadcast command block output: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="29" FontSize="25">
+                    <TextBlock Text="Broadcast admin commands: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="30" FontSize="25">
+                    <TextBlock Text="Send command feedback: ON" Margin="0,20,0,0"/>
+                </Button>
+
+                <Button Grid.Row="31" FontSize="25">
+                    <TextBlock Text="Show death messages: ON" Margin="0,20,0,0"/>
+                </Button>
+
+
+
+
+
+
+
+
+
+                <!-- MISCELLANEOUS Options -->
+
+                <Label Content="Miscellaneous" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="32" Margin="0,30,0,0"/>
+
+                <Button Grid.Row="33" FontSize="25">
+                    <TextBlock Text="Reduce debug info: OFF" Margin="0,20,0,0"/>
+                </Button>
+              
+                
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>
