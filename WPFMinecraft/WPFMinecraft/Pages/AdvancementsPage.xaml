@@ -8,6 +8,101 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdvancementsPage">
 
+    <Page.Resources>
+
+        <!--Stijl voor selected-->
+        <Style TargetType="{x:Type ToggleButton}" x:Key="TbHoverless">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--Stijl voor normale ongeselecteerde knoppen (bruin)-->
+        <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource TbHoverless}" x:Key="normalAdvancementBrown">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../Images/Props/normal_advancement_brown.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/Props/selected_normal_advancement_brown.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Stijl voor normale geselecteerde (grijs)-->
+        <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource TbHoverless}" x:Key="normalAdvancementGrey">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../Images/Props/normal_advancement_grey.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/Props/selected_normal_advancement_grey.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Stijl voor de speciale ongeselecteerde knop (bruin)-->
+        <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource TbHoverless}" x:Key="specialAdvancementBrown">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../Images/Props/special_advancement_brown.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/Props/selected_special_advancement_brown.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Stijl voor de speciale ongeselecteerde knop (grijs)-->
+        <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource TbHoverless}" x:Key="specialAdvancementGrey">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../Images/Props/special_advancement_grey.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/Props/selected_special_advancement_grey.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Page.Resources>
+
     <!--Basis-grid voor achtergrond en viewbox-->
     <Grid>
         <Grid.Background>
@@ -27,7 +122,7 @@
         <!--Viewbox en Grid voor gehele pagina-->
         <Viewbox Margin="20">
             <Grid>
-                
+
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -41,12 +136,12 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Knop voor geselecteerde "Advancement" te geven-->
-                    <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource MinecraftLongButton}">
+                    <Button x:Name="btnGrantAdvancement" Grid.Column="0" Grid.Row="0" Style="{StaticResource MinecraftLongButton}" Click="btnGrantAdvancement_Click">
                         <TextBlock Text="Grant Advancement" HorizontalAlignment="Center" Margin="0, 10, 0, 0"/>
                     </Button>
 
                     <!--Knop voor geselecteerde "Advancement" te verwijderen-->
-                    <Button Grid.Column="1" Grid.Row="0" Style="{StaticResource MinecraftLongButton}">
+                    <Button x:Name="btnRevokeAdvancement" Grid.Column="1" Grid.Row="0" Style="{StaticResource MinecraftLongButton}" Click="btnRevokeAdvancement_Click" >
                         <TextBlock Text="Revoke Advancement" HorizontalAlignment="Center" Margin="0, 10, 0, 0"/>
                     </Button>
                 </Grid>
@@ -59,7 +154,7 @@
 
                     <!--Canvas voor verlooplijnen onder de Advancements knoppen te trekken-->
                     <Canvas>
-                        
+
                         <!--Grid om de Advancements knoppen in het canvas te kunnen zetten-->
                         <Grid Height="284" Canvas.Left="28" Canvas.Top="43" Width="754">
                             <Grid.Background>
@@ -77,48 +172,7 @@
                                 </ImageBrush>
                             </Grid.Background>
 
-                            <Grid.Resources>
 
-                                <!--Stijl voor normale ongeselecteerde knoppen (bruin)-->
-                                <Style TargetType="{x:Type Button}" x:Key="normalAdvancementBrown">
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <ImageBrush ImageSource="../Images/Props/normal_advancement_brown.png"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Setter Property="BorderBrush" Value="Transparent"/>
-                                </Style>
-                                
-                                <!--Stijl voor normale geselecteerde (grijs)-->
-                                <Style TargetType="{x:Type Button}" x:Key="normalAdvancementGrey">
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <ImageBrush ImageSource="../Images/Props/normal_advancement_grey.png"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Setter Property="BorderBrush" Value="Transparent"/>
-                                </Style>
-
-                                <!--Stijl voor de speciale ongeselecteerde knop (bruin)-->
-                                <Style TargetType="{x:Type Button}" x:Key="specialAdvancementBrown">
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <ImageBrush ImageSource="../Images/Props/special_advancement_brown.png"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Setter Property="BorderBrush" Value="Transparent"/>
-                                </Style>
-
-                                <!--Stijl voor de speciale ongeselecteerde knop (grijs)-->
-                                <Style TargetType="{x:Type Button}" x:Key="specialAdvancementGrey">
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <ImageBrush ImageSource="../Images/Props/special_advancement_grey.png"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Setter Property="BorderBrush" Value="Transparent"/>
-                                </Style>
-                            </Grid.Resources>
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -142,9 +196,9 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            
+
                             <!--Horizontale lijnen-->
-                            
+
                             <!--Lijn 1-->
                             <Line
 		                        Grid.Row="5"
@@ -256,10 +310,10 @@
                                 Stroke="White"
                                 StrokeThickness="4"
                             />
-                            
+
 
                             <!--Verticale lijnen-->
-                            
+
                             <!--Lijn 1-->
                             <Line
                                 Grid.Row="1"
@@ -295,64 +349,68 @@
 
 
                             <!--Advancements knoppen-->
-                            
-                            <!--Rij 1 (boven naar onder)-->
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="4">
+
+                            <!--Rij 0 (boven naar onder)-->
+                            <ToggleButton x:Name="btnAdvancementIjzerBorst" Width="65" Height="65" ClickMode="Press" Style="{StaticResource normalAdvancementBrown}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="4">
                                 <Image Source="../Images/Props/AdvancementsItems/ijzeren_borstplaat.png" Margin="7"/>
-                            </Button>
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="5">
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementHoutenSchild" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="5" >
                                 <Image Source="../Images/Props/AdvancementsItems/houten_schield.png" Margin="5"/>
-                            </Button>
-                            <Button Width="65" Height="65" Style="{StaticResource specialAdvancementBrown}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="7">
+                            </ToggleButton>
+
+                            <!--Rij 1-->
+                            <ToggleButton x:Name="btnAdvancementGoudenAppel" Width="65" Height="65" Style="{StaticResource specialAdvancementBrown}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="7">
                                 <Image Source="../Images/Props/AdvancementsItems/gouden_apple.png" Margin="7"/>
-                            </Button>
+                            </ToggleButton>
 
                             <!--Rij 2-->
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="4">
+                            <ToggleButton x:Name="btnAdvancementEmmerLava" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="4">
                                 <Image Source="../Images/Props/AdvancementsItems/emmer_lava.png" Margin="7"/>
-                            </Button>
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5">
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementObsidiaan" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5">
                                 <Image Source="../Images/Props/AdvancementsItems/obsidiaan.png" Margin="10"/>
-                            </Button>
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="6">
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementVuursteen" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="6">
                                 <Image Source="../Images/Props/AdvancementsItems/vuursteen_en_ijzer.png" Margin="8"/>
-                            </Button>
+                            </ToggleButton>
 
                             <!--Rij 3-->
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="7">
+                            <ToggleButton x:Name="btnAdvancementEnderOog" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="7" >
                                 <Image Source="../Images/Props/AdvancementsItems/ender_oog.png" Margin="7"/>
-                            </Button>
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="8">
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementEindeSteen" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="8">
                                 <Image Source="../Images/Props/AdvancementsItems/einde_steen.png" Margin="10"/>
-                            </Button>
+                            </ToggleButton>
 
                             <!--Rij 4-->
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="0">
+                            <ToggleButton x:Name="btnAdvancementGrasBlok" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="0">
                                 <Image Source="../Images/Props/AdvancementsItems/gras_blok.png" Margin="10"/>
-                            </Button>
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1">
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementHoutenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1">
                                 <Image Source="../Images/Props/AdvancementsItems/houten_pikhouweel.png" Margin="7"/>
-                            </Button>
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2">
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementStenenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2">
                                 <Image Source="../Images/Props/AdvancementsItems/stenen_pikhouweel.png" Margin="7"/>
-                            </Button>
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3">
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementIjzerKlomp" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3">
                                 <Image Source="../Images/Props/AdvancementsItems/ijzer_klomp.png" Margin="7"/>
-                            </Button>
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="6">
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementDiamantenBorst" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="6">
                                 <Image Source="../Images/Props/AdvancementsItems/diamanten_borstplaat.png" Margin="7"/>
-                            </Button>
+                            </ToggleButton>
 
                             <!--Rij 5-->
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="4">
+                            <ToggleButton x:Name="btnAdvancementIjzerenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="4">
                                 <Image Source="../Images/Props/AdvancementsItems/ijzeren_pikhouweel.png" Margin="7"/>
-                            </Button>
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="5">
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementDiamant" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="5">
                                 <Image Source="../Images/Props/AdvancementsItems/diamant.png" Margin="7"/>
-                            </Button>
-                            <Button Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="6" Grid.RowSpan="2" Grid.Column="6">
+                            </ToggleButton>
+
+                            <!--Rij 6-->
+                            <ToggleButton x:Name="btnAdvancementBetoverdBoek" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="6" Grid.RowSpan="2" Grid.Column="6">
                                 <Image Source="../Images/Props/AdvancementsItems/betoverd_boek.png" Margin="7"/>
-                            </Button>
+                            </ToggleButton>
 
                         </Grid>
                     </Canvas>
