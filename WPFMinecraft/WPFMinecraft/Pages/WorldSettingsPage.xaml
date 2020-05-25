@@ -34,38 +34,53 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+
+                <!--textbox om ene wereld naam in te stellen-->
+                <StackPanel Grid.Row="0" Grid.Column="0" Width="350" VerticalAlignment="Center">
+                    <Label Background="Transparent" Foreground="White" Content="Server Name" HorizontalAlignment="Center" Margin="0 0 0 -20" FontSize="40"/>
+                    <TextBox x:Name="textBoxServerName" TextAlignment="Center" Padding="0 15 0 0" FontSize="40" Grid.Column="0" Margin="0,10,0,0" Grid.Row="1" Height="80" Width="350"/>
+                </StackPanel>
+
                 <!--combobox met label voor game mode-->
-                <Label Content="Game Mode" Grid.Row="0" Grid.Column="0" FontSize="40" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,90"/>
-                <ComboBox SelectedIndex="0" Grid.Row="0" Grid.Column="0" Margin="35,70,35,0" Style="{StaticResource BasicComboBox}">
-                    <ComboBoxItem Content="Survival"/>
-                    <ComboBoxItem Content="Creative"/>
-                    <ComboBoxItem Content="Hardcore"/>
-                </ComboBox>
+                <StackPanel Grid.Row="1" Grid.Column="0" Width="350" VerticalAlignment="Center">
+                    <Label Background="Transparent" Foreground="White" Content="Game Mode" HorizontalAlignment="Center" Margin="0 0 0 -20" FontSize="40"/>
+                    <ComboBox SelectedIndex="0" Grid.Row="1" Grid.Column="0" Padding="0, 15, 0, 0" Margin="0,10,0,0" Style="{StaticResource BasicComboBox}" Width="350" Height="80">
+                        <ComboBoxItem Content="Survival"/>
+                        <ComboBoxItem Content="Creative"/>
+                        <ComboBoxItem Content="Hardcore"/>
+                    </ComboBox>
+                </StackPanel>
 
                 <!--combobox met label voor Cheats-->
-                <Label Content="Cheats" Grid.Row="1" Grid.Column="0" FontSize="40" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,90"/>
-                <ComboBox SelectedIndex="0" Grid.Row="1" Grid.Column="0"  Margin="35,70,35,0" Style="{StaticResource BasicComboBox}">
-                    <ComboBoxItem Content="OFF"/>
-                    <ComboBoxItem Content="ON"/>
-                </ComboBox>
-
+                <StackPanel Grid.Row="1" Grid.Column="1" Width="350" VerticalAlignment="Center">
+                    <Label Background="Transparent" Foreground="White" Content="Cheats" HorizontalAlignment="Center" Margin="0 0 0 -20" FontSize="40"/>
+                    <ComboBox SelectedIndex="0" Grid.Row="1" Grid.Column="1" Padding="0, 15, 0, 0" Margin="0,10,0,0" Style="{StaticResource BasicComboBox}" Width="350" Height="80">
+                        <ComboBoxItem Content="OFF"/>
+                        <ComboBoxItem Content="ON"/>
+                    </ComboBox>
+                </StackPanel>
                 <!--combobox met label voor difficulty-->
-                <Label Content="Difficulty" Grid.Row="0" Grid.Column="1" FontSize="40" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,90"/>
-                <ComboBox SelectedIndex="0" Grid.Row="0" Grid.Column="1"  Margin="35,70,35,0" Style="{StaticResource BasicComboBox}">
-                    <ComboBoxItem Content="Normal"/>
-                    <ComboBoxItem Content="Hard"/>
-                    <ComboBoxItem Content="Peaceful"/>
-                    <ComboBoxItem Content="Easy"/>
-                </ComboBox>
-
+                <StackPanel Grid.Row="0" Grid.Column="1" Width="350" VerticalAlignment="Center">
+                    <Label Background="Transparent" Foreground="White" Content="Difficulty" HorizontalAlignment="Center" Margin="0 0 0 -20" FontSize="40"/>
+                    <ComboBox SelectedIndex="0" Grid.Row="0" Grid.Column="1"  Margin="0,10,0,0" Style="{StaticResource BasicComboBox}" Width="350" Height="80">
+                        <ComboBoxItem Content="Normal"/>
+                        <ComboBoxItem Content="Hard"/>
+                        <ComboBoxItem Content="Peaceful"/>
+                        <ComboBoxItem Content="Easy"/>
+                    </ComboBox>
+                </StackPanel>
                 <!--button voor naar de gamerule pagina te gaan -->
-                <Button Grid.Row="2" Grid.Column="0"  Margin="35" FontSize="35" Style="{StaticResource ButtonEffect}">
+                <Button Grid.Row="2" Grid.Column="0"  Margin="0,10,0,0" FontSize="35" Style="{StaticResource ButtonEffect}">
                     <TextBlock Text="Game Rules" Margin="0,5,0,0"/>
                 </Button>
 
                 <!--button voor naar de more optins te gaan -->
-                <Button Grid.Row="2" Grid.Column="1"  Margin="35" FontSize="35"  Style="{StaticResource ButtonEffect}">
+                <Button Grid.Row="2" Grid.Column="1"  Margin="0,10,0,0" FontSize="35"  Style="{StaticResource ButtonEffect}">
                     <TextBlock Text="More Options..." Margin="0,5,0,0"/>
+                </Button>
+                <!--button voor het opslaan van de options-->
+                <Button Grid.Row="2" Grid.Column="1" Margin="40,80,40,9.6" FontSize="35" Style="{StaticResource MinecraftGreenMediumLongButton}" Height="Auto" Width="Auto">
+                    <TextBlock Text="Save Options" Margin=" 0,5,0,0"/>
                 </Button>
             </Grid>
         </Viewbox>
