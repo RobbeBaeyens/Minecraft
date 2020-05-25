@@ -144,6 +144,10 @@ namespace WPFMinecraft.ViewModel
         /// Command to show the system menu of the window
         /// </summary>
         public ICommand MenuCommand { get; set; }
+        /// <summary>
+        /// Command to go back a page
+        /// </summary>
+        public ICommand PreviousPageCommand { get; set; }
 
         #endregion
 
@@ -172,6 +176,7 @@ namespace WPFMinecraft.ViewModel
             MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => mWindow.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+            PreviousPageCommand = new RelayCommand(() => PreviousPage());
 
             // Fix window resize issue
             var resizer = new WindowResizer(mWindow);
@@ -216,6 +221,23 @@ namespace WPFMinecraft.ViewModel
             OnPropertyChanged(nameof(WindowCornerRadius));
         }
 
+        private void PreviousPage()
+        {
+            switch (CurrentPage)
+            {
+                case ApplicationPage.ServerManagement:
+                    CurrentPage = ApplicationPage.Home;
+                    break;
+
+                case ApplicationPage.PlayerManagement:
+                    CurrentPage = ApplicationPage.Home;
+                    break;
+
+                default:
+                    CurrentPage = ApplicationPage.Home;
+                    break;
+            }
+        }
         #endregion
     }
 }

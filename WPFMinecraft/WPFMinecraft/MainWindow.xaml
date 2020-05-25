@@ -70,9 +70,12 @@
                                         </Grid.ColumnDefinitions>
 
                                         <!-- Icon -->
-                                        <Button Grid.Column="0" Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
-                                            <Image Source="/Images/Logo/logo-small.png"/>
-                                        </Button>
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                            <Button Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
+                                                <Image Source="/Images/Logo/logo-small.png"/>
+                                            </Button>
+                                            <Button Style="{StaticResource WindowControlButton}" Content="◀-" Command="{Binding PreviousPageCommand}"/>
+                                        </StackPanel>
 
                                         <!-- Title -->
                                         <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="0">
