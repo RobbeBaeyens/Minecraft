@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DALMinecraft
 {
-    class DatabaseOperations
+    public class DatabaseOperations
     {
         public static List<Server> OphalenServers()
         {
@@ -18,6 +19,32 @@ namespace DALMinecraft
                 return query.ToList();
             }
         }
+        public static int AddServer(Server server)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Server.Add(server);
+                return entities.SaveChanges();
+            }
+        }
+        public static int RemoveServer(Server server)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(server).State = EntityState.Deleted;
+                return entities.SaveChanges();
+            }
+        }
+        public static int UpdateServer(Server server)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(server).State = EntityState.Modified;
+                return entities.SaveChanges();
+            }
+        }
+
+
         public static List<World> OphalenWorlds()
         {
             using (MinecraftEntities entities = new MinecraftEntities())
