@@ -130,13 +130,5 @@ namespace WPFMinecraft.Pages
             {
             }
         }
-
-        /// <ListBoxItem Background="LightGray" BorderThickness="5" BorderBrush="Gray" Height="100" Margin="10" HorizontalAlignment="Center">
-        ///                   <StackPanel Orientation = "Horizontal" MinWidth="1450">
-        ///                     <Image Source = "../Images/World/isles.png" Margin="5" Height="75"/>
-        ///                     <Label Margin = "150 0" Padding="0 15"  FontFamily="{StaticResource Minecraftia}" Content="Server 1" FontSize="40" VerticalAlignment="Center"/>
-        ///                     <Label Margin = "150 0" Padding="0 15"  FontFamily="{StaticResource Minecraftia}" Content="192.168.1.1" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        ///                 </StackPanel>
-        ///             </ListBoxItem>
     }
 }
