@@ -121,6 +121,61 @@
         </Style.Triggers>
     </Style>
 
+    <!-- Minecraft Red MediumLong Button -->
+    <Style TargetType="{x:Type Button}" x:Key="MinecraftRedMediumLongButton" BasedOn="{StaticResource MinecraftMediumLongButton}">
+        <Setter Property="Foreground" Value="#ebebeb" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Images/Button/red_button_long.png"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/Images/Button/red_button_long_selected.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!-- Minecraft Blue MediumLong Button -->
+    <Style TargetType="{x:Type Button}" x:Key="MinecraftBlueMediumLongButton" BasedOn="{StaticResource MinecraftMediumLongButton}">
+        <Setter Property="Foreground" Value="#ebebeb" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Images/Button/blue_button_long.png"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/Images/Button/blue_button_long_selected.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!-- Minecraft Green MediumLong Button -->
+    <Style TargetType="{x:Type Button}" x:Key="MinecraftGreenMediumLongButton" BasedOn="{StaticResource MinecraftMediumLongButton}">
+        <Setter Property="Foreground" Value="#ebebeb" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Images/Button/green_button_long.png"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/Images/Button/green_button_long_selected.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <!-- Minecraft SmallSquare Button -->
     <Style TargetType="{x:Type Button}" x:Key="MinecraftSmallSquareButton" BasedOn="{StaticResource Hoverless}">
         <Setter Property="Foreground" Value="#3e3e3e" />
