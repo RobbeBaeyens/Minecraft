@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DALMinecraft;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -231,6 +232,10 @@ namespace WPFMinecraft.ViewModel
 
                 case ApplicationPage.PlayerManagement:
                     CurrentPage = ApplicationPage.Home;
+                    break;
+
+                case ApplicationPage.InventoryManager:
+                    CurrentPage = ApplicationPage.Inventory;
                     break;
 
                 default:
