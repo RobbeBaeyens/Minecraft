@@ -27,7 +27,7 @@
     
         <!--Scrollviewer zorgt ervoor dat er een scroll aanwezig is -->
         <ScrollViewer>
-            <Grid Height="2550">
+            <Grid Height="3200">
                 
                 <!--Zorgt voor een style enkel op deze pagina-->
                 <Grid.Resources>
@@ -96,186 +96,147 @@
                     <RowDefinition Height="90"/>
 
                 </Grid.RowDefinitions>
-                
-                
-                
-                
-                
-               <!-- PLAYER Options -->
-             
+
+
+
+
+
                 <Label Content="player" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25"/>
 
-                <Button Grid.Row="1"  FontSize="25">
-                    <TextBlock Text="Disable elytra movement check: OFF" Margin="0,20,0,0" />
+                <Button x:Name="btnEltyraMovement" Grid.Row="1" FontSize="25" Click="btnElytraMovement_Click">
+                    <TextBlock x:Name="txt1" Text="Disable elytra movement check: OFF" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="2" FontSize="25">
-                    <TextBlock Text="Respawn immediatly: OFF" Margin="0,20,0,0"/>
+                <Button x:Name="btnRespawnImmediatly" Grid.Row="2" FontSize="25" Click="btnRespawnImmediatly_Click">
+                    <TextBlock x:Name="txt2" Text="Respawn immediatly: OFF" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="3" FontSize="25">
-                    <TextBlock Text="Require recipe for crafting: OFF" Margin="0,20,0,0"/>
+                <Button x:Name="btnRecipeCrafting" Grid.Row="3" FontSize="25" Click="btnRecipeCrafting_Click">
+                    <TextBlock x:Name="txt3" Text="Require recipe for crafting: OFF" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="4" FontSize="25">
-                    <TextBlock Text="Deal drowning damage: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnDrowningDmg" Grid.Row="4" FontSize="25" Click="btnDrowningDmg_Click">
+                    <TextBlock x:Name="txt4" Text="Deal drowning damage: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="5" FontSize="25">
-                    <TextBlock Text="Deal fall damage: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnFallDmg" Grid.Row="5" FontSize="25" Click="btnFallDmg_Click">
+                    <TextBlock x:Name="txt5" Text="Deal fall damage: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="6" FontSize="25">
-                    <TextBlock Text="Deal fire damage: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnFireDmg" Grid.Row="6" FontSize="25" Click="btnFireDmg_Click">
+                    <TextBlock x:Name="txt6" Text="Deal fire damage: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="7" FontSize="25">
-                    <TextBlock Text="Keep inventory after death: OFF" Margin="0,20,0,0"/>
+                <Button x:Name="btnKeepInv" Grid.Row="7" FontSize="25" Click="btnKeepInv_Click">
+                    <TextBlock x:Name="txt7" Text="Keep inventory after death: OFF" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="8" FontSize="25">
-                    <TextBlock Text="Regenerate health: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnHealthRegen" Grid.Row="8" FontSize="25" Click="btnHealthRegen_Click">
+                    <TextBlock x:Name="txt8" Text="Regenerate health: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="9" FontSize="25">
-                    <TextBlock Text="Allow spectators to generate terrain: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnGenerateTerrain" Grid.Row="9" FontSize="25" Click="btnGenerateTerrain_Click">
+                    <TextBlock x:Name="txt9" Text="Allow spectators to generate terrain: ON" Margin="0,20,0,0"/>
                 </Button>
-
-
-
-
-
 
                 <!-- MOBS Options -->
 
                 <Label Content="Mobs" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="10" Margin="0,30,0,0" />
 
-                <Button Grid.Row="11" FontSize="25">
-                    <TextBlock Text="Disable raids: OFF" Margin="0,20,0,0"/>
+                <Button x:Name="btnDisableRaids" Grid.Row="11" FontSize="25" Click="btnDisableRaids_Click">
+                    <TextBlock x:Name="txt10" Text="Disable raids: OFF" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="12" FontSize="25">
-                    <TextBlock Text="Allow destructive mob actions: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnAllowDestructiveMob" Grid.Row="12" FontSize="25" Click="btnAllowDestructiveMob_Click">
+                    <TextBlock x:Name="txt11" Text="Allow destructive mob actions: ON" Margin="0,20,0,0"/>
                 </Button>
-
-
-
-
-
 
                 <!-- SPAWNING Options -->
 
                 <Label Content="Spawning" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="13" Margin="0,30,0,0"/>
 
-                <Button Grid.Row="14" FontSize="25">
-                    <TextBlock Text="Spawn phantoms: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnSpawnPhantoms" Grid.Row="14" FontSize="25" Click="btnSpawnPhantoms_Click">
+                    <TextBlock x:Name="txt12" Text="Spawn phantoms: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="15" FontSize="25">
-                    <TextBlock Text="Spawn mobs: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnSpawnMobs" Grid.Row="15" FontSize="25" Click="btnSpawnMobs_Click">
+                    <TextBlock x:Name="txt13" Text="Spawn mobs: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="16" FontSize="25">
-                    <TextBlock Text="Spawn pillager patrols: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnPillagerPatrol" Grid.Row="16" FontSize="25" Click="btnPillagerPatrol_Click">
+                    <TextBlock x:Name="txt14" Text="Spawn pillager patrols: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="17" FontSize="25">
-                    <TextBlock Text="Spawn wandering traders: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnWanderingTraders" Grid.Row="17" FontSize="25" Click="btnWanderingTraders_Click">
+                    <TextBlock x:Name="txt15" Text="Spawn wandering traders: ON" Margin="0,20,0,0"/>
                 </Button>
-
-
-
-
-
 
                 <!-- DROPS Options -->
 
                 <Label Content="Drops" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="18" Margin="0,30,0,0"/>
 
-                <Button Grid.Row="19" FontSize="25">
-                    <TextBlock Text="Drop entity equipment: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnEntetyEquipment" Grid.Row="19" FontSize="25" Click="btnEntetyEquipment_Click">
+                    <TextBlock x:Name="txt16" Text="Drop entity equipment: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="20" FontSize="25">
-                    <TextBlock Text="Drop mob loot: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnMobLoot" Grid.Row="20" FontSize="25" Click="btnMobLoot_Click">
+                    <TextBlock x:Name="txt17" Text="Drop mob loot: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="21" FontSize="25">
-                    <TextBlock Text="Drop blocks: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnDropBlocks" Grid.Row="21" FontSize="25" Click="btnDropBlocks_Click">
+                    <TextBlock x:Name="txt18" Text="Drop blocks: ON" Margin="0,20,0,0"/>
                 </Button>
-
-
-
-
-
-
-
-
-
 
                 <!-- WORLD UPDATES Options -->
                 <Label Content="World updates" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="22" Margin="0,30,0,0"/>
 
-                <Button Grid.Row="23" FontSize="25">
-                    <TextBlock Text="Advance in-game time: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnInGameTime" Grid.Row="23" FontSize="25" Click="btnInGameTime_Click">
+                    <TextBlock x:Name="txt19" Text="Advance in-game time: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="24" FontSize="25">
-                    <TextBlock Text="Update fire: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnUpdateFire" Grid.Row="24" FontSize="25" Click="btnUpdateFire_Click">
+                    <TextBlock x:Name="txt20" Text="Update fire: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="25" FontSize="25">
-                    <TextBlock Text="Update weather: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnUpdateWeather" Grid.Row="25" FontSize="25" Click="btnUpdateWeather_Click">
+                    <TextBlock x:Name="txt21" Text="Update weather: ON" Margin="0,20,0,0"/>
                 </Button>
-
-
-
-
-
-
 
 
                 <!-- CHAT Options -->
 
                 <Label Content="Chat" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="26" Margin="0,30,0,0" />
 
-                <Button Grid.Row="27" FontSize="25">
-                    <TextBlock Text="Announce advancements: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnAnnounceAdvancements" Grid.Row="27" FontSize="25" Click="btnAnnounceAdvancements_Click">
+                    <TextBlock x:Name="txt22" Text="Announce advancements: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="28" FontSize="25">
-                    <TextBlock Text="Broadcast command block output: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnBlockOutput" Grid.Row="28" FontSize="25" Click="btnBlockOutput_Click">
+                    <TextBlock x:Name="txt23" Text="Broadcast command block output: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="29" FontSize="25">
-                    <TextBlock Text="Broadcast admin commands: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnAdminCommands" Grid.Row="29" FontSize="25" Click="btnAdminCommands_Click">
+                    <TextBlock x:Name="txt24" Text="Broadcast admin commands: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="30" FontSize="25">
-                    <TextBlock Text="Send command feedback: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnFeedback" Grid.Row="30" FontSize="25" Click="btnFeedback_Click">
+                    <TextBlock x:Name="txt25" Text="Send command feedback: ON" Margin="0,20,0,0"/>
                 </Button>
 
-                <Button Grid.Row="31" FontSize="25">
-                    <TextBlock Text="Show death messages: ON" Margin="0,20,0,0"/>
+                <Button x:Name="btnDeathMessages" Grid.Row="31" FontSize="25" Click="btnDeathMessages_Click">
+                    <TextBlock x:Name="txt26" Text="Show death messages: ON" Margin="0,20,0,0"/>
                 </Button>
-
-
-
-
-
-
-
 
 
                 <!-- MISCELLANEOUS Options -->
 
                 <Label Content="Miscellaneous" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="32" Margin="0,30,0,0"/>
 
-                <Button Grid.Row="33" FontSize="25">
-                    <TextBlock Text="Reduce debug info: OFF" Margin="0,20,0,0"/>
+                <Button x:Name="btnDebugInfo" Grid.Row="33" FontSize="25" Click="btnDebugInfo_Click">
+                    <TextBlock x:Name="txt27" Text="Reduce debug info: OFF" Margin="0,20,0,0"/>
                 </Button>
-              
-                
+
+
             </Grid>
         </ScrollViewer>
     </Grid>
