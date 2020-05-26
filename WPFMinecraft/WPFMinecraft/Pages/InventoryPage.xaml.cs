@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFMinecraft.ViewModel;
 
 namespace WPFMinecraft.Pages
 {
@@ -30,8 +31,23 @@ namespace WPFMinecraft.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            InventoryManagerPage inventoryManager = new InventoryManagerPage();
-            
+            //Zoek het frame
+            Frame frame = null;
+            DependencyObject parent = VisualTreeHelper.GetParent(this);
+
+            while (parent != null && frame == null)
+            {
+                frame = parent as Frame;
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
+            //Verander de pagina van het frame
+            if (frame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = frame.DataContext as WindowViewModel;
+                windowViewModel.CurrentPage = ApplicationPage.InventoryManager;
+            }
+
         }
 
         public void addToInventory()
