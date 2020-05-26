@@ -25,8 +25,6 @@ namespace DALMinecraft
         public int id { get; set; }
         public string name { get; set; }
         public string image { get; set; }
-        public int count { get; set; }
-        public Nullable<decimal> damageValue { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inventory_Item> Inventory_Item { get; set; }

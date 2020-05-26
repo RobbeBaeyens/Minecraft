@@ -11,7 +11,6 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="image" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Dimension">
@@ -41,10 +40,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="inventoryId" Type="int" />
-          <Property Name="itemId" Type="int" />
-          <Property Name="row" Type="int" Nullable="false" />
-          <Property Name="column" Type="int" Nullable="false" />
+          <Property Name="inventoryId" Type="int" Nullable="false" />
+          <Property Name="itemId" Type="int" Nullable="false" />
+          <Property Name="slotId" Type="int" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Inventory_Player">
           <Key>
@@ -61,8 +60,6 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="image" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="count" Type="int" Nullable="false" />
-          <Property Name="damageValue" Type="numeric" Precision="3" Scale="1" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -86,6 +83,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="playerId" Type="int" />
           <Property Name="advancementId" Type="int" />
+          <Property Name="advancementObtained" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Player_Dimension">
           <Key>
@@ -144,7 +142,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="value" Type="int" Nullable="false" />
+          <Property Name="value" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="World">
           <Key>
@@ -171,7 +169,7 @@
           <Property Name="settingId" Type="int" />
         </EntityType>
         <Association Name="FK_Inventory_Item_Inventory">
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
           <End Role="Inventory_Item" Type="Self.Inventory_Item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Inventory">
@@ -183,7 +181,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Inventory_Item_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
           <End Role="Inventory_Item" Type="Self.Inventory_Item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
@@ -522,7 +520,6 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Player_Advancement" Relationship="Self.FK_Player_Advancement_Advancement" FromRole="Advancement" ToRole="Player_Advancement" />
         </EntityType>
@@ -558,10 +555,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="inventoryId" Type="Int32" />
-          <Property Name="itemId" Type="Int32" />
-          <Property Name="row" Type="Int32" Nullable="false" />
-          <Property Name="column" Type="Int32" Nullable="false" />
+          <Property Name="inventoryId" Type="Int32" Nullable="false" />
+          <Property Name="itemId" Type="Int32" Nullable="false" />
+          <Property Name="slotId" Type="Int32" Nullable="false" />
+          <Property Name="count" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Inventory" Relationship="Self.FK_Inventory_Item_Inventory" FromRole="Inventory_Item" ToRole="Inventory" />
           <NavigationProperty Name="Item" Relationship="Self.FK_Inventory_Item_Item" FromRole="Inventory_Item" ToRole="Item" />
         </EntityType>
@@ -582,8 +579,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="count" Type="Int32" Nullable="false" />
-          <Property Name="damageValue" Type="Decimal" Precision="3" Scale="1" />
           <NavigationProperty Name="Inventory_Item" Relationship="Self.FK_Inventory_Item_Item" FromRole="Item" ToRole="Inventory_Item" />
           <NavigationProperty Name="Recipe" Relationship="Self.FK_Recipe_Item" FromRole="Item" ToRole="Recipe" />
           <NavigationProperty Name="Recipe_Item" Relationship="Self.FK_Recipe_Item_Item" FromRole="Item" ToRole="Recipe_Item" />
@@ -615,6 +610,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="playerId" Type="Int32" />
           <Property Name="advancementId" Type="Int32" />
+          <Property Name="advancementObtained" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Advancement" Relationship="Self.FK_Player_Advancement_Advancement" FromRole="Player_Advancement" ToRole="Advancement" />
           <NavigationProperty Name="Player" Relationship="Self.FK_Player_Advancement_Player" FromRole="Player_Advancement" ToRole="Player" />
         </EntityType>
@@ -687,7 +683,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="value" Type="Int32" Nullable="false" />
+          <Property Name="value" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="World_Setting" Relationship="Self.FK_World_Setting_Setting" FromRole="Setting" ToRole="World_Setting" />
         </EntityType>
         <EntityType Name="World">
@@ -770,7 +766,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Inventory_Item_Inventory">
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
           <End Role="Inventory_Item" Type="Self.Inventory_Item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Inventory">
@@ -794,7 +790,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Inventory_Item_Item">
-          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
           <End Role="Inventory_Item" Type="Self.Inventory_Item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Item">
@@ -1073,7 +1069,6 @@
               <MappingFragment StoreEntitySet="Advancement">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="type" ColumnName="type" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1109,8 +1104,8 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="inventoryId" ColumnName="inventoryId" />
                 <ScalarProperty Name="itemId" ColumnName="itemId" />
-                <ScalarProperty Name="row" ColumnName="row" />
-                <ScalarProperty Name="column" ColumnName="column" />
+                <ScalarProperty Name="slotId" ColumnName="slotId" />
+                <ScalarProperty Name="count" ColumnName="count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1129,8 +1124,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="damageValue" ColumnName="damageValue" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1156,6 +1149,7 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="playerId" ColumnName="playerId" />
                 <ScalarProperty Name="advancementId" ColumnName="advancementId" />
+                <ScalarProperty Name="advancementObtained" ColumnName="advancementObtained" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

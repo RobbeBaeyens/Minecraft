@@ -15,10 +15,10 @@ namespace DALMinecraft
     public partial class Inventory_Item
     {
         public int id { get; set; }
-        public Nullable<int> inventoryId { get; set; }
-        public Nullable<int> itemId { get; set; }
-        public int row { get; set; }
-        public int column { get; set; }
+        public int inventoryId { get; set; }
+        public int itemId { get; set; }
+        public int slotId { get; set; }
+        public int count { get; set; }
     
         public virtual Inventory Inventory { get; set; }
         public virtual Item Item { get; set; }
