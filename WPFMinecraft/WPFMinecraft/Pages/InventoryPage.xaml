@@ -65,14 +65,14 @@
                             <RowDefinition Height="26"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.Column="0"/>
-                        <TextBlock Grid.Row="1" Grid.Column="0"/>
-                        <TextBlock Grid.Row="2" Grid.Column="0"/>
-                        <TextBlock Grid.Row="3" Grid.Column="0"/>
-                        <TextBlock Grid.Row="3" Grid.Column="2"/>
+                        <TextBlock x:Name="invArmorHelmet" Grid.Row="0" Grid.Column="0"/>
+                        <TextBlock x:Name="invArmorChest" Grid.Row="1" Grid.Column="0"/>
+                        <TextBlock x:Name="invArmorPants" Grid.Row="2" Grid.Column="0"/>
+                        <TextBlock x:Name="invArmorBoots" Grid.Row="3" Grid.Column="0"/>
+                        <TextBlock x:Name="invShield" Grid.Row="3" Grid.Column="2"/>
 
                         <!--Stijl voor vakje van karakter toewijzen aan tekstblock-->
-                        <TextBlock Grid.Row="0" Grid.Column="1" Grid.RowSpan="4">
+                        <TextBlock x:Name="laadSpeler" Grid.Row="0" Grid.Column="1" Grid.RowSpan="4">
                             <TextBlock.Background>
                                 <ImageBrush ImageSource="../Images/Props/player_space.png"/>
                             </TextBlock.Background>
@@ -116,48 +116,48 @@
                         <!--Rijen voor algemene Inventory (in de zakken)-->
                         
                         <!--Rij 1 algemene Inventory-->
-                        <TextBlock Grid.Row="0" Grid.Column="0"/>
-                        <TextBlock Grid.Row="0" Grid.Column="1"/>
-                        <TextBlock Grid.Row="0" Grid.Column="2"/>
-                        <TextBlock Grid.Row="0" Grid.Column="3"/>
-                        <TextBlock Grid.Row="0" Grid.Column="4"/>
-                        <TextBlock Grid.Row="0" Grid.Column="5"/>
-                        <TextBlock Grid.Row="0" Grid.Column="6"/>
-                        <TextBlock Grid.Row="0" Grid.Column="7"/>
-                        <TextBlock Grid.Row="0" Grid.Column="8"/>
+                        <TextBlock x:Name="inv01" Grid.Row="0" Grid.Column="0"/>
+                        <TextBlock x:Name="inv02" Grid.Row="0" Grid.Column="1"/>
+                        <TextBlock x:Name="inv03" Grid.Row="0" Grid.Column="2"/>
+                        <TextBlock x:Name="inv04" Grid.Row="0" Grid.Column="3"/>
+                        <TextBlock x:Name="inv05" Grid.Row="0" Grid.Column="4"/>
+                        <TextBlock x:Name="inv06" Grid.Row="0" Grid.Column="5"/>
+                        <TextBlock x:Name="inv07" Grid.Row="0" Grid.Column="6"/>
+                        <TextBlock x:Name="inv08" Grid.Row="0" Grid.Column="7"/>
+                        <TextBlock x:Name="inv9" Grid.Row="0" Grid.Column="8"/>
 
                         <!--Rij 2 algemene Inventory-->
-                        <TextBlock Grid.Row="1" Grid.Column="0"/>
-                        <TextBlock Grid.Row="1" Grid.Column="1"/>
-                        <TextBlock Grid.Row="1" Grid.Column="2"/>
-                        <TextBlock Grid.Row="1" Grid.Column="3"/>
-                        <TextBlock Grid.Row="1" Grid.Column="4"/>
-                        <TextBlock Grid.Row="1" Grid.Column="5"/>
-                        <TextBlock Grid.Row="1" Grid.Column="6"/>
-                        <TextBlock Grid.Row="1" Grid.Column="7"/>
-                        <TextBlock Grid.Row="1" Grid.Column="8"/>
+                        <TextBlock x:Name="inv10" Grid.Row="1" Grid.Column="0"/>
+                        <TextBlock x:Name="inv11" Grid.Row="1" Grid.Column="1"/>
+                        <TextBlock x:Name="inv12" Grid.Row="1" Grid.Column="2"/>
+                        <TextBlock x:Name="inv13" Grid.Row="1" Grid.Column="3"/>
+                        <TextBlock x:Name="inv14" Grid.Row="1" Grid.Column="4"/>
+                        <TextBlock x:Name="inv15" Grid.Row="1" Grid.Column="5"/>
+                        <TextBlock x:Name="inv16" Grid.Row="1" Grid.Column="6"/>
+                        <TextBlock x:Name="inv17" Grid.Row="1" Grid.Column="7"/>
+                        <TextBlock x:Name="inv18" Grid.Row="1" Grid.Column="8"/>
 
                         <!--Rij 3 algemene Inventory-->
-                        <TextBlock Grid.Row="2" Grid.Column="0"/>
-                        <TextBlock Grid.Row="2" Grid.Column="1"/>
-                        <TextBlock Grid.Row="2" Grid.Column="2"/>
-                        <TextBlock Grid.Row="2" Grid.Column="3"/>
-                        <TextBlock Grid.Row="2" Grid.Column="4"/>
-                        <TextBlock Grid.Row="2" Grid.Column="5"/>
-                        <TextBlock Grid.Row="2" Grid.Column="6"/>
-                        <TextBlock Grid.Row="2" Grid.Column="7"/>
-                        <TextBlock Grid.Row="2" Grid.Column="8"/>
+                        <TextBlock x:Name="inv19" Grid.Row="2" Grid.Column="0"/>
+                        <TextBlock x:Name="inv20" Grid.Row="2" Grid.Column="1"/>
+                        <TextBlock x:Name="inv21" Grid.Row="2" Grid.Column="2"/>
+                        <TextBlock x:Name="inv22" Grid.Row="2" Grid.Column="3"/>
+                        <TextBlock x:Name="inv23" Grid.Row="2" Grid.Column="4"/>
+                        <TextBlock x:Name="inv24" Grid.Row="2" Grid.Column="5"/>
+                        <TextBlock x:Name="inv25" Grid.Row="2" Grid.Column="6"/>
+                        <TextBlock x:Name="inv26" Grid.Row="2" Grid.Column="7"/>
+                        <TextBlock x:Name="inv27" Grid.Row="2" Grid.Column="8"/>
 
                         <!--Rij voor selecteerbare Inventory (in de handen)-->
-                        <TextBlock Grid.Row="4" Grid.Column="0"/>
-                        <TextBlock Grid.Row="4" Grid.Column="1"/>
-                        <TextBlock Grid.Row="4" Grid.Column="2"/>
-                        <TextBlock Grid.Row="4" Grid.Column="3"/>
-                        <TextBlock Grid.Row="4" Grid.Column="4"/>
-                        <TextBlock Grid.Row="4" Grid.Column="5"/>
-                        <TextBlock Grid.Row="4" Grid.Column="6"/>
-                        <TextBlock Grid.Row="4" Grid.Column="7"/>
-                        <TextBlock Grid.Row="4" Grid.Column="8"/>
+                        <TextBlock x:Name="invHand01" Grid.Row="4" Grid.Column="0"/>
+                        <TextBlock x:Name="invHand02" Grid.Row="4" Grid.Column="1"/>
+                        <TextBlock x:Name="invHand03" Grid.Row="4" Grid.Column="2"/>
+                        <TextBlock x:Name="invHand04" Grid.Row="4" Grid.Column="3"/>
+                        <TextBlock x:Name="invHand05" Grid.Row="4" Grid.Column="4"/>
+                        <TextBlock x:Name="invHand06" Grid.Row="4" Grid.Column="5"/>
+                        <TextBlock x:Name="invHand07" Grid.Row="4" Grid.Column="6"/>
+                        <TextBlock x:Name="invHand08" Grid.Row="4" Grid.Column="7"/>
+                        <TextBlock x:Name="invHand09" Grid.Row="4" Grid.Column="8"/>
                     </Grid>
                 </Grid>
             </Grid>
