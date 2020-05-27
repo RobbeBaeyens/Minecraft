@@ -15,8 +15,8 @@ namespace DALMinecraft
     public partial class World_Setting
     {
         public int id { get; set; }
-        public Nullable<int> worldId { get; set; }
-        public Nullable<int> settingId { get; set; }
+        public int worldId { get; set; }
+        public int settingId { get; set; }
         public bool value { get; set; }
     
         public virtual Setting Setting { get; set; }

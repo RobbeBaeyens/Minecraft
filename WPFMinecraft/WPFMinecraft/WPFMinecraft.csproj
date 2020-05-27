@@ -351,7 +351,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DALMinecraft\DALMinecraft.csproj">
-      <Project>{90a09206-7e24-46b4-884c-c76c6efb05c8}</Project>
+      <Project>{154d77f6-16c7-44af-846f-3925786df5d8}</Project>
       <Name>DALMinecraft</Name>
     </ProjectReference>
   </ItemGroup>

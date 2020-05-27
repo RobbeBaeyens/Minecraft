@@ -15,8 +15,8 @@ namespace DALMinecraft
     public partial class Inventory_Player
     {
         public int id { get; set; }
-        public Nullable<int> inventoryId { get; set; }
-        public Nullable<int> playerId { get; set; }
+        public int inventoryId { get; set; }
+        public int playerId { get; set; }
     
         public virtual Inventory Inventory { get; set; }
         public virtual Player Player { get; set; }

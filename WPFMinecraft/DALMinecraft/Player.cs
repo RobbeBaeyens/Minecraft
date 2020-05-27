@@ -19,7 +19,6 @@ namespace DALMinecraft
         {
             this.Inventory_Player = new HashSet<Inventory_Player>();
             this.Player_Advancement = new HashSet<Player_Advancement>();
-            this.Player_Dimension = new HashSet<Player_Dimension>();
             this.Player_Effect = new HashSet<Player_Effect>();
             this.Player_Recipe = new HashSet<Player_Recipe>();
         }
@@ -34,13 +33,13 @@ namespace DALMinecraft
         public decimal posX { get; set; }
         public decimal posY { get; set; }
         public decimal posZ { get; set; }
+        public int dimensionId { get; set; }
     
+        public virtual Dimension Dimension { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inventory_Player> Inventory_Player { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player_Advancement> Player_Advancement { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Player_Dimension> Player_Dimension { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player_Effect> Player_Effect { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

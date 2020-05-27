@@ -34,7 +34,6 @@ namespace DALMinecraft
         public virtual DbSet<Item> Item { get; set; }
         public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<Player_Advancement> Player_Advancement { get; set; }
-        public virtual DbSet<Player_Dimension> Player_Dimension { get; set; }
         public virtual DbSet<Player_Effect> Player_Effect { get; set; }
         public virtual DbSet<Player_Recipe> Player_Recipe { get; set; }
         public virtual DbSet<Recipe> Recipe { get; set; }
@@ -42,7 +41,6 @@ namespace DALMinecraft
         public virtual DbSet<Server> Server { get; set; }
         public virtual DbSet<Setting> Setting { get; set; }
         public virtual DbSet<World> World { get; set; }
-        public virtual DbSet<World_Dimension> World_Dimension { get; set; }
         public virtual DbSet<World_Setting> World_Setting { get; set; }
     }
 }

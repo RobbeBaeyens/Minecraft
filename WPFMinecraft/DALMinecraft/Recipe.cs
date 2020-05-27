@@ -22,7 +22,7 @@ namespace DALMinecraft
         }
     
         public int id { get; set; }
-        public Nullable<int> itemId { get; set; }
+        public int itemId { get; set; }
     
         public virtual Item Item { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

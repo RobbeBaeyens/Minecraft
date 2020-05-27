@@ -18,7 +18,7 @@ namespace DALMinecraft
         public string name { get; set; }
         public string ipadress { get; set; }
         public string image { get; set; }
-        public Nullable<int> worldId { get; set; }
+        public int worldId { get; set; }
     
         public virtual World World { get; set; }
     }

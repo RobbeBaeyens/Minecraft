@@ -51,7 +51,7 @@ namespace WPFMinecraft.Pages
                 {
                     World world = createNewWorld();
                     createWorldSettings(world);
-                    createWorldDimensions(world);
+                    createNewDimensions(world);
 
                     createNewServer(serverName, serverIp, world);
                     
@@ -71,45 +71,32 @@ namespace WPFMinecraft.Pages
 
         private void createWorldSettings(World world)
         {
-            List<string> gamerules = new List<string>() { "DisableElytraMovement", "RespawnImmediatly", "RequireRecipe", "DrowningDamage", "FallDamage", "FireDamage",
-                "KeepInventory", "RegenerateHealth", "SpectatorsGenerateTerrain" , "DisableRaids", "AllowMobDestruction", "SpawnPhantom", "MobSpawning", "SpawnPatrols",
-                "SpawnTraders", "DropEntityEquipment", "DropMobLoot", "DropBlocks", "AdvanceIngameTime", "FireTick", "WeatherCycle", "AnnounceAdvancements",
-                "BroadcastCommandblockOutput", "LogAdminCommands", "CommandFeedback", "ShowDeathMessages", "ReducedDebugInfo"};
             List<bool> gamerulesStates = new List<bool>() { false, false, false, true, true, true,
                 false, true, true, false, true, true, true, true,
                 true, true, true, true, true, true, true, true,
                 true, true, true, true, false};
 
-            for (int i = 0; i < gamerules.Count; i++)
+            for (int i = 0; i < gamerulesStates.Count; i++)
             {
                 World_Setting world_setting = new World_Setting();
-                //Setting setting = createNewSetting(gamerules[i], gamerulesStates[i]);
-                //world_setting.settingId = setting.id;
+                world_setting.settingId = i+1;
                 world_setting.worldId = world.id;
+                world_setting.value = gamerulesStates[i];
                 DatabaseOperations.AddWorldSetting(world_setting);
             }
         }
 
-        private void createWorldDimensions(World world)
+        private void createNewDimensions(World world)
         {
             List<string> dimensions = new List<string> { "overworld", "the_nether", "the_end" };
 
             for (int i = 0; i < dimensions.Count; i++)
             {
-                World_Dimension world_dimension = new World_Dimension();
-                Dimension dimension = createNewDimension(dimensions[i]);
-                world_dimension.dimensionId = dimension.id;
-                world_dimension.worldId = world.id;
-                DatabaseOperations.AddWorldDimension(world_dimension);
+                Dimension dimension = new Dimension();
+                dimension.name = dimensions[i];
+                dimension.worldId = world.id;
+                DatabaseOperations.AddDimension(dimension);
             }
-        }
-
-        private Dimension createNewDimension(string dimensionName)
-        {
-            Dimension dimension = new Dimension();
-            dimension.name = dimensionName;
-            DatabaseOperations.AddDimension(dimension);
-            return dimension;
         }
 
         private World createNewWorld()
@@ -119,6 +106,12 @@ namespace WPFMinecraft.Pages
 
             world.name = "world";
             world.seed = rand.Next(-2147483648, 2147483647).ToString();
+            world.difficulty = 2;
+            world.gamemode = 0;
+            world.cheats = false;
+            world.structures = true;
+            world.worldType = 0;
+            world.bonusChest = false;
 
             DatabaseOperations.AddWorld(world);
             return world;
@@ -176,7 +169,6 @@ namespace WPFMinecraft.Pages
                         server.name = serverName;
                         server.image = null;
                         server.ipadress = serverIp;
-                        server.worldId = null;
                         DatabaseOperations.UpdateServer(server);
                         servers = DatabaseOperations.OphalenServers();
                         ListboxServers.ItemsSource = servers;

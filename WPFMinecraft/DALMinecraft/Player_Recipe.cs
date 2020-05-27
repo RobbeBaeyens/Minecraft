@@ -15,8 +15,8 @@ namespace DALMinecraft
     public partial class Player_Recipe
     {
         public int id { get; set; }
-        public Nullable<int> playerId { get; set; }
-        public Nullable<int> recipeId { get; set; }
+        public int playerId { get; set; }
+        public int recipeId { get; set; }
     
         public virtual Player Player { get; set; }
         public virtual Recipe Recipe { get; set; }
