@@ -22,7 +22,6 @@ namespace DALMinecraft
     
         public int id { get; set; }
         public string name { get; set; }
-        public bool value { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<World_Setting> World_Setting { get; set; }

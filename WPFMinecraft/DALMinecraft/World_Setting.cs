@@ -17,6 +17,7 @@ namespace DALMinecraft
         public int id { get; set; }
         public Nullable<int> worldId { get; set; }
         public Nullable<int> settingId { get; set; }
+        public bool value { get; set; }
     
         public virtual Setting Setting { get; set; }
         public virtual World World { get; set; }

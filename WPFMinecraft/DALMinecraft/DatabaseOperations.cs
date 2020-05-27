@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,7 +47,11 @@ namespace DALMinecraft
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
-                entities.Entry(server).State = EntityState.Deleted;
+                var query = entities.Server
+                    .Include(x => x.World)
+                    .Where(x => x.id == server.id)
+                    .SingleOrDefault();
+                entities.World.Remove(query.World);
                 return entities.SaveChanges();
             }
         }
@@ -75,6 +80,15 @@ namespace DALMinecraft
                 return entities.SaveChanges();
             }
         }
+        //verwijderen
+        public static int RemoveWorldSetting(World world)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(world).State = EntityState.Deleted;
+                return entities.SaveChanges();
+            }
+        }
 
 
         /*=====================
@@ -86,6 +100,15 @@ namespace DALMinecraft
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 entities.World_Setting.Add(world_setting);
+                return entities.SaveChanges();
+            }
+        }
+        //verwijderen
+        public static int RemoveWorldSetting(World_Setting world_setting)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(world_setting).State = EntityState.Deleted;
                 return entities.SaveChanges();
             }
         }
@@ -103,6 +126,15 @@ namespace DALMinecraft
                 return entities.SaveChanges();
             }
         }
+        //verwijderen
+        public static int RemoveSetting(Setting setting)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(setting).State = EntityState.Deleted;
+                return entities.SaveChanges();
+            }
+        }
 
 
         /*=====================
@@ -117,6 +149,15 @@ namespace DALMinecraft
                 return entities.SaveChanges();
             }
         }
+        //verwijderen
+        public static int RemoveWorldDimension(World_Dimension world_dimension)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(world_dimension).State = EntityState.Deleted;
+                return entities.SaveChanges();
+            }
+        }
 
 
         /*=====================
@@ -128,6 +169,15 @@ namespace DALMinecraft
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 entities.Dimension.Add(dimension);
+                return entities.SaveChanges();
+            }
+        }
+        //verwijderen
+        public static int RemoveDimension(Dimension dimension)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(dimension).State = EntityState.Deleted;
                 return entities.SaveChanges();
             }
         }
