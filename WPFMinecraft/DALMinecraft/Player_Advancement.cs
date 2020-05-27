@@ -15,8 +15,8 @@ namespace DALMinecraft
     public partial class Player_Advancement
     {
         public int id { get; set; }
-        public Nullable<int> playerId { get; set; }
-        public Nullable<int> advancementId { get; set; }
+        public int playerId { get; set; }
+        public int advancementId { get; set; }
         public bool advancementObtained { get; set; }
     
         public virtual Advancement Advancement { get; set; }

@@ -17,8 +17,8 @@ namespace DALMinecraft
         public int id { get; set; }
         public Nullable<int> row { get; set; }
         public Nullable<int> column { get; set; }
-        public Nullable<int> recipeId { get; set; }
-        public Nullable<int> itemId { get; set; }
+        public int recipeId { get; set; }
+        public int itemId { get; set; }
     
         public virtual Item Item { get; set; }
         public virtual Recipe Recipe { get; set; }

@@ -17,16 +17,15 @@ namespace DALMinecraft
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Dimension()
         {
-            this.Player_Dimension = new HashSet<Player_Dimension>();
-            this.World_Dimension = new HashSet<World_Dimension>();
+            this.Player = new HashSet<Player>();
         }
     
         public int id { get; set; }
         public string name { get; set; }
+        public int worldId { get; set; }
     
+        public virtual World World { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Player_Dimension> Player_Dimension { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<World_Dimension> World_Dimension { get; set; }
+        public virtual ICollection<Player> Player { get; set; }
     }
 }

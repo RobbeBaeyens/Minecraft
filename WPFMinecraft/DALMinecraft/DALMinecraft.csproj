@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{90A09206-7E24-46B4-884C-C76C6EFB05C8}</ProjectGuid>
+    <ProjectGuid>{154D77F6-16C7-44AF-846F-3925786DF5D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DALMinecraft</RootNamespace>
@@ -93,9 +93,6 @@
     <Compile Include="Player_Advancement.cs">
       <DependentUpon>MinecraftModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Player_Dimension.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Player_Effect.cs">
       <DependentUpon>MinecraftModel.tt</DependentUpon>
     </Compile>
@@ -116,9 +113,6 @@
       <DependentUpon>MinecraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="World.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="World_Dimension.cs">
       <DependentUpon>MinecraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="World_Setting.cs">

@@ -17,8 +17,8 @@ namespace DALMinecraft
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public World()
         {
+            this.Dimension = new HashSet<Dimension>();
             this.Server = new HashSet<Server>();
-            this.World_Dimension = new HashSet<World_Dimension>();
             this.World_Setting = new HashSet<World_Setting>();
         }
     
@@ -33,9 +33,9 @@ namespace DALMinecraft
         public bool bonusChest { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Server> Server { get; set; }
+        public virtual ICollection<Dimension> Dimension { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<World_Dimension> World_Dimension { get; set; }
+        public virtual ICollection<Server> Server { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<World_Setting> World_Setting { get; set; }
     }

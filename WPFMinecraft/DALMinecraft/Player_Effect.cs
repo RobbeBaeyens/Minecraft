@@ -15,8 +15,8 @@ namespace DALMinecraft
     public partial class Player_Effect
     {
         public int id { get; set; }
-        public Nullable<int> playerId { get; set; }
-        public Nullable<int> effectId { get; set; }
+        public int playerId { get; set; }
+        public int effectId { get; set; }
     
         public virtual Effect Effect { get; set; }
         public virtual Player Player { get; set; }

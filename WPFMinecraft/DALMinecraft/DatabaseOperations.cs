@@ -52,6 +52,7 @@ namespace DALMinecraft
                     .Where(x => x.id == server.id)
                     .SingleOrDefault();
                 entities.World.Remove(query.World);
+                entities.Server.Remove(query);
                 return entities.SaveChanges();
             }
         }
@@ -138,29 +139,6 @@ namespace DALMinecraft
 
 
         /*=====================
-         * WorldDimension
-         =====================*/
-        //toevoegen
-        public static int AddWorldDimension(World_Dimension world_dimension)
-        {
-            using (MinecraftEntities entities = new MinecraftEntities())
-            {
-                entities.World_Dimension.Add(world_dimension);
-                return entities.SaveChanges();
-            }
-        }
-        //verwijderen
-        public static int RemoveWorldDimension(World_Dimension world_dimension)
-        {
-            using (MinecraftEntities entities = new MinecraftEntities())
-            {
-                entities.Entry(world_dimension).State = EntityState.Deleted;
-                return entities.SaveChanges();
-            }
-        }
-
-
-        /*=====================
          * Dimension
          =====================*/
         //toevoegen
@@ -169,15 +147,6 @@ namespace DALMinecraft
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 entities.Dimension.Add(dimension);
-                return entities.SaveChanges();
-            }
-        }
-        //verwijderen
-        public static int RemoveDimension(Dimension dimension)
-        {
-            using (MinecraftEntities entities = new MinecraftEntities())
-            {
-                entities.Entry(dimension).State = EntityState.Deleted;
                 return entities.SaveChanges();
             }
         }
