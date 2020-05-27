@@ -50,7 +50,10 @@ namespace WPFMinecraft.Pages
                 if (!String.IsNullOrWhiteSpace(serverIp) && Regex.IsMatch(serverIp, @"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b") && serverIp.Length < 22)
                 {
                     World world = createNewWorld();
-                    Server server = createNewServer(serverName, serverIp, world);
+                    createWorldSettings(world);
+                    createWorldDimensions(world);
+
+                    createNewServer(serverName, serverIp, world);
                     
                     servers = DatabaseOperations.OphalenServers();
                     ListboxServers.ItemsSource = servers;
@@ -66,14 +69,47 @@ namespace WPFMinecraft.Pages
             }
         }
 
-        private Setting createNewSettings()
+        private void createWorldSettings(World world)
         {
-            List<string> settingNames = new List<string>() {"" };
+            List<string> gamerules = new List<string>() { "DisableElytraMovement", "RespawnImmediatly", "RequireRecipe", "DrowningDamage", "FallDamage", "FireDamage",
+                "KeepInventory", "RegenerateHealth", "SpectatorsGenerateTerrain" , "DisableRaids", "AllowMobDestruction", "SpawnPhantom", "MobSpawning", "SpawnPatrols",
+                "SpawnTraders", "DropEntityEquipment", "DropMobLoot", "DropBlocks", "AdvanceIngameTime", "FireTick", "WeatherCycle", "AnnounceAdvancements",
+                "BroadcastCommandblockOutput", "LogAdminCommands", "CommandFeedback", "ShowDeathMessages", "ReducedDebugInfo"};
+            List<bool> gamerulesStates = new List<bool>() { false, false, false, true, true, true,
+                false, true, true, false, true, true, true, true,
+                true, true, true, true, true, true, true, true,
+                true, true, true, true, false};
 
-            Setting setting = new Setting();
-            setting.name = settingName;
-            setting.value = settingValue;
-            return setting;
+            for (int i = 0; i < gamerules.Count; i++)
+            {
+                World_Setting world_setting = new World_Setting();
+                //Setting setting = createNewSetting(gamerules[i], gamerulesStates[i]);
+                //world_setting.settingId = setting.id;
+                world_setting.worldId = world.id;
+                DatabaseOperations.AddWorldSetting(world_setting);
+            }
+        }
+
+        private void createWorldDimensions(World world)
+        {
+            List<string> dimensions = new List<string> { "overworld", "the_nether", "the_end" };
+
+            for (int i = 0; i < dimensions.Count; i++)
+            {
+                World_Dimension world_dimension = new World_Dimension();
+                Dimension dimension = createNewDimension(dimensions[i]);
+                world_dimension.dimensionId = dimension.id;
+                world_dimension.worldId = world.id;
+                DatabaseOperations.AddWorldDimension(world_dimension);
+            }
+        }
+
+        private Dimension createNewDimension(string dimensionName)
+        {
+            Dimension dimension = new Dimension();
+            dimension.name = dimensionName;
+            DatabaseOperations.AddDimension(dimension);
+            return dimension;
         }
 
         private World createNewWorld()
@@ -88,7 +124,7 @@ namespace WPFMinecraft.Pages
             return world;
         }
 
-        private Server createNewServer(string serverName, string serverIp, World world)
+        private void createNewServer(string serverName, string serverIp, World world)
         {
             Server server = new Server();
 
@@ -98,7 +134,6 @@ namespace WPFMinecraft.Pages
             server.worldId = world.id;
 
             DatabaseOperations.AddServer(server);
-            return server;
         }
 
         private void ListboxServers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -120,6 +155,7 @@ namespace WPFMinecraft.Pages
         {
             if (ListboxServers.SelectedIndex != -1)
             {
+
                 DatabaseOperations.RemoveServer(selectedserver);
                 servers = DatabaseOperations.OphalenServers();
                 ListboxServers.ItemsSource = servers;

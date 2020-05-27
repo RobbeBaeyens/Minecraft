@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MinecraftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MinecraftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advancement">
           <Key>
             <PropertyRef Name="id" />
@@ -142,7 +142,6 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="value" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="World">
           <Key>
@@ -173,6 +172,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="worldId" Type="int" />
           <Property Name="settingId" Type="int" />
+          <Property Name="value" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Inventory_Item_Inventory">
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
@@ -355,7 +355,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Server_World">
-          <End Role="World" Type="Self.World" Multiplicity="0..1" />
+          <End Role="World" Type="Self.World" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Server" Type="Self.Server" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="World">
@@ -515,8 +517,7 @@
             <End Role="World_Setting" EntitySet="World_Setting" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MinecraftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -689,7 +690,6 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="value" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="World_Setting" Relationship="Self.FK_World_Setting_Setting" FromRole="Setting" ToRole="World_Setting" />
         </EntityType>
         <EntityType Name="World">
@@ -728,6 +728,7 @@
           <Property Name="settingId" Type="Int32" />
           <NavigationProperty Name="Setting" Relationship="Self.FK_World_Setting_Setting" FromRole="World_Setting" ToRole="Setting" />
           <NavigationProperty Name="World" Relationship="Self.FK_World_Setting_World" FromRole="World_Setting" ToRole="World" />
+          <Property Name="value" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_Player_Advancement_Advancement">
           <End Role="Advancement" Type="Self.Advancement" Multiplicity="0..1" />
@@ -1227,7 +1228,6 @@
               <MappingFragment StoreEntitySet="Setting">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="value" ColumnName="value" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1258,6 +1258,7 @@
           <EntitySetMapping Name="World_Setting">
             <EntityTypeMapping TypeName="MinecraftModel.World_Setting">
               <MappingFragment StoreEntitySet="World_Setting">
+                <ScalarProperty Name="value" ColumnName="value" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="worldId" ColumnName="worldId" />
                 <ScalarProperty Name="settingId" ColumnName="settingId" />
