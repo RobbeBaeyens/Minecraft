@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DALMinecraft;
+using WPFMinecraft.ViewModel;
 
 namespace WPFMinecraft.Pages
 {
@@ -25,6 +26,8 @@ namespace WPFMinecraft.Pages
     {
         Server selectedserver = new Server();
         List<Server> servers = DatabaseOperations.OphalenServers();
+
+        public int serverId;
 
         public ServerManagementPage()
         {
@@ -189,6 +192,29 @@ namespace WPFMinecraft.Pages
         {
             if (ListboxServers.SelectedIndex != -1)
             {
+                selectedserver = (Server)ListboxServers.SelectedItem;
+                serverId = selectedserver.id;
+
+
+                // Find the frame.
+                Frame pageFrame = null;
+                DependencyObject currParent = VisualTreeHelper.GetParent(this);
+
+                while (currParent != null && pageFrame == null)
+                {
+                    pageFrame = currParent as Frame;
+                    currParent = VisualTreeHelper.GetParent(currParent);
+                }
+
+                //Change the page of the frame.
+                if (pageFrame.DataContext != null)
+                {
+                    WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                    windowViewModel.CurrentPage = ApplicationPage.Settings;
+                    windowViewModel.ServerId = serverId;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(serverId);
+                }
             }
         }
     }

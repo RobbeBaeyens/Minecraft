@@ -125,6 +125,14 @@ namespace WPFMinecraft.ViewModel
         /// </summary>
         public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Advancements;
 
+        /// <summary>
+        /// The current data from database for the application
+        /// </summary>
+        public int ServerId { get; set; } = -1;
+        public int WorldId { get; set; } = -1;
+        public int PlayerId { get; set; } = -1;
+        public int InventoryId { get; set; } = -1;
+
         #endregion
 
         #region Commands

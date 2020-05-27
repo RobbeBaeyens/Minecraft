@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WPFMinecraft.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="WorldSettingsPage">
+      Title="WorldSettingsPage" Loaded="Page_Loaded">
 
     <Grid>
         <!--Houte achtergrond-->
