@@ -225,13 +225,12 @@ namespace DALMinecraft
         }
 
         //AdvancementsPage
-        public static List<Advancement> OphalenAdvancement()
+        public static List<Player_Advancement> OphalenAdvancement()
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
-                var query = entities.Advancement
-                    .OrderBy(x => x.name)
-                    .ThenBy(x => x.type);
+                var query = entities.Player_Advancement
+                    .Include(x => x.Advancement);
 
                 return query.ToList();
             }
@@ -248,19 +247,13 @@ namespace DALMinecraft
             }
         }
 
-        public static int AddAdvancement(Advancement advancement)
+        public static int UpdateAdvancement(Player_Advancement advancement)
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
-                entities.Advancement.Add(advancement);
-                return entities.SaveChanges();
-            }
-        }
-
-        public static int UpdateAdvancement(Advancement advancement)
-        {
-            using (MinecraftEntities entities = new MinecraftEntities())
-            {
+                var query = entities.Player_Advancement
+                    .Include(x => x.Advancement)
+                    .Where(x => x.id == advancement.id);
                 entities.Entry(advancement).State = EntityState.Modified;
                 return entities.SaveChanges();
             }
