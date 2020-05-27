@@ -353,63 +353,223 @@
                             <!--Rij 0 (boven naar onder)-->
                             <ToggleButton x:Name="btnAdvancementIjzerBorst" Width="65" Height="65" ClickMode="Press" Style="{StaticResource normalAdvancementGrey}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="4">
                                 <Image Source="../Images/Props/AdvancementsItems/ijzeren_borstplaat.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Suit Up!</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Protect yourself with a piece of iron armor</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
                             <ToggleButton x:Name="btnAdvancementHoutenSchild" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="5" >
                                 <Image Source="../Images/Props/AdvancementsItems/houten_schield.png" Margin="5"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">	Not Today, Thank You</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Deflect an arrow with a shield, Deflect a projectile with a shield‌</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
 
                             <!--Rij 1-->
                             <ToggleButton x:Name="btnAdvancementGoudenAppel" Width="65" Height="65" Style="{StaticResource specialAdvancementGrey}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="7">
                                 <Image Source="../Images/Props/AdvancementsItems/gouden_apple.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Zombie Doctor</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Weaken and then cure a Zombie Villager</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
 
                             <!--Rij 2-->
                             <ToggleButton x:Name="btnAdvancementEmmerLava" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="4">
                                 <Image Source="../Images/Props/AdvancementsItems/emmer_lava.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Hot Stuff</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Fill a bucket with lava</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
                             <ToggleButton x:Name="btnAdvancementObsidiaan" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5">
                                 <Image Source="../Images/Props/AdvancementsItems/obsidiaan.png" Margin="10"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Ice Bucket Challenge</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Form and mine a block of Obsidian, Obtain a block of obsidian‌</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
                             <ToggleButton x:Name="btnAdvancementVuursteen" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="6">
                                 <Image Source="../Images/Props/AdvancementsItems/vuursteen_en_ijzer.png" Margin="8"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">We Need to Go Deeper</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Build, light and enter a Nether Portal</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
 
                             <!--Rij 3-->
                             <ToggleButton x:Name="btnAdvancementEnderOog" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="7" >
                                 <Image Source="../Images/Props/AdvancementsItems/ender_oog.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Eye Spy</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Follow an Eye of Ender</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
                             <ToggleButton x:Name="btnAdvancementEindeSteen" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="8">
                                 <Image Source="../Images/Props/AdvancementsItems/einde_steen.png" Margin="10"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">The End?</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Enter the End Portal</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
 
                             <!--Rij 4-->
                             <ToggleButton x:Name="btnAdvancementGrasBlok" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="0">
                                 <Image Source="../Images/Props/AdvancementsItems/gras_blok.png" Margin="10"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Minecraft</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">The heart and story of the game</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
                             <ToggleButton x:Name="btnAdvancementHoutenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1">
                                 <Image Source="../Images/Props/AdvancementsItems/houten_pikhouweel.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Stone Age</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Mine stone with your new pickaxe</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
                             <ToggleButton x:Name="btnAdvancementStenenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2">
                                 <Image Source="../Images/Props/AdvancementsItems/stenen_pikhouweel.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Getting an Upgrade</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Construct a better pickaxe</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
                             <ToggleButton x:Name="btnAdvancementIjzerKlomp" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3">
                                 <Image Source="../Images/Props/AdvancementsItems/ijzer_klomp.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Acquire Hardware</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Smelt an iron ingot</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
                             <ToggleButton x:Name="btnAdvancementDiamantenBorst" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="6">
                                 <Image Source="../Images/Props/AdvancementsItems/diamanten_borstplaat.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Cover Me With Diamonds</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Diamond armor saves lives</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
 
                             <!--Rij 5-->
                             <ToggleButton x:Name="btnAdvancementIjzerenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="4">
                                 <Image Source="../Images/Props/AdvancementsItems/ijzeren_pikhouweel.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Isn't It Iron Pick</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Upgrade your pickaxe</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
                             <ToggleButton x:Name="btnAdvancementDiamant" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="5">
                                 <Image Source="../Images/Props/AdvancementsItems/diamant.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Diamonds!</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Acquire diamonds</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
 
                             <!--Rij 6-->
                             <ToggleButton x:Name="btnAdvancementBetoverdBoek" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="6" Grid.RowSpan="2" Grid.Column="6">
                                 <Image Source="../Images/Props/AdvancementsItems/betoverd_boek.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Enchanter</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Enchant an item at an Enchanting Table</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
                             </ToggleButton>
 
                         </Grid>
