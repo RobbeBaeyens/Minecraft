@@ -42,17 +42,24 @@ namespace WPFMinecraft.Pages
 
         private void btnAddServer_Click(object sender, RoutedEventArgs e)
         {
+            World world = new World();
+            world.name = "world";
+            Random rand = new Random();
+            world.seed = rand.Next(111111111, 999999999).ToString();
             Server server = new Server();
+
+
             string serverName = textBoxServerName.Text;
             string serverIp = textBoxServerIp.Text;
             if (!String.IsNullOrWhiteSpace(serverName) && serverName.Length <= 20)
             {
                 if (!String.IsNullOrWhiteSpace(serverIp) && Regex.IsMatch(serverIp, @"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b") && serverIp.Length < 22)
                 {
+                    DatabaseOperations.AddWorld(world);
                     server.name = serverName;
-                    server.image = null;
                     server.ipadress = serverIp;
-                    server.worldId = null;
+                    server.image = null;
+                    server.worldId = world.id;
                     DatabaseOperations.AddServer(server);
                     servers = DatabaseOperations.OphalenServers();
                     ListboxServers.ItemsSource = servers;

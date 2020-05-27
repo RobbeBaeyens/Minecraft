@@ -27,6 +27,14 @@ namespace DALMinecraft
                 return entities.SaveChanges();
             }
         }
+        public static int AddWorld(World world)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.World.Add(world);
+                return entities.SaveChanges();
+            }
+        }
         public static int RemoveServer(Server server)
         {
             using (MinecraftEntities entities = new MinecraftEntities())
