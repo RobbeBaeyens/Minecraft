@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C7BB01C9-D4AF-463E-9C70-E09EA300B8B2}</ProjectGuid>
+    <ProjectGuid>{90A09206-7E24-46B4-884C-C76C6EFB05C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DALMinecraft</RootNamespace>
@@ -40,7 +40,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -51,80 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Advancement.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseOperations.cs" />
-    <Compile Include="Dimension.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Effect.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory_Item.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory_Player.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Item.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="MinecraftModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MinecraftModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MinecraftModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MinecraftModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MinecraftModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Player.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Player_Advancement.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Player_Dimension.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Player_Effect.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Player_Recipe.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recipe.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Recipe_Item.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Server.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Setting.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="World.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="World_Dimension.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="World_Setting.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="MinecraftModel.edmx">
@@ -143,11 +79,6 @@
     <Content Include="MinecraftModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MinecraftModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="MinecraftModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MinecraftModel.cs</LastGenOutput>
-      <DependentUpon>MinecraftModel.edmx</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
