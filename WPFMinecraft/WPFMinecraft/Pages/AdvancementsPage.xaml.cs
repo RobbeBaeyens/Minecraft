@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DALMinecraft;
 
 namespace WPFMinecraft.Pages
 {
@@ -20,10 +21,15 @@ namespace WPFMinecraft.Pages
     /// </summary>
     public partial class AdvancementsPage : Page
     {
+        Advancement selectedAdvancement = new Advancement();
+        List<Advancement> advancements = DatabaseOperations.OphalenAdvancement();
+
         public AdvancementsPage()
         {
             InitializeComponent();
         }
+
+
 
         private void btnGrantAdvancement_Click(object sender, RoutedEventArgs e)
         {
@@ -34,6 +40,10 @@ namespace WPFMinecraft.Pages
             {
                 btnAdvancementBetoverdBoek.Style = brown;
                 btnAdvancementBetoverdBoek.IsChecked = false;
+
+                
+
+                
             }
 
             if (btnAdvancementDiamant.IsChecked == true)

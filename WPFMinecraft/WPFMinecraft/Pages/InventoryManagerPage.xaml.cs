@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DALMinecraft;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,25 +21,22 @@ namespace WPFMinecraft.Pages
     /// </summary>
     public partial class InventoryManagerPage : Page
     {
+        //Inventory_Item invItem = new Inventory_Item();
+        //List<Inventory_Item> invItems = DatabaseOperations.OphalenInventoryItem();
+
+
+
         public InventoryManagerPage()
         {
             InitializeComponent();
         }
 
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        //public void GetInventoryItems()
+        //{
+        //    cmb1.ItemsSource = invItems;
+        //}
 
-        }
 
-        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }
