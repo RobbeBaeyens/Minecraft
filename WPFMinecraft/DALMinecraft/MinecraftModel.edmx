@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MinecraftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MinecraftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advancement">
           <Key>
             <PropertyRef Name="id" />
@@ -151,6 +151,12 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="seed" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="difficulty" Type="int" Nullable="false" />
+          <Property Name="gamemode" Type="int" Nullable="false" />
+          <Property Name="cheats" Type="bit" Nullable="false" />
+          <Property Name="structures" Type="bit" Nullable="false" />
+          <Property Name="worldType" Type="int" Nullable="false" />
+          <Property Name="bonusChest" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="World_Dimension">
           <Key>
@@ -509,7 +515,8 @@
             <End Role="World_Setting" EntitySet="World_Setting" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MinecraftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -692,6 +699,12 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="seed" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="difficulty" Type="Int32" Nullable="false" />
+          <Property Name="gamemode" Type="Int32" Nullable="false" />
+          <Property Name="cheats" Type="Boolean" Nullable="false" />
+          <Property Name="structures" Type="Boolean" Nullable="false" />
+          <Property Name="worldType" Type="Int32" Nullable="false" />
+          <Property Name="bonusChest" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Server" Relationship="Self.FK_Server_World" FromRole="World" ToRole="Server" />
           <NavigationProperty Name="World_Dimension" Relationship="Self.FK_World_Dimension_World" FromRole="World" ToRole="World_Dimension" />
           <NavigationProperty Name="World_Setting" Relationship="Self.FK_World_Setting_World" FromRole="World" ToRole="World_Setting" />
@@ -1224,6 +1237,12 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="seed" ColumnName="seed" />
+                <ScalarProperty Name="difficulty" ColumnName="difficulty" />
+                <ScalarProperty Name="gamemode" ColumnName="gamemode" />
+                <ScalarProperty Name="cheats" ColumnName="cheats" />
+                <ScalarProperty Name="structures" ColumnName="structures" />
+                <ScalarProperty Name="worldType" ColumnName="worldType" />
+                <ScalarProperty Name="bonusChest" ColumnName="bonusChest" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

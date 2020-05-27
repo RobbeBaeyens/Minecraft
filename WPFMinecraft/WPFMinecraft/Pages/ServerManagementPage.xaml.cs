@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -42,25 +43,15 @@ namespace WPFMinecraft.Pages
 
         private void btnAddServer_Click(object sender, RoutedEventArgs e)
         {
-            World world = new World();
-            world.name = "world";
-            Random rand = new Random();
-            world.seed = rand.Next(111111111, 999999999).ToString();
-            Server server = new Server();
-
-
             string serverName = textBoxServerName.Text;
             string serverIp = textBoxServerIp.Text;
             if (!String.IsNullOrWhiteSpace(serverName) && serverName.Length <= 20)
             {
                 if (!String.IsNullOrWhiteSpace(serverIp) && Regex.IsMatch(serverIp, @"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b") && serverIp.Length < 22)
                 {
-                    DatabaseOperations.AddWorld(world);
-                    server.name = serverName;
-                    server.ipadress = serverIp;
-                    server.image = null;
-                    server.worldId = world.id;
-                    DatabaseOperations.AddServer(server);
+                    World world = createNewWorld();
+                    Server server = createNewServer(serverName, serverIp, world);
+                    
                     servers = DatabaseOperations.OphalenServers();
                     ListboxServers.ItemsSource = servers;
                 }
@@ -73,6 +64,41 @@ namespace WPFMinecraft.Pages
             {
                 MessageBox.Show("Insert a server name (max length: 20)", "No Name");
             }
+        }
+
+        private Setting createNewSettings()
+        {
+            List<string> settingNames = new List<string>() {"" };
+
+            Setting setting = new Setting();
+            setting.name = settingName;
+            setting.value = settingValue;
+            return setting;
+        }
+
+        private World createNewWorld()
+        {
+            World world = new World();
+            Random rand = new Random();
+
+            world.name = "world";
+            world.seed = rand.Next(-2147483648, 2147483647).ToString();
+
+            DatabaseOperations.AddWorld(world);
+            return world;
+        }
+
+        private Server createNewServer(string serverName, string serverIp, World world)
+        {
+            Server server = new Server();
+
+            server.name = serverName;
+            server.ipadress = serverIp;
+            server.image = null;
+            server.worldId = world.id;
+
+            DatabaseOperations.AddServer(server);
+            return server;
         }
 
         private void ListboxServers_SelectionChanged(object sender, SelectionChangedEventArgs e)

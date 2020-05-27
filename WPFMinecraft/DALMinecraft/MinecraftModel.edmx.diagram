@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="434b9a5d8b9c47ee938e98d57b795a3f" Name="Diagram1">
+      <Diagram DiagramId="8072f5fcf13e4385a67d48182628d306" Name="Diagram1">
         <EntityTypeShape EntityType="MinecraftModel.Advancement" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="MinecraftModel.Dimension" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="MinecraftModel.Effect" Width="1.5" PointX="3.75" PointY="14" IsExpanded="true" />
@@ -20,9 +20,9 @@
         <EntityTypeShape EntityType="MinecraftModel.Recipe" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MinecraftModel.Recipe_Item" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MinecraftModel.Server" Width="1.5" PointX="11" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MinecraftModel.Setting" Width="1.5" PointX="8.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="MinecraftModel.World" Width="1.5" PointX="8.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MinecraftModel.World_Dimension" Width="1.5" PointX="11" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.Setting" Width="1.5" PointX="8.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.World" Width="1.5" PointX="8.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MinecraftModel.World_Dimension" Width="1.5" PointX="11" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MinecraftModel.World_Setting" Width="1.5" PointX="11" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="MinecraftModel.FK_Player_Advancement_Advancement" ManuallyRouted="false" />
         <AssociationConnector Association="MinecraftModel.FK_Player_Dimension_Dimension" ManuallyRouted="false" />
