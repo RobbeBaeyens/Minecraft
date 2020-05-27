@@ -7,7 +7,6 @@
       x:Class="WPFMinecraft.Pages.InventoryManagerPage"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Loaded="Page_Loaded"
       Title="InventoryManagerPage">
 
     <!--Basis-grid voor achtergrond en viewbox-->
