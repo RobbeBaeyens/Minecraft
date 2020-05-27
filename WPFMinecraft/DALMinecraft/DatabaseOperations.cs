@@ -66,5 +66,105 @@ namespace DALMinecraft
                 return query.ToList();
             }
         }
+
+
+
+
+
+
+        //inventoryPage
+        public static List<Inventory> OphalenInventory()
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Inventory
+                    .OrderBy(x => x.name);
+
+                return query.ToList();
+            }
+        }
+
+        public static List<Item> OphalenItem(string naam)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Item
+                    .Where(x => x.name.Contains(naam))
+                    .OrderBy(x => x.name);
+
+                return query.ToList();
+            }
+        }
+        public static int AddItem(Item item)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Item.Add(item);
+                return entities.SaveChanges();
+            }
+        }
+        public static int RemoveItem(Item item)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(item).State = EntityState.Deleted;
+                return entities.SaveChanges();
+            }
+        }
+
+        //inventoryManagerPage
+        public static List<Inventory_Item> OphalenInventoryItem()
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Inventory_Item
+                    .OrderBy(x => x.Item)
+                    .ThenBy(x => x.itemId);
+
+                return query.ToList();
+            }
+        }
+
+        //AdvancementsPage
+        public static List<Advancement> OphalenAdvancement()
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Advancement
+                    .OrderBy(x => x.name)
+                    .ThenBy(x => x.type);
+
+                return query.ToList();
+            }
+        }
+
+        public static List<Player_Advancement> OphalenPlayerAdvancements()
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Player_Advancement
+                    .OrderBy(x => x.Advancement);
+
+                return query.ToList();
+            }
+        }
+
+        public static int AddAdvancement(Advancement advancement)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Advancement.Add(advancement);
+                return entities.SaveChanges();
+            }
+        }
+
+        public static int UpdateAdvancement(Advancement advancement)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(advancement).State = EntityState.Modified;
+                return entities.SaveChanges();
+            }
+        }
     }
 }
