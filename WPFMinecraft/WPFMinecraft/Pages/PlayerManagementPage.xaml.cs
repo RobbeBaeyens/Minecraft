@@ -44,5 +44,10 @@ namespace WPFMinecraft.Pages
         {
 
         }
+
+        private void ListboxServers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
