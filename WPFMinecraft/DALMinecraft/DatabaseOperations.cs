@@ -194,31 +194,14 @@ namespace DALMinecraft
             }
         }
 
-        public static List<Item> OphalenItem(string naam)
+        public static List<Item> OphalenItems()
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 var query = entities.Item
-                    .Where(x => x.name.Contains(naam))
                     .OrderBy(x => x.name);
 
                 return query.ToList();
-            }
-        }
-        public static int AddItem(Item item)
-        {
-            using (MinecraftEntities entities = new MinecraftEntities())
-            {
-                entities.Item.Add(item);
-                return entities.SaveChanges();
-            }
-        }
-        public static int RemoveItem(Item item)
-        {
-            using (MinecraftEntities entities = new MinecraftEntities())
-            {
-                entities.Entry(item).State = EntityState.Deleted;
-                return entities.SaveChanges();
             }
         }
 
@@ -228,8 +211,7 @@ namespace DALMinecraft
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 var query = entities.Inventory_Item
-                    .OrderBy(x => x.Item)
-                    .ThenBy(x => x.itemId);
+                    .OrderBy(x => x.Item);
 
                 return query.ToList();
             }
