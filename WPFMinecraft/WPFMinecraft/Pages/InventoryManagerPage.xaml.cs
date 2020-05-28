@@ -43,7 +43,7 @@ namespace WPFMinecraft.Pages
 
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }
