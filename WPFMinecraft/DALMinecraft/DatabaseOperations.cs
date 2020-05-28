@@ -74,6 +74,19 @@ namespace DALMinecraft
 
             }
         }
+        //ophalen
+        public static World OphalenWorldViaSpeler(int playerId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Player
+                    .Include(x => x.Dimension.World)
+                    .Where(x => x.id == playerId)
+                    .SingleOrDefault();
+                return query.Dimension.World;
+
+            }
+        }
         //toevoegen
         public static int AddWorld(World world)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DALMinecraft;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,8 +47,8 @@ namespace WPFMinecraft.Pages
             {
                 WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
                 serverId = windowViewModel.ServerId;
-                worldId = windowViewModel.WorldId;
                 playerId = windowViewModel.PlayerId;
+                worldId = DatabaseOperations.OphalenWorldViaSpeler(playerId).id;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + playerId + "\n");
             }
