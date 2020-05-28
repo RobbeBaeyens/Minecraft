@@ -59,17 +59,19 @@ namespace DALMinecraft
 
 
         /*=====================
-         * World
-         =====================*/
+ * World
+ =====================*/
         //ophalen
-        public static List<World> OphalenWorlds()
+        public static World OphalenWorld(int serverId)
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
-                var query = entities.World
-                    .OrderBy(x => x.name)
-                    .ThenBy(x => x.seed);
-                return query.ToList();
+                var query = entities.Server
+                    .Include(x => x.World)
+                    .Where(x => x.id == serverId)
+                    .SingleOrDefault();
+                return query.World;
+
             }
         }
         //toevoegen
@@ -90,7 +92,16 @@ namespace DALMinecraft
                 return entities.SaveChanges();
             }
         }
+        //updaten
+        public static int UpdateWorld(World world)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(world).State = EntityState.Modified;
+                return entities.SaveChanges();
 
+            }
+        }
 
         /*=====================
          * WorldSetting
