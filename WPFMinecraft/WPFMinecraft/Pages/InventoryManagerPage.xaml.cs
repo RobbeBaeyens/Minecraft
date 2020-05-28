@@ -21,21 +21,26 @@ namespace WPFMinecraft.Pages
     /// </summary>
     public partial class InventoryManagerPage : Page
     {
-        //Inventory_Item invItem = new Inventory_Item();
-        //List<Inventory_Item> invItems = DatabaseOperations.OphalenInventoryItem();
-
-
+        Inventory_Item invItem = new Inventory_Item();
+        List<Item> invItems = DatabaseOperations.OphalenItems();
 
         public InventoryManagerPage()
         {
             InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            foreach (Item item in invItems)
+            {
+                string str = item.name;
+                str = str.Substring(10);
+                item.name = char.ToUpper(str[0]).ToString() + str.Substring(1);
+            }
 
-        //public void GetInventoryItems()
-        //{
-        //    cmb1.ItemsSource = invItems;
-        //}
+            cmb1.ItemsSource = invItems;
+        }
+
 
 
     }
