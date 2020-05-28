@@ -69,64 +69,7 @@ namespace WPFMinecraft.Pages
                 btnAdvancementDiamant, btnAdvancementDiamantenBorst, btnAdvancementBetoverdBoek,
             };
 
-<<<<<<< HEAD
             LoadAdvancements(0);
-            
-=======
-            player = DatabaseOperations.OphalenAdvancements(playerId);
-
-            Style brown = (Style)FindResource("normalAdvancementBrown");
-            Style specialbrown = (Style)FindResource("specialAdvancementBrown");
-            Style grey = (Style)FindResource("normalAdvancementGrey");
-            Style specialgrey = (Style)FindResource("specialAdvancementGrey");
-
-            var count = 0;
-            foreach (Player_Advancement advancement in player.Player_Advancement)
-            {
-                if (advancement.advancementObtained)
-                {
-                    if(advancement.Advancement.type == "normal")
-                        advButtons[count].Style = brown;
-                    else
-                        advButtons[count].Style = specialbrown;
-                }
-                else
-                {
-                    if (advancement.Advancement.type == "normal")
-                        advButtons[count].Style = grey;
-                    else
-                        advButtons[count].Style = specialgrey;
-                }
-                count++;
-            }
-        }
-
-        private void btnGrantAdvancement_Click(object sender, RoutedEventArgs e)
-        {
-            Style brown = (Style)FindResource("normalAdvancementBrown");
-            Style specialbrown = (Style)FindResource("specialAdvancementBrown");
-
-            var count = 1;
-
-            foreach (ToggleButton button in advButtons)
-            {
-                if (button.IsChecked == true)
-                {
-                    button.Style = brown;
-                    button.IsChecked = false;
-
-
-                }
-
-                count++;
-            }
-
-            if (btnAdvancementGoudenAppel.IsChecked == true)
-            {
-                btnAdvancementGoudenAppel.Style = specialbrown;
-                btnAdvancementGoudenAppel.IsChecked = false;
-            }
->>>>>>> 2d4e2721a3ceea67ef82f1f479cb8f0a2311c07e
         }
 
         public void LoadAdvancements(int functie)
@@ -138,7 +81,6 @@ namespace WPFMinecraft.Pages
             Style grey = (Style)FindResource("normalAdvancementGrey");
             Style specialgrey = (Style)FindResource("specialAdvancementGrey");
 
-<<<<<<< HEAD
             var count = 0;
             foreach (Player_Advancement advancement in player.Player_Advancement)
             {
@@ -184,22 +126,5 @@ namespace WPFMinecraft.Pages
         {
             LoadAdvancements(2);
         }
-=======
-            foreach (ToggleButton button in advButtons)
-            {
-                if (button.IsChecked == true)
-                {
-                    button.Style = grey;
-                    button.IsChecked = false;
-                }
-            }
-
-            if (btnAdvancementGoudenAppel.IsChecked == true)
-            {
-                btnAdvancementGoudenAppel.Style = specialgrey;
-                btnAdvancementGoudenAppel.IsChecked = false;
-            }
-        }
->>>>>>> 2d4e2721a3ceea67ef82f1f479cb8f0a2311c07e
     }
 }
