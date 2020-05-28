@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using DALMinecraft;
+using WPFMinecraft.ViewModel;
 namespace WPFMinecraft.Pages
 {
     /// <summary>
@@ -23,6 +24,37 @@ namespace WPFMinecraft.Pages
         public MoreOptionPage()
         {
             InitializeComponent();
+        }
+        public int serverId;
+        public int worldId;
+        World world = new World();
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
+
+            while (currParent != null && pageFrame == null)
+            {
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
+            }
+
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                serverId = windowViewModel.ServerId;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Server ID: " + serverId + "\n");
+            }
+
+
+            world = DatabaseOperations.OphalenWorld(serverId);
+
+            
+
         }
     }
 }
