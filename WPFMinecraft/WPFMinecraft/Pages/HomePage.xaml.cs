@@ -21,6 +21,7 @@ namespace WPFMinecraft.Pages
     /// </summary>
     public partial class HomePage : Page
     {
+        public int serverId = -1;
         public HomePage()
         {
             InitializeComponent();
@@ -63,6 +64,27 @@ namespace WPFMinecraft.Pages
             {
                 WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
                 windowViewModel.CurrentPage = ApplicationPage.PlayerManagement;
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {// Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
+
+            while (currParent != null && pageFrame == null)
+            {
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
+            }
+
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                windowViewModel.ServerId = serverId;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Server ID: " + serverId + "\n");
             }
         }
     }

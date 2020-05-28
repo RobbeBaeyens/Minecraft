@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WPFMinecraft.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PlayerPage">
+      Title="PlayerPage" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.Background>

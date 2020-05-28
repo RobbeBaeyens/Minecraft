@@ -26,6 +26,7 @@ namespace WPFMinecraft.Pages
         public int worldId;
         public int playerId;
         List<Player> players;
+        Player selectedplayer;
         public PlayerManagementPage()
         {
             InitializeComponent();
@@ -58,7 +59,16 @@ namespace WPFMinecraft.Pages
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\n");
             }
 
-            players = DatabaseOperations.OphalenSpelers(worldId);
+            if(serverId == -1)
+            {
+                gridChangeablePlayerPage.Visibility = Visibility.Collapsed;
+                btnUpdatePlayer.Visibility = Visibility.Collapsed;
+                players = DatabaseOperations.OphalenSpelers();
+            }
+            else
+            {
+                players = DatabaseOperations.OphalenSpelers(worldId);
+            }
             getPlayers();
         }
 
@@ -97,24 +107,78 @@ namespace WPFMinecraft.Pages
             return player;
         }
 
+        private void ListboxPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedplayer = (Player)ListboxPlayers.SelectedItem;
+            if (ListboxPlayers.SelectedIndex == -1)
+            {
+                textBoxPlayerName.Text = "";
+            }
+            else
+            {
+                textBoxPlayerName.Text = selectedplayer.name;
+            }
+        }
+
         private void btnRemovePlayer_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ListboxPlayers.SelectedIndex != -1)
+            {
+                DatabaseOperations.RemoveSpeler(selectedplayer);
+                players = DatabaseOperations.OphalenSpelers(worldId);
+                ListboxPlayers.ItemsSource = players;
+            }
         }
 
         private void btnUpdatePlayer_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ListboxPlayers.SelectedIndex != -1)
+            {
+                Player player = selectedplayer;
+                string playerName = textBoxPlayerName.Text;
+                if (!String.IsNullOrWhiteSpace(playerName) && playerName.Length <= 16 && playerName.Length >= 3)
+                {
+                    player.name = playerName;
+                    DatabaseOperations.UpdateSpeler(player);
+                    players = DatabaseOperations.OphalenSpelers();
+                    ListboxPlayers.ItemsSource = players;
+                }
+                else
+                {
+                    MessageBox.Show("Insert a server name (3-16)", "No Name");
+                }
+            }
         }
 
         private void btnViewPlayer_Click(object sender, RoutedEventArgs e)
         {
+            if (ListboxPlayers.SelectedIndex != -1)
+            {
+                selectedplayer = (Player)ListboxPlayers.SelectedItem;
+                playerId = selectedplayer.id;
 
-        }
 
-        private void ListboxServers_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+                // Find the frame.
+                Frame pageFrame = null;
+                DependencyObject currParent = VisualTreeHelper.GetParent(this);
 
+                while (currParent != null && pageFrame == null)
+                {
+                    pageFrame = currParent as Frame;
+                    currParent = VisualTreeHelper.GetParent(currParent);
+                }
+
+                //Change the page of the frame.
+                if (pageFrame.DataContext != null)
+                {
+                    WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                    windowViewModel.CurrentPage = ApplicationPage.Player;
+                    windowViewModel.WorldId = worldId;
+                    windowViewModel.PlayerId = playerId;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + serverId + "\n");
+                }
+            }
         }
     }
 }

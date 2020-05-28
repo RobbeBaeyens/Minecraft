@@ -211,7 +211,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Inventory_Player_Player">
-          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Inventory_Player" Type="Self.Inventory_Player" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
@@ -235,7 +237,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Player_Advancement_Player">
-          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Player_Advancement" Type="Self.Player_Advancement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
@@ -247,7 +251,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Player_Dimension">
-          <End Role="Dimension" Type="Self.Dimension" Multiplicity="1" />
+          <End Role="Dimension" Type="Self.Dimension" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Player" Type="Self.Player" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Dimension">
@@ -271,7 +277,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Player_Effect_Player">
-          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Player_Effect" Type="Self.Player_Effect" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
@@ -283,7 +291,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Player_Recipe_Player">
-          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Player_Recipe" Type="Self.Player_Recipe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
@@ -357,7 +367,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_World_Setting_Setting">
-          <End Role="Setting" Type="Self.Setting" Multiplicity="1" />
+          <End Role="Setting" Type="Self.Setting" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="World_Setting" Type="Self.World_Setting" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Setting">
