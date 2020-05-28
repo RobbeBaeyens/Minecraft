@@ -49,7 +49,7 @@ namespace WPFMinecraft.Pages
                 WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
                 serverId = windowViewModel.ServerId;
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(serverId);
+                Console.WriteLine("Server ID: " + serverId + "\n");
             }
 
 
@@ -129,7 +129,7 @@ namespace WPFMinecraft.Pages
                     windowViewModel.CurrentPage = ApplicationPage.PlayerManagement;
                     windowViewModel.WorldId = worldId;
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine(worldId);
+                    Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\n");
                 }
             
         }
