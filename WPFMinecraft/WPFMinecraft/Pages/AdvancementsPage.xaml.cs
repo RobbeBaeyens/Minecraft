@@ -69,6 +69,10 @@ namespace WPFMinecraft.Pages
                 btnAdvancementDiamant, btnAdvancementDiamantenBorst, btnAdvancementBetoverdBoek,
             };
 
+<<<<<<< HEAD
+            LoadAdvancements(0);
+            
+=======
             player = DatabaseOperations.OphalenAdvancements(playerId);
 
             Style brown = (Style)FindResource("normalAdvancementBrown");
@@ -122,15 +126,65 @@ namespace WPFMinecraft.Pages
                 btnAdvancementGoudenAppel.Style = specialbrown;
                 btnAdvancementGoudenAppel.IsChecked = false;
             }
+>>>>>>> 2d4e2721a3ceea67ef82f1f479cb8f0a2311c07e
+        }
+
+        public void LoadAdvancements(int functie)
+        {
+            player = DatabaseOperations.OphalenAdvancements(playerId);
+
+            Style brown = (Style)FindResource("normalAdvancementBrown");
+            Style specialbrown = (Style)FindResource("specialAdvancementBrown");
+            Style grey = (Style)FindResource("normalAdvancementGrey");
+            Style specialgrey = (Style)FindResource("specialAdvancementGrey");
+
+<<<<<<< HEAD
+            var count = 0;
+            foreach (Player_Advancement advancement in player.Player_Advancement)
+            {
+                if (advButtons[count].IsChecked == true && functie == 2 && advancement.advancementObtained)
+                {
+                    advancement.advancementObtained = false;
+                    DatabaseOperations.UpdatePlayerAdvancement(advancement);
+
+                }
+                if (advButtons[count].IsChecked == true && functie == 1 && !advancement.advancementObtained)
+                {
+                    advancement.advancementObtained = true;
+                    DatabaseOperations.UpdatePlayerAdvancement(advancement);
+                }
+
+                advButtons[count].IsChecked = false;
+
+                if (advancement.advancementObtained)
+                {
+                    if (advancement.Advancement.type == "normal")
+                        advButtons[count].Style = brown;
+                    else
+                        advButtons[count].Style = specialbrown;
+                }
+                else
+                {
+                    if (advancement.Advancement.type == "normal")
+                        advButtons[count].Style = grey;
+                    else
+                        advButtons[count].Style = specialgrey;
+                }
+                count++;
+            }
+        }
+
+        private void btnGrantAdvancement_Click(object sender, RoutedEventArgs e)
+        {
+            LoadAdvancements(1);
         }
 
 
         private void btnRevokeAdvancement_Click(object sender, RoutedEventArgs e)
         {
-
-            Style grey = (Style)FindResource("normalAdvancementGrey");
-            Style specialgrey = (Style)FindResource("specialAdvancementGrey");
-
+            LoadAdvancements(2);
+        }
+=======
             foreach (ToggleButton button in advButtons)
             {
                 if (button.IsChecked == true)
@@ -146,5 +200,6 @@ namespace WPFMinecraft.Pages
                 btnAdvancementGoudenAppel.IsChecked = false;
             }
         }
+>>>>>>> 2d4e2721a3ceea67ef82f1f479cb8f0a2311c07e
     }
 }
