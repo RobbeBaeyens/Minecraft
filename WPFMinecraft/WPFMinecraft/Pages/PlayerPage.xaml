@@ -42,10 +42,10 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Content="Server Name - 192.168.1.1:25565" Style="{StaticResource MinecraftText}"/>
-                        <Label Grid.Row="1" Grid.Column="0" Content="World Name" Style="{StaticResource MinecraftText}"/>
-                        <Label Grid.Row="2" Grid.Column="0" Content="5648754526476852" Style="{StaticResource MinecraftText}"/>
-                        <Label HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" Content="x:126 y:65 z:-1038" Style="{StaticResource MinecraftText}"/>
+                        <Label x:Name="lblServerNameAndIP" Grid.Row="0" Grid.Column="0" Content="Server Name - 192.168.1.1:25565" Style="{StaticResource MinecraftText}"/>
+                        <Label x:Name="lblWorldName" Grid.Row="1" Grid.Column="0" Content="World Name" Style="{StaticResource MinecraftText}"/>
+                        <Label x:Name="lblWorldSeed" Grid.Row="2" Grid.Column="0" Content="5648754526476852" Style="{StaticResource MinecraftText}"/>
+                        <Label x:Name="lblPlayerCoords" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" Content="x:126 y:65 z:-1038" Style="{StaticResource MinecraftText}"/>
                     </Grid>
                 </Border>
             </Grid>
@@ -92,10 +92,10 @@
                         </Grid.RowDefinitions>
 
                         <Label Grid.Row="0" Grid.Column="0" Content="Name:" Style="{StaticResource MinecraftText}"/>
-                        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Content="Steve" Style="{StaticResource MinecraftText}"/>
+                        <Label x:Name="lblPlayerName" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Content="Steve" Style="{StaticResource MinecraftText}"/>
 
                         <Label Grid.Row="1" Grid.Column="0" Content="UUID:" Style="{StaticResource MinecraftText}"/>
-                        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Content="5168-uygz-4564-iuhz" Style="{StaticResource MinecraftText}"/>
+                        <Label x:Name="lblPlayerUUID" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Content="5168-uygz-4564-iuhz" Style="{StaticResource MinecraftText}"/>
 
                         <Label Grid.Row="2" Grid.Column="0" Content="Health:" Style="{StaticResource MinecraftText}"/>
                         <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
@@ -129,7 +129,7 @@
             </Grid>
         </Viewbox>
         <Viewbox Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom">
-            <Label Content="god__of__sound" Style="{StaticResource MinecraftText}" Margin="10 10 10 -10"/>
+            <Label x:Name="lblPlayerNameTag" Content="playerName" Style="{StaticResource MinecraftText}" Margin="10 10 10 -10"/>
         </Viewbox>
         <Viewbox Grid.Row="2" Grid.Column="0" Grid.RowSpan="2">
             <Grid>

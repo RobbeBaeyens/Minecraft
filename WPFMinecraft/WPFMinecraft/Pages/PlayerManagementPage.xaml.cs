@@ -77,7 +77,8 @@ namespace WPFMinecraft.Pages
             string playerName = textBoxPlayerName.Text;
             if (!String.IsNullOrWhiteSpace(playerName) && playerName.Length <= 16 && playerName.Length >= 3)
             {
-                createNewPlayer(playerName, worldId);
+                Player player = createNewPlayer(playerName, worldId);
+                createNewPlayerAdvancements(player);
 
                 ListboxPlayers.ItemsSource = getPlayers();
             }
@@ -104,6 +105,18 @@ namespace WPFMinecraft.Pages
             player.dimensionId = dimension.id;
             DatabaseOperations.AddPlayer(player);
             return player;
+        }
+
+        public void createNewPlayerAdvancements(Player player)
+        {
+            for (int i = 1; i < 17; i++)
+            {
+                Player_Advancement player_advancement = new Player_Advancement();
+                player_advancement.playerId = player.id;
+                player_advancement.advancementId = i;
+                player_advancement.advancementObtained = false;
+                DatabaseOperations.AddPlayerAdvancement(player_advancement);
+            }
         }
 
         private void ListboxPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
