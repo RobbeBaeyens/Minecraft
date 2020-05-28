@@ -123,7 +123,8 @@ namespace WPFMinecraft.ViewModel
         /// <summary>
         /// The current page of the application
         /// </summary>
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Advancements;
+
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Home;
 
         /// <summary>
         /// The current data from database for the application

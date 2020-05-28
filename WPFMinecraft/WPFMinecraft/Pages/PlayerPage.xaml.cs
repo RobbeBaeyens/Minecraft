@@ -52,5 +52,105 @@ namespace WPFMinecraft.Pages
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + playerId + "\n");
             }
         }
+
+        private void btnEffects_Click(object sender, RoutedEventArgs e)
+        {
+            // Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
+
+            while (currParent != null && pageFrame == null)
+            {
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
+            }
+
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                windowViewModel.CurrentPage = ApplicationPage.Effects;
+                windowViewModel.WorldId = worldId;
+                windowViewModel.PlayerId = playerId;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + serverId + "\n");
+            }
+        }
+
+        private void btnAdvancements_Click(object sender, RoutedEventArgs e)
+        {
+            // Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
+
+            while (currParent != null && pageFrame == null)
+            {
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
+            }
+
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                windowViewModel.CurrentPage = ApplicationPage.Advancements;
+                windowViewModel.WorldId = worldId;
+                windowViewModel.PlayerId = playerId;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + serverId + "\n");
+            }
+        }
+
+        private void btnRecipes_Click(object sender, RoutedEventArgs e)
+        {
+            // Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
+
+            while (currParent != null && pageFrame == null)
+            {
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
+            }
+
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                windowViewModel.CurrentPage = ApplicationPage.Recipes;
+                windowViewModel.WorldId = worldId;
+                windowViewModel.PlayerId = playerId;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + serverId + "\n");
+            }
+        }
+
+        private void btnInventory_Click(object sender, RoutedEventArgs e)
+        {// Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
+
+            while (currParent != null && pageFrame == null)
+            {
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
+            }
+
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                windowViewModel.CurrentPage = ApplicationPage.Inventory;
+                windowViewModel.WorldId = worldId;
+                windowViewModel.PlayerId = playerId;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + serverId + "\n");
+            }
+        }
+
+        private void btnFlip_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

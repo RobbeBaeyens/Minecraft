@@ -41,7 +41,9 @@ namespace WPFMinecraft.Pages
             cmb1.ItemsSource = invItems;
         }
 
-
-
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
