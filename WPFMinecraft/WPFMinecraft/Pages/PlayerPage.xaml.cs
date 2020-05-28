@@ -55,6 +55,7 @@ namespace WPFMinecraft.Pages
 
         private void btnEffects_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             // Find the frame.
             Frame pageFrame = null;
             DependencyObject currParent = VisualTreeHelper.GetParent(this);
@@ -75,10 +76,14 @@ namespace WPFMinecraft.Pages
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + serverId + "\n");
             }
+=======
+
+>>>>>>> 3135808bac22317100f9f442cf0cf56a25d310d4
         }
 
         private void btnAdvancements_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             // Find the frame.
             Frame pageFrame = null;
             DependencyObject currParent = VisualTreeHelper.GetParent(this);
@@ -99,10 +104,14 @@ namespace WPFMinecraft.Pages
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + serverId + "\n");
             }
+=======
+
+>>>>>>> 3135808bac22317100f9f442cf0cf56a25d310d4
         }
 
         private void btnRecipes_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             // Find the frame.
             Frame pageFrame = null;
             DependencyObject currParent = VisualTreeHelper.GetParent(this);
@@ -146,6 +155,14 @@ namespace WPFMinecraft.Pages
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + serverId + "\n");
             }
+=======
+
+        }
+
+        private void btnInventory_Click(object sender, RoutedEventArgs e)
+        {
+
+>>>>>>> 3135808bac22317100f9f442cf0cf56a25d310d4
         }
 
         private void btnFlip_Click(object sender, RoutedEventArgs e)
