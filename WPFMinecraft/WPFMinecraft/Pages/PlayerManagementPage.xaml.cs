@@ -32,11 +32,6 @@ namespace WPFMinecraft.Pages
             InitializeComponent();
         }
 
-        private void getPlayers()
-        {
-            ListboxPlayers.ItemsSource = players;
-        }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // Find the frame.
@@ -58,8 +53,13 @@ namespace WPFMinecraft.Pages
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\n");
             }
+            ListboxPlayers.ItemsSource = getPlayers();
+        }
 
-            if(serverId == -1)
+        public List<Player> getPlayers()
+        {
+
+            if (serverId == -1)
             {
                 gridChangeablePlayerPage.Visibility = Visibility.Collapsed;
                 btnUpdatePlayer.Visibility = Visibility.Collapsed;
@@ -69,7 +69,7 @@ namespace WPFMinecraft.Pages
             {
                 players = DatabaseOperations.OphalenSpelers(worldId);
             }
-            getPlayers();
+            return players;
         }
 
         private void btnAddPlayer_Click(object sender, RoutedEventArgs e)
@@ -77,10 +77,9 @@ namespace WPFMinecraft.Pages
             string playerName = textBoxPlayerName.Text;
             if (!String.IsNullOrWhiteSpace(playerName) && playerName.Length <= 16 && playerName.Length >= 3)
             {
-                Player player = createNewPlayer(playerName, worldId);
+                createNewPlayer(playerName, worldId);
 
-                players = DatabaseOperations.OphalenSpelers(worldId);
-                ListboxPlayers.ItemsSource = players;
+                ListboxPlayers.ItemsSource = getPlayers();
             }
             else
             {
@@ -125,8 +124,7 @@ namespace WPFMinecraft.Pages
             if (ListboxPlayers.SelectedIndex != -1)
             {
                 DatabaseOperations.RemoveSpeler(selectedplayer);
-                players = DatabaseOperations.OphalenSpelers(worldId);
-                ListboxPlayers.ItemsSource = players;
+                ListboxPlayers.ItemsSource = getPlayers();
             }
         }
 
@@ -140,8 +138,7 @@ namespace WPFMinecraft.Pages
                 {
                     player.name = playerName;
                     DatabaseOperations.UpdateSpeler(player);
-                    players = DatabaseOperations.OphalenSpelers();
-                    ListboxPlayers.ItemsSource = players;
+                    ListboxPlayers.ItemsSource = getPlayers();
                 }
                 else
                 {

@@ -197,6 +197,7 @@ namespace DALMinecraft
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 var query = entities.Player
+                    .Include(x => x.Dimension.World.Server)
                     .OrderBy(x => x.name)
                     .ThenBy(x => x.uuid);
                 return query.ToList();
