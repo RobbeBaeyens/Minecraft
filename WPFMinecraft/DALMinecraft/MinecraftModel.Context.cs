@@ -32,7 +32,6 @@ namespace DALMinecraft
         public virtual DbSet<Inventory_Item> Inventory_Item { get; set; }
         public virtual DbSet<Inventory_Player> Inventory_Player { get; set; }
         public virtual DbSet<Item> Item { get; set; }
-        public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<Player_Advancement> Player_Advancement { get; set; }
         public virtual DbSet<Player_Effect> Player_Effect { get; set; }
         public virtual DbSet<Player_Recipe> Player_Recipe { get; set; }
@@ -42,5 +41,6 @@ namespace DALMinecraft
         public virtual DbSet<Setting> Setting { get; set; }
         public virtual DbSet<World> World { get; set; }
         public virtual DbSet<World_Setting> World_Setting { get; set; }
+        public virtual DbSet<Player> Player { get; set; }
     }
 }
