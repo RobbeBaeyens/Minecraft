@@ -25,6 +25,7 @@ namespace WPFMinecraft.Pages
         public int serverId;
         public int worldId;
         public int playerId;
+        public Player player;
 
         public PlayerPage()
         {
@@ -52,6 +53,13 @@ namespace WPFMinecraft.Pages
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + playerId + "\n");
             }
+
+            player = DatabaseOperations.OphalenSpeler(playerId);
+            lblPlayerNameTag.Content = player.name;
+            lblPlayerName.Content = player.name;
+            lblPlayerUUID.Content = player.uuid;
+            lblPlayerCoords.Content = "x:" + player.posX + " y:" +player.posY + " z:" + player.posZ;
+            lblPlayerNameTag.Content = player.name;
         }
 
         private void btnEffects_Click(object sender, RoutedEventArgs e)

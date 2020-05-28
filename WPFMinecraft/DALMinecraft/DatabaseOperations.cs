@@ -216,6 +216,19 @@ namespace DALMinecraft
                 return query.ToList();
             }
         }
+        //ophalen
+        public static Player OphalenSpeler(int playerId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Player
+                    .Include(x => x.Dimension.World.Server)
+                    .Where(x => x.id == playerId)
+                    .OrderBy(x => x.name)
+                    .ThenBy(x => x.uuid);
+                return query.SingleOrDefault();
+            }
+        }
         //toevoegen
         public static int AddPlayer(Player player)
         {
@@ -244,8 +257,18 @@ namespace DALMinecraft
 
             }
         }
-
-
+        /*=====================
+         * Advancement
+         =====================*/
+        //toevoegen
+        public static int AddPlayerAdvancement(Player_Advancement player_advancement)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Player_Advancement.Add(player_advancement);
+                return entities.SaveChanges();
+            }
+        }
 
 
 
