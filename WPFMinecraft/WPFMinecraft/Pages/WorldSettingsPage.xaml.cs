@@ -133,6 +133,58 @@ namespace WPFMinecraft.Pages
                 }
             
         }
+
+        private void btnMoreOptions_Click(object sender, RoutedEventArgs e)
+        {
+            worldId = world.id;
+
+
+            // Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
+
+            while (currParent != null && pageFrame == null)
+            {
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
+            }
+
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                windowViewModel.CurrentPage = ApplicationPage.MoreOption;
+                windowViewModel.WorldId = worldId;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\n");
+            }
+        }
+
+        private void btnGameRule_Click(object sender, RoutedEventArgs e)
+        {
+            worldId = world.id;
+
+
+            // Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
+
+            while (currParent != null && pageFrame == null)
+            {
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
+            }
+
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                windowViewModel.CurrentPage = ApplicationPage.GameRule;
+                windowViewModel.WorldId = worldId;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\n");
+            }
+        }
     }
 
 
