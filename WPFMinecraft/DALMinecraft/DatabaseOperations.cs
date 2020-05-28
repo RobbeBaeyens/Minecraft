@@ -285,15 +285,22 @@ namespace DALMinecraft
             }
         }
 
-        //AdvancementsPage
-        public static List<Player_Advancement> OphalenAdvancement()
+        /*=====================
+         * Advancements
+          =====================*/
+
+        //Ophalen
+        public static Player OphalenAdvancements(int playerId)
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
-                var query = entities.Player_Advancement
-                    .Include(x => x.Advancement);
+                var query = entities.Player
+                    .Include(x => x.Player_Advancement.Select(y => y.Advancement))
+                    .Where(x => x.id == playerId)
+                    .SingleOrDefault();
 
-                return query.ToList();
+                return query;
+
             }
         }
 

@@ -351,7 +351,7 @@
                             <!--Advancements knoppen-->
 
                             <!--Rij 0 (boven naar onder)-->
-                            <ToggleButton x:Name="btnAdvancementIjzerBorst" Width="65" Height="65" ClickMode="Press" Style="{StaticResource normalAdvancementGrey}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="4">
+                            <ToggleButton x:Name="btnAdvancementIjzerBorst" Width="65" Height="65" ClickMode="Press" Style="{StaticResource normalAdvancementBrown}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="4">
                                 <Image Source="../Images/Props/AdvancementsItems/ijzeren_borstplaat.png" Margin="7"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -364,7 +364,7 @@
                                     </ToolTip>
                                 </ToggleButton.ToolTip>
                             </ToggleButton>
-                            <ToggleButton x:Name="btnAdvancementHoutenSchild" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="5" >
+                            <ToggleButton x:Name="btnAdvancementHoutenSchild" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="5" >
                                 <Image Source="../Images/Props/AdvancementsItems/houten_schield.png" Margin="5"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -379,7 +379,7 @@
                             </ToggleButton>
 
                             <!--Rij 1-->
-                            <ToggleButton x:Name="btnAdvancementGoudenAppel" Width="65" Height="65" Style="{StaticResource specialAdvancementGrey}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="7">
+                            <ToggleButton x:Name="btnAdvancementGoudenAppel" Width="65" Height="65" Style="{StaticResource specialAdvancementBrown}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="7">
                                 <Image Source="../Images/Props/AdvancementsItems/gouden_apple.png" Margin="7"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -394,7 +394,7 @@
                             </ToggleButton>
 
                             <!--Rij 2-->
-                            <ToggleButton x:Name="btnAdvancementEmmerLava" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="4">
+                            <ToggleButton x:Name="btnAdvancementEmmerLava" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="4">
                                 <Image Source="../Images/Props/AdvancementsItems/emmer_lava.png" Margin="7"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -407,7 +407,7 @@
                                     </ToolTip>
                                 </ToggleButton.ToolTip>
                             </ToggleButton>
-                            <ToggleButton x:Name="btnAdvancementObsidiaan" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5">
+                            <ToggleButton x:Name="btnAdvancementObsidiaan" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5">
                                 <Image Source="../Images/Props/AdvancementsItems/obsidiaan.png" Margin="10"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -420,7 +420,7 @@
                                     </ToolTip>
                                 </ToggleButton.ToolTip>
                             </ToggleButton>
-                            <ToggleButton x:Name="btnAdvancementVuursteen" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="6">
+                            <ToggleButton x:Name="btnAdvancementVuursteen" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="6">
                                 <Image Source="../Images/Props/AdvancementsItems/vuursteen_en_ijzer.png" Margin="8"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -435,7 +435,7 @@
                             </ToggleButton>
 
                             <!--Rij 3-->
-                            <ToggleButton x:Name="btnAdvancementEnderOog" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="7" >
+                            <ToggleButton x:Name="btnAdvancementEnderOog" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="7" >
                                 <Image Source="../Images/Props/AdvancementsItems/ender_oog.png" Margin="7"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -448,7 +448,7 @@
                                     </ToolTip>
                                 </ToggleButton.ToolTip>
                             </ToggleButton>
-                            <ToggleButton x:Name="btnAdvancementEindeSteen" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="8">
+                            <ToggleButton x:Name="btnAdvancementEindeSteen" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="8">
                                 <Image Source="../Images/Props/AdvancementsItems/einde_steen.png" Margin="10"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -463,7 +463,7 @@
                             </ToggleButton>
 
                             <!--Rij 4-->
-                            <ToggleButton x:Name="btnAdvancementGrasBlok" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="0">
+                            <ToggleButton x:Name="btnAdvancementGrasBlok" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="0">
                                 <Image Source="../Images/Props/AdvancementsItems/gras_blok.png" Margin="10"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -476,7 +476,7 @@
                                     </ToolTip>
                                 </ToggleButton.ToolTip>
                             </ToggleButton>
-                            <ToggleButton x:Name="btnAdvancementHoutenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1">
+                            <ToggleButton x:Name="btnAdvancementHoutenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1">
                                 <Image Source="../Images/Props/AdvancementsItems/houten_pikhouweel.png" Margin="7"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -489,7 +489,7 @@
                                     </ToolTip>
                                 </ToggleButton.ToolTip>
                             </ToggleButton>
-                            <ToggleButton x:Name="btnAdvancementStenenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2">
+                            <ToggleButton x:Name="btnAdvancementStenenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2">
                                 <Image Source="../Images/Props/AdvancementsItems/stenen_pikhouweel.png" Margin="7"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -502,7 +502,7 @@
                                     </ToolTip>
                                 </ToggleButton.ToolTip>
                             </ToggleButton>
-                            <ToggleButton x:Name="btnAdvancementIjzerKlomp" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3">
+                            <ToggleButton x:Name="btnAdvancementIjzerKlomp" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3">
                                 <Image Source="../Images/Props/AdvancementsItems/ijzer_klomp.png" Margin="7"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -515,7 +515,7 @@
                                     </ToolTip>
                                 </ToggleButton.ToolTip>
                             </ToggleButton>
-                            <ToggleButton x:Name="btnAdvancementDiamantenBorst" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="6">
+                            <ToggleButton x:Name="btnAdvancementDiamantenBorst" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="6">
                                 <Image Source="../Images/Props/AdvancementsItems/diamanten_borstplaat.png" Margin="7"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -530,7 +530,7 @@
                             </ToggleButton>
 
                             <!--Rij 5-->
-                            <ToggleButton x:Name="btnAdvancementIjzerenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="4">
+                            <ToggleButton x:Name="btnAdvancementIjzerenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="4">
                                 <Image Source="../Images/Props/AdvancementsItems/ijzeren_pikhouweel.png" Margin="7"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -543,7 +543,7 @@
                                     </ToolTip>
                                 </ToggleButton.ToolTip>
                             </ToggleButton>
-                            <ToggleButton x:Name="btnAdvancementDiamant" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="5">
+                            <ToggleButton x:Name="btnAdvancementDiamant" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="5">
                                 <Image Source="../Images/Props/AdvancementsItems/diamant.png" Margin="7"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
@@ -558,7 +558,7 @@
                             </ToggleButton>
 
                             <!--Rij 6-->
-                            <ToggleButton x:Name="btnAdvancementBetoverdBoek" Width="65" Height="65" Style="{StaticResource normalAdvancementGrey}" Grid.Row="6" Grid.RowSpan="2" Grid.Column="6">
+                            <ToggleButton x:Name="btnAdvancementBetoverdBoek" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="6" Grid.RowSpan="2" Grid.Column="6">
                                 <Image Source="../Images/Props/AdvancementsItems/betoverd_boek.png" Margin="7"/>
                                 <ToggleButton.ToolTip>
                                     <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
