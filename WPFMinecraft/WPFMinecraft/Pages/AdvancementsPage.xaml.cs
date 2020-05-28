@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -14,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DALMinecraft;
+using WPFMinecraft.ViewModel;
 
 namespace WPFMinecraft.Pages
 {
@@ -22,8 +24,13 @@ namespace WPFMinecraft.Pages
     /// </summary>
     public partial class AdvancementsPage : Page
     {
-        Player_Advancement selectedAdvancement = new Player_Advancement();
-        List<Player_Advancement> advancements = DatabaseOperations.OphalenAdvancement();
+        public int serverId;
+        public int worldId;
+        public int playerId;
+
+        public Player player;
+
+        public List<ToggleButton> advButtons;
 
 
         public AdvancementsPage()
@@ -33,66 +40,81 @@ namespace WPFMinecraft.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            foreach (Player_Advancement advancement in advancements)
+            // Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
+
+            while (currParent != null && pageFrame == null)
             {
-
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
             }
-        }
 
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                serverId = windowViewModel.ServerId;
+                playerId = windowViewModel.PlayerId;
+                worldId = DatabaseOperations.OphalenWorldViaSpeler(playerId).id;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + playerId + "\n");
+            }
 
-        public void AdvancementBruin(bool veld)
-        {
+            advButtons = new List<ToggleButton>()
+            {
+                btnAdvancementGrasBlok, btnAdvancementHoutenPikhouweel, btnAdvancementStenenPikhouweel, btnAdvancementIjzerKlomp,
+                btnAdvancementIjzerBorst, btnAdvancementHoutenSchild, btnAdvancementEmmerLava, btnAdvancementObsidiaan, btnAdvancementVuursteen,
+                btnAdvancementGoudenAppel, btnAdvancementEnderOog, btnAdvancementEindeSteen, btnAdvancementIjzerenPikhouweel,
+                btnAdvancementDiamant, btnAdvancementDiamantenBorst, btnAdvancementBetoverdBoek,
+            };
+
+            player = DatabaseOperations.OphalenAdvancements(playerId);
+
             Style brown = (Style)FindResource("normalAdvancementBrown");
             Style specialbrown = (Style)FindResource("specialAdvancementBrown");
+            Style grey = (Style)FindResource("normalAdvancementGrey");
+            Style specialgrey = (Style)FindResource("specialAdvancementGrey");
+
+            var count = 0;
+            foreach (Player_Advancement advancement in player.Player_Advancement)
+            {
+                if (advancement.advancementObtained)
+                {
+                    if(advancement.Advancement.type == "normal")
+                        advButtons[count].Style = brown;
+                    else
+                        advButtons[count].Style = specialbrown;
+                }
+                else
+                {
+                    if (advancement.Advancement.type == "normal")
+                        advButtons[count].Style = grey;
+                    else
+                        advButtons[count].Style = specialgrey;
+                }
+                count++;
+            }
         }
-
-
-
 
         private void btnGrantAdvancement_Click(object sender, RoutedEventArgs e)
         {
             Style brown = (Style)FindResource("normalAdvancementBrown");
             Style specialbrown = (Style)FindResource("specialAdvancementBrown");
 
-            
+            var count = 1;
 
-            if (btnAdvancementBetoverdBoek.IsChecked == true)
+            foreach (ToggleButton button in advButtons)
             {
-                btnAdvancementBetoverdBoek.Style = brown;
-                btnAdvancementBetoverdBoek.IsChecked = false; 
+                if (button.IsChecked == true)
+                {
+                    button.Style = brown;
+                    button.IsChecked = false;
 
 
+                }
 
-            }
-
-            if (btnAdvancementDiamant.IsChecked == true)
-            {
-                btnAdvancementDiamant.Style = brown;
-                btnAdvancementDiamant.IsChecked = false;
-            }
-
-            if (btnAdvancementDiamantenBorst.IsChecked == true)
-            {
-                btnAdvancementDiamantenBorst.Style = brown;
-                btnAdvancementDiamantenBorst.IsChecked = false;
-            }
-
-            if (btnAdvancementEindeSteen.IsChecked == true)
-            {
-                btnAdvancementEindeSteen.Style = brown;
-                btnAdvancementEindeSteen.IsChecked = false;
-            }
-
-            if (btnAdvancementEmmerLava.IsChecked == true)
-            {
-                btnAdvancementEmmerLava.Style = brown;
-                btnAdvancementEmmerLava.IsChecked = false;
-            }
-
-            if (btnAdvancementEnderOog.IsChecked == true)
-            {
-                btnAdvancementEnderOog.Style = brown;
-                btnAdvancementEnderOog.IsChecked = false;
+                count++;
             }
 
             if (btnAdvancementGoudenAppel.IsChecked == true)
@@ -100,61 +122,6 @@ namespace WPFMinecraft.Pages
                 btnAdvancementGoudenAppel.Style = specialbrown;
                 btnAdvancementGoudenAppel.IsChecked = false;
             }
-
-            if (btnAdvancementGrasBlok.IsChecked == true)
-            {
-                btnAdvancementGrasBlok.Style = brown;
-                btnAdvancementGrasBlok.IsChecked = false;
-            }
-
-            if (btnAdvancementHoutenPikhouweel.IsChecked == true)
-            {
-                btnAdvancementHoutenPikhouweel.Style = brown;
-                btnAdvancementHoutenPikhouweel.IsChecked = false;
-            }
-
-            if (btnAdvancementHoutenSchild.IsChecked == true)
-            {
-                btnAdvancementHoutenSchild.Style = brown;
-                btnAdvancementHoutenSchild.IsChecked = false;
-            }
-
-            if (btnAdvancementIjzerBorst.IsChecked == true)
-            {
-                btnAdvancementIjzerBorst.Style = brown;
-                btnAdvancementIjzerBorst.IsChecked = false;
-            }
-
-            if (btnAdvancementIjzerenPikhouweel.IsChecked == true)
-            {
-                btnAdvancementIjzerenPikhouweel.Style = brown;
-                btnAdvancementIjzerenPikhouweel.IsChecked = false;
-            }
-
-            if (btnAdvancementIjzerKlomp.IsChecked == true)
-            {
-                btnAdvancementIjzerKlomp.Style = brown;
-                btnAdvancementIjzerKlomp.IsChecked = false;
-            }
-
-            if (btnAdvancementObsidiaan.IsChecked == true)
-            {
-                btnAdvancementObsidiaan.Style = brown;
-                btnAdvancementObsidiaan.IsChecked = false;
-            }
-
-            if (btnAdvancementStenenPikhouweel.IsChecked == true)
-            {
-                btnAdvancementStenenPikhouweel.Style = brown;
-                btnAdvancementStenenPikhouweel.IsChecked = false;
-            }
-
-            if (btnAdvancementVuursteen.IsChecked == true)
-            {
-                btnAdvancementVuursteen.Style = brown;
-                btnAdvancementVuursteen.IsChecked = false;
-            }
-
         }
 
 
@@ -164,41 +131,13 @@ namespace WPFMinecraft.Pages
             Style grey = (Style)FindResource("normalAdvancementGrey");
             Style specialgrey = (Style)FindResource("specialAdvancementGrey");
 
-
-            if (btnAdvancementBetoverdBoek.IsChecked == true)
+            foreach (ToggleButton button in advButtons)
             {
-                btnAdvancementBetoverdBoek.Style = grey;
-                btnAdvancementBetoverdBoek.IsChecked = false;
-            }
-
-            if (btnAdvancementDiamant.IsChecked == true)
-            {
-                btnAdvancementDiamant.Style = grey;
-                btnAdvancementDiamant.IsChecked = false;
-            }
-
-            if (btnAdvancementDiamantenBorst.IsChecked == true)
-            {
-                btnAdvancementDiamantenBorst.Style = grey;
-                btnAdvancementDiamantenBorst.IsChecked = false;
-            }
-
-            if (btnAdvancementEindeSteen.IsChecked == true)
-            {
-                btnAdvancementEindeSteen.Style = grey;
-                btnAdvancementEindeSteen.IsChecked = false;
-            }
-
-            if (btnAdvancementEmmerLava.IsChecked == true)
-            {
-                btnAdvancementEmmerLava.Style = grey;
-                btnAdvancementEmmerLava.IsChecked = false;
-            }
-
-            if (btnAdvancementEnderOog.IsChecked == true)
-            {
-                btnAdvancementEnderOog.Style = grey;
-                btnAdvancementEnderOog.IsChecked = false;
+                if (button.IsChecked == true)
+                {
+                    button.Style = grey;
+                    button.IsChecked = false;
+                }
             }
 
             if (btnAdvancementGoudenAppel.IsChecked == true)
@@ -206,62 +145,6 @@ namespace WPFMinecraft.Pages
                 btnAdvancementGoudenAppel.Style = specialgrey;
                 btnAdvancementGoudenAppel.IsChecked = false;
             }
-
-            if (btnAdvancementGrasBlok.IsChecked == true)
-            {
-                btnAdvancementGrasBlok.Style = grey;
-                btnAdvancementGrasBlok.IsChecked = false;
-            }
-
-            if (btnAdvancementHoutenPikhouweel.IsChecked == true)
-            {
-                btnAdvancementHoutenPikhouweel.Style = grey;
-                btnAdvancementHoutenPikhouweel.IsChecked = false;
-            }
-
-            if (btnAdvancementHoutenSchild.IsChecked == true)
-            {
-                btnAdvancementHoutenSchild.Style = grey;
-                btnAdvancementHoutenSchild.IsChecked = false;
-            }
-
-            if (btnAdvancementIjzerBorst.IsChecked == true)
-            {
-                btnAdvancementIjzerBorst.Style = grey;
-                btnAdvancementIjzerBorst.IsChecked = false;
-            }
-
-            if (btnAdvancementIjzerenPikhouweel.IsChecked == true)
-            {
-                btnAdvancementIjzerenPikhouweel.Style = grey;
-                btnAdvancementIjzerenPikhouweel.IsChecked = false;
-            }
-
-            if (btnAdvancementIjzerKlomp.IsChecked == true)
-            {
-                btnAdvancementIjzerKlomp.Style = grey;
-                btnAdvancementIjzerKlomp.IsChecked = false;
-            }
-
-            if (btnAdvancementObsidiaan.IsChecked == true)
-            {
-                btnAdvancementObsidiaan.Style = grey;
-                btnAdvancementObsidiaan.IsChecked = false;
-            }
-
-            if (btnAdvancementStenenPikhouweel.IsChecked == true)
-            {
-                btnAdvancementStenenPikhouweel.Style = grey;
-                btnAdvancementStenenPikhouweel.IsChecked = false;
-            }
-
-            if (btnAdvancementVuursteen.IsChecked == true)
-            {
-                btnAdvancementVuursteen.Style = grey;
-                btnAdvancementVuursteen.IsChecked = false;
-            }
         }
-
-
     }
 }
