@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -39,6 +40,12 @@ namespace WPFMinecraft.Pages
         }
 
 
+        public void AdvancementBruin(bool veld)
+        {
+            Style brown = (Style)FindResource("normalAdvancementBrown");
+            Style specialbrown = (Style)FindResource("specialAdvancementBrown");
+        }
+
 
 
 
@@ -47,10 +54,15 @@ namespace WPFMinecraft.Pages
             Style brown = (Style)FindResource("normalAdvancementBrown");
             Style specialbrown = (Style)FindResource("specialAdvancementBrown");
 
+            
+
             if (btnAdvancementBetoverdBoek.IsChecked == true)
             {
                 btnAdvancementBetoverdBoek.Style = brown;
                 btnAdvancementBetoverdBoek.IsChecked = false; 
+
+
+
             }
 
             if (btnAdvancementDiamant.IsChecked == true)
