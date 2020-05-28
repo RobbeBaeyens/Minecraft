@@ -241,7 +241,8 @@ namespace WPFMinecraft.ViewModel
                 case ApplicationPage.PlayerManagement:
                     if(ServerId ==-1)
                         CurrentPage = ApplicationPage.Home;
-                    CurrentPage = ApplicationPage.Settings;
+                    else
+                        CurrentPage = ApplicationPage.Settings;
                     break;
 
                 case ApplicationPage.Settings:
