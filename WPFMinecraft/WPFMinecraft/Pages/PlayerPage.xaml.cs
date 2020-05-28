@@ -52,5 +52,30 @@ namespace WPFMinecraft.Pages
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + playerId + "\n");
             }
         }
+
+        private void btnEffects_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAdvancements_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRecipes_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnInventory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnFlip_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
