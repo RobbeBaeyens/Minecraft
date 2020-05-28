@@ -41,7 +41,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="0" x:Name="gridChangeablePlayerPage">
                     <Border CornerRadius="10" Margin="5" Padding="5">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -69,7 +69,7 @@
                     </Border>
                 </Grid>
                 <Grid Grid.Row="1" MinWidth="1600" MaxHeight="600">
-                    <ListBox SelectionChanged="ListboxServers_SelectionChanged" x:Name="ListboxPlayers" Background="Transparent" Margin="50,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Grid.ColumnSpan="2">
+                    <ListBox SelectionChanged="ListboxPlayers_SelectionChanged" x:Name="ListboxPlayers" Background="Transparent" Margin="50,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Grid.ColumnSpan="2">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" MinWidth="1450">

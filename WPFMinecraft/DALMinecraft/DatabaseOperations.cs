@@ -59,8 +59,8 @@ namespace DALMinecraft
 
 
         /*=====================
- * World
- =====================*/
+        * World
+        =====================*/
         //ophalen
         public static World OphalenWorld(int serverId)
         {
@@ -209,6 +209,25 @@ namespace DALMinecraft
             {
                 entities.Player.Add(player);
                 return entities.SaveChanges();
+            }
+        }
+        //verwijderen
+        public static int RemoveSpeler(Player player)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(player).State = EntityState.Deleted;
+                return entities.SaveChanges();
+            }
+        }
+        //updaten
+        public static int UpdateSpeler(Player player)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(player).State = EntityState.Modified;
+                return entities.SaveChanges();
+
             }
         }
 
