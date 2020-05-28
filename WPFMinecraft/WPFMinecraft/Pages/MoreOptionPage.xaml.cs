@@ -53,8 +53,46 @@ namespace WPFMinecraft.Pages
 
             world = DatabaseOperations.OphalenWorld(serverId);
 
-            
+            List<bool> structures = new List<bool>()
+            {
+                false,true
+            };
+            cmbStructures.ItemsSource = structures;
+            bool structure = world.structures;
+            cmbStructures.SelectedItem = structure;
 
+            List<bool> bonusChests = new List<bool>()
+            {
+                false,true
+            };
+            cmbBonusChest.ItemsSource = bonusChests;
+            bool bonusChest = world.bonusChest;
+            cmbBonusChest.SelectedItem = bonusChest;
+
+            List<string> worldTypes = new List<string>()
+            {
+                "Default", "Superflat", "Large Biome", "Amplified", "Single Biomes", "Caves", "Floating ils."
+            };
+            cmbWorldType.ItemsSource = worldTypes;
+            int worldType = world.worldType;
+            cmbBonusChest.SelectedIndex = worldType;
+
+        }
+
+        private void btnSaveMoreOption_Click(object sender, RoutedEventArgs e)
+        {
+            bool BonusChest = cmbBonusChest.SelectedIndex == 1 ? true :false;
+            bool Structures = cmbStructures.SelectedIndex == 1 ? true : false;
+            int WorldType = cmbWorldType.SelectedIndex;
+
+            world.bonusChest = BonusChest;
+            world.structures = Structures;
+            world.worldType = WorldType;
+
+            if (DatabaseOperations.UpdateWorld(world) == 1)
+            {
+                MessageBox.Show("Settings saved!");
+            }
         }
     }
 }
