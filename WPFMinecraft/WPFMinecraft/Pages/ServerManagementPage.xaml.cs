@@ -213,7 +213,7 @@ namespace WPFMinecraft.Pages
                     windowViewModel.CurrentPage = ApplicationPage.Settings;
                     windowViewModel.ServerId = serverId;
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine(serverId);
+                    Console.WriteLine("Server ID: " + serverId + "\n");
                 }
             }
         }
