@@ -21,13 +21,24 @@ namespace WPFMinecraft.Pages
     /// </summary>
     public partial class AdvancementsPage : Page
     {
-        Advancement selectedAdvancement = new Advancement();
-        List<Advancement> advancements = DatabaseOperations.OphalenAdvancement();
+        Player_Advancement selectedAdvancement = new Player_Advancement();
+        List<Player_Advancement> advancements = DatabaseOperations.OphalenAdvancement();
+
 
         public AdvancementsPage()
         {
             InitializeComponent();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            foreach (Player_Advancement advancement in advancements)
+            {
+
+            }
+        }
+
+
 
 
 
@@ -39,11 +50,7 @@ namespace WPFMinecraft.Pages
             if (btnAdvancementBetoverdBoek.IsChecked == true)
             {
                 btnAdvancementBetoverdBoek.Style = brown;
-                btnAdvancementBetoverdBoek.IsChecked = false;
-
-                
-
-                
+                btnAdvancementBetoverdBoek.IsChecked = false; 
             }
 
             if (btnAdvancementDiamant.IsChecked == true)
@@ -242,5 +249,7 @@ namespace WPFMinecraft.Pages
                 btnAdvancementVuursteen.IsChecked = false;
             }
         }
+
+
     }
 }
