@@ -290,6 +290,7 @@ namespace DALMinecraft
             {
                 entities.Entry(advancement).State = EntityState.Modified;
 
+
                 return entities.SaveChanges();
             }
         }
@@ -330,50 +331,5 @@ namespace DALMinecraft
                 return query.ToList();
             }
         }
-<<<<<<< HEAD
-=======
-
-        /*=====================
-         * Advancements
-          =====================*/
-
-        //Ophalen
-        public static Player OphalenAdvancements(int playerId)
-        {
-            using (MinecraftEntities entities = new MinecraftEntities())
-            {
-                var query = entities.Player
-                    .Include(x => x.Player_Advancement.Select(y => y.Advancement))
-                    .Where(x => x.id == playerId)
-                    .SingleOrDefault();
-
-                return query;
-
-            }
-        }
-
-        public static List<Player_Advancement> OphalenPlayerAdvancements()
-        {
-            using (MinecraftEntities entities = new MinecraftEntities())
-            {
-                var query = entities.Player_Advancement
-                    .OrderBy(x => x.Advancement);
-
-                return query.ToList();
-            }
-        }
-
-        public static int UpdateAdvancement(Player_Advancement advancement)
-        {
-            using (MinecraftEntities entities = new MinecraftEntities())
-            {
-                var query = entities.Player_Advancement
-                    .Include(x => x.Advancement)
-                    .Where(x => x.id == advancement.id);
-                entities.Entry(advancement).State = EntityState.Modified;
-                return entities.SaveChanges();
-            }
-        }
->>>>>>> 2d4e2721a3ceea67ef82f1f479cb8f0a2311c07e
     }
 }
