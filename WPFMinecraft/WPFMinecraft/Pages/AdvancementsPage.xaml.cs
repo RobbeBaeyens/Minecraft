@@ -69,6 +69,12 @@ namespace WPFMinecraft.Pages
                 btnAdvancementDiamant, btnAdvancementDiamantenBorst, btnAdvancementBetoverdBoek,
             };
 
+            LoadAdvancements(0);
+            
+        }
+
+        public void LoadAdvancements(int functie)
+        {
             player = DatabaseOperations.OphalenAdvancements(playerId);
 
             Style brown = (Style)FindResource("normalAdvancementBrown");
@@ -79,9 +85,23 @@ namespace WPFMinecraft.Pages
             var count = 0;
             foreach (Player_Advancement advancement in player.Player_Advancement)
             {
+                if (advButtons[count].IsChecked == true && functie == 2 && advancement.advancementObtained)
+                {
+                    advancement.advancementObtained = false;
+                    DatabaseOperations.UpdatePlayerAdvancement(advancement);
+
+                }
+                if (advButtons[count].IsChecked == true && functie == 1 && !advancement.advancementObtained)
+                {
+                    advancement.advancementObtained = true;
+                    DatabaseOperations.UpdatePlayerAdvancement(advancement);
+                }
+
+                advButtons[count].IsChecked = false;
+
                 if (advancement.advancementObtained)
                 {
-                    if(advancement.Advancement.type == "normal")
+                    if (advancement.Advancement.type == "normal")
                         advButtons[count].Style = brown;
                     else
                         advButtons[count].Style = specialbrown;
@@ -99,52 +119,13 @@ namespace WPFMinecraft.Pages
 
         private void btnGrantAdvancement_Click(object sender, RoutedEventArgs e)
         {
-            Style brown = (Style)FindResource("normalAdvancementBrown");
-            Style specialbrown = (Style)FindResource("specialAdvancementBrown");
-
-            var count = 1;
-
-            foreach (ToggleButton button in advButtons)
-            {
-                if (button.IsChecked == true)
-                {
-                    button.Style = brown;
-                    button.IsChecked = false;
-
-
-                }
-
-                count++;
-            }
-
-            if (btnAdvancementGoudenAppel.IsChecked == true)
-            {
-                btnAdvancementGoudenAppel.Style = specialbrown;
-                btnAdvancementGoudenAppel.IsChecked = false;
-            }
+            LoadAdvancements(1);
         }
 
 
         private void btnRevokeAdvancement_Click(object sender, RoutedEventArgs e)
         {
-
-            Style grey = (Style)FindResource("normalAdvancementGrey");
-            Style specialgrey = (Style)FindResource("specialAdvancementGrey");
-
-            foreach (ToggleButton button in advButtons)
-            {
-                if (button.IsChecked == true)
-                {
-                    button.Style = grey;
-                    button.IsChecked = false;
-                }
-            }
-
-            if (btnAdvancementGoudenAppel.IsChecked == true)
-            {
-                btnAdvancementGoudenAppel.Style = specialgrey;
-                btnAdvancementGoudenAppel.IsChecked = false;
-            }
+            LoadAdvancements(2);
         }
     }
 }
