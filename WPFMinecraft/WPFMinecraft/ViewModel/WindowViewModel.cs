@@ -239,7 +239,25 @@ namespace WPFMinecraft.ViewModel
                     break;
 
                 case ApplicationPage.PlayerManagement:
-                    CurrentPage = ApplicationPage.Home;
+                    if(ServerId ==-1)
+                        CurrentPage = ApplicationPage.Home;
+                    CurrentPage = ApplicationPage.Settings;
+                    break;
+
+                case ApplicationPage.Settings:
+                    CurrentPage = ApplicationPage.ServerManagement;
+                    break;
+
+                case ApplicationPage.MoreOption:
+                    CurrentPage = ApplicationPage.Settings;
+                    break;
+
+                case ApplicationPage.GameRule:
+                    CurrentPage = ApplicationPage.Settings;
+                    break;
+
+                case ApplicationPage.Player:
+                    CurrentPage = ApplicationPage.PlayerManagement;
                     break;
 
                 case ApplicationPage.InventoryManager:

@@ -82,7 +82,7 @@
                 </StackPanel>
 
                 <!--"Rechter-onder" Button voor voor "Items" toe te voegen aan "Inventory"-->
-                <Button x:Name="btnAddItem" Style="{StaticResource MinecraftLongButton}" Grid.Row="1" Grid.Column="1" Height="70" Margin="38,85,38,74" Width="325" Click="btnAddItem_Click">
+                <Button x:Name="btnAddItem" Style="{StaticResource MinecraftLongButton}" Grid.Row="1" Grid.Column="1" Height="70" Margin="38,85,38,74" Width="325">
                     <TextBlock Text="Add item(s)" Margin="0, 12, 0, 0"/>
                 </Button>
             </Grid>
