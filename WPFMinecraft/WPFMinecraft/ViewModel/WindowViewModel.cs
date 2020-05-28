@@ -266,6 +266,22 @@ namespace WPFMinecraft.ViewModel
                     CurrentPage = ApplicationPage.Inventory;
                     break;
 
+                case ApplicationPage.Inventory:
+                    CurrentPage = ApplicationPage.Player;
+                    break;
+
+                case ApplicationPage.Advancements:
+                    CurrentPage = ApplicationPage.Player;
+                    break;
+
+                case ApplicationPage.Effects:
+                    CurrentPage = ApplicationPage.Player;
+                    break;
+
+                case ApplicationPage.Recipes:
+                    CurrentPage = ApplicationPage.Player;
+                    break;
+
                 default:
                     CurrentPage = ApplicationPage.Home;
                     break;
