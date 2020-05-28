@@ -24,5 +24,25 @@ namespace WPFMinecraft.Pages
         {
             InitializeComponent();
         }
+
+        private void btnRemovePlayer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUpdatePlayer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAddPlayer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnViewPlayer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
