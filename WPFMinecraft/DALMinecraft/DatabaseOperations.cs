@@ -161,10 +161,36 @@ namespace DALMinecraft
                 return entities.SaveChanges();
             }
         }
+        //ophalen
+        public static Dimension OphalenPlayerDimension(int worldId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Dimension
+                    .Include(x => x.World)
+                    .Where(x => x.worldId == worldId)
+                    .Where(x => x.name.Contains("overworld"))
+                    .SingleOrDefault();
+                return query;
+            }
+        }
 
         /*=====================
          * Speler
          =====================*/
+        //ophalen
+        public static List<Player> OphalenSpelers(int worldId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Player
+                    .Include(x => x.Dimension.World)
+                    .Where(x => x.Dimension.World.id == worldId)
+                    .OrderBy(x => x.name)
+                    .ThenBy(x => x.uuid);
+                return query.ToList();
+            }
+        }
         //ophalen
         public static List<Player> OphalenSpelers()
         {
@@ -174,6 +200,15 @@ namespace DALMinecraft
                     .OrderBy(x => x.name)
                     .ThenBy(x => x.uuid);
                 return query.ToList();
+            }
+        }
+        //toevoegen
+        public static int AddPlayer(Player player)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Player.Add(player);
+                return entities.SaveChanges();
             }
         }
 

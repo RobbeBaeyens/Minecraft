@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DALMinecraft;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,9 +25,15 @@ namespace WPFMinecraft.Pages
         public int serverId;
         public int worldId;
         public int playerId;
+        List<Player> players;
         public PlayerManagementPage()
         {
             InitializeComponent();
+        }
+
+        private void getPlayers()
+        {
+            ListboxPlayers.ItemsSource = players;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -50,6 +57,44 @@ namespace WPFMinecraft.Pages
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\n");
             }
+
+            players = DatabaseOperations.OphalenSpelers(worldId);
+            getPlayers();
+        }
+
+        private void btnAddPlayer_Click(object sender, RoutedEventArgs e)
+        {
+            string playerName = textBoxPlayerName.Text;
+            if (!String.IsNullOrWhiteSpace(playerName) && playerName.Length <= 16 && playerName.Length >= 3)
+            {
+                Player player = createNewPlayer(playerName, worldId);
+
+                players = DatabaseOperations.OphalenSpelers(worldId);
+                ListboxPlayers.ItemsSource = players;
+            }
+            else
+            {
+                MessageBox.Show("Insert a player name (3-16)", "No Name");
+            }
+        }
+
+        public Player createNewPlayer(string playerName, int worldId)
+        {
+            Random rand = new Random();
+            Player player = new Player();
+            Dimension dimension = DatabaseOperations.OphalenPlayerDimension(worldId);
+            player.name = playerName;
+            player.uuid = Guid.NewGuid().ToString();
+            player.health = 20;
+            player.food = 20;
+            player.armor = 0;
+            player.skin = null;
+            player.posX = rand.Next(-30000, 30000);
+            player.posY = rand.Next(0, 255);
+            player.posZ = rand.Next(-30000, 30000);
+            player.dimensionId = dimension.id;
+            DatabaseOperations.AddPlayer(player);
+            return player;
         }
 
         private void btnRemovePlayer_Click(object sender, RoutedEventArgs e)
@@ -58,11 +103,6 @@ namespace WPFMinecraft.Pages
         }
 
         private void btnUpdatePlayer_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnAddPlayer_Click(object sender, RoutedEventArgs e)
         {
 
         }

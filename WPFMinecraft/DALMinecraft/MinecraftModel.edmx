@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Data_r0696944Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Data_r0696944Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advancement">
           <Key>
             <PropertyRef Name="id" />
@@ -68,14 +68,14 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="uuid" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="health" Type="numeric" Precision="10" Scale="1" />
-          <Property Name="food" Type="numeric" Precision="10" Scale="1" />
-          <Property Name="armor" Type="numeric" Precision="10" Scale="1" />
+          <Property Name="uuid" Type="varchar" MaxLength="255" />
+          <Property Name="health" Type="numeric" Precision="3" Scale="1" />
+          <Property Name="food" Type="numeric" Precision="3" Scale="1" />
+          <Property Name="armor" Type="numeric" Precision="3" Scale="1" />
           <Property Name="skin" Type="varchar" MaxLength="255" />
-          <Property Name="posX" Type="numeric" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="posY" Type="numeric" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="posZ" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="posX" Type="numeric" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="posY" Type="numeric" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="posZ" Type="numeric" Precision="8" Scale="2" Nullable="false" />
           <Property Name="dimensionId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Player_Advancement">
@@ -161,7 +161,9 @@
           <Property Name="value" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Dimension_World">
-          <End Role="World" Type="Self.World" Multiplicity="1" />
+          <End Role="World" Type="Self.World" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Dimension" Type="Self.Dimension" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="World">
@@ -341,7 +343,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Server_World">
-          <End Role="World" Type="Self.World" Multiplicity="1" />
+          <End Role="World" Type="Self.World" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Server" Type="Self.Server" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="World">
@@ -365,7 +369,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_World_Setting_World">
-          <End Role="World" Type="Self.World" Multiplicity="1" />
+          <End Role="World" Type="Self.World" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="World_Setting" Type="Self.World_Setting" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="World">
@@ -467,8 +473,7 @@
             <End Role="World_Setting" EntitySet="World_Setting" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Data_r0696944Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -489,7 +494,7 @@
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="worldId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="World" Relationship="Self.FK_Dimension_World" FromRole="Dimension" ToRole="World" />
-          <NavigationProperty Name="Player" Relationship="Self.FK_Player_Dimension" FromRole="Dimension" ToRole="Player" />
+          <NavigationProperty Name="Player" Relationship="Data_r0696944Model.FK_Player_Dimension" FromRole="Dimension" ToRole="Player" />
         </EntityType>
         <EntityType Name="Effect">
           <Key>
@@ -529,7 +534,7 @@
           <Property Name="inventoryId" Type="Int32" Nullable="false" />
           <Property Name="playerId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Inventory" Relationship="Self.FK_Inventory_Player_Inventory" FromRole="Inventory_Player" ToRole="Inventory" />
-          <NavigationProperty Name="Player" Relationship="Self.FK_Inventory_Player_Player" FromRole="Inventory_Player" ToRole="Player" />
+          <NavigationProperty Name="Player" Relationship="Data_r0696944Model.FK_Inventory_Player_Player" FromRole="Inventory_Player" ToRole="Player" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -542,27 +547,6 @@
           <NavigationProperty Name="Recipe" Relationship="Self.FK_Recipe_Item" FromRole="Item" ToRole="Recipe" />
           <NavigationProperty Name="Recipe_Item" Relationship="Self.FK_Recipe_Item_Item" FromRole="Item" ToRole="Recipe_Item" />
         </EntityType>
-        <EntityType Name="Player">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="uuid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="health" Type="Decimal" Precision="10" Scale="1" />
-          <Property Name="food" Type="Decimal" Precision="10" Scale="1" />
-          <Property Name="armor" Type="Decimal" Precision="10" Scale="1" />
-          <Property Name="skin" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="posX" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="posY" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="posZ" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="dimensionId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Dimension" Relationship="Self.FK_Player_Dimension" FromRole="Player" ToRole="Dimension" />
-          <NavigationProperty Name="Inventory_Player" Relationship="Self.FK_Inventory_Player_Player" FromRole="Player" ToRole="Inventory_Player" />
-          <NavigationProperty Name="Player_Advancement" Relationship="Self.FK_Player_Advancement_Player" FromRole="Player" ToRole="Player_Advancement" />
-          <NavigationProperty Name="Player_Effect" Relationship="Self.FK_Player_Effect_Player" FromRole="Player" ToRole="Player_Effect" />
-          <NavigationProperty Name="Player_Recipe" Relationship="Self.FK_Player_Recipe_Player" FromRole="Player" ToRole="Player_Recipe" />
-        </EntityType>
         <EntityType Name="Player_Advancement">
           <Key>
             <PropertyRef Name="id" />
@@ -572,7 +556,7 @@
           <Property Name="advancementId" Type="Int32" Nullable="false" />
           <Property Name="advancementObtained" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Advancement" Relationship="Self.FK_Player_Advancement_Advancement" FromRole="Player_Advancement" ToRole="Advancement" />
-          <NavigationProperty Name="Player" Relationship="Self.FK_Player_Advancement_Player" FromRole="Player_Advancement" ToRole="Player" />
+          <NavigationProperty Name="Player" Relationship="Data_r0696944Model.FK_Player_Advancement_Player" FromRole="Player_Advancement" ToRole="Player" />
         </EntityType>
         <EntityType Name="Player_Effect">
           <Key>
@@ -582,7 +566,7 @@
           <Property Name="playerId" Type="Int32" Nullable="false" />
           <Property Name="effectId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Effect" Relationship="Self.FK_Player_Effect_Effect" FromRole="Player_Effect" ToRole="Effect" />
-          <NavigationProperty Name="Player" Relationship="Self.FK_Player_Effect_Player" FromRole="Player_Effect" ToRole="Player" />
+          <NavigationProperty Name="Player" Relationship="Data_r0696944Model.FK_Player_Effect_Player" FromRole="Player_Effect" ToRole="Player" />
         </EntityType>
         <EntityType Name="Player_Recipe">
           <Key>
@@ -591,8 +575,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="playerId" Type="Int32" Nullable="false" />
           <Property Name="recipeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Player" Relationship="Self.FK_Player_Recipe_Player" FromRole="Player_Recipe" ToRole="Player" />
           <NavigationProperty Name="Recipe" Relationship="Self.FK_Player_Recipe_Recipe" FromRole="Player_Recipe" ToRole="Recipe" />
+          <NavigationProperty Name="Player" Relationship="Data_r0696944Model.FK_Player_Recipe_Player" FromRole="Player_Recipe" ToRole="Player" />
         </EntityType>
         <EntityType Name="Recipe">
           <Key>
@@ -687,18 +671,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Player_Dimension">
-          <End Role="Dimension" Type="Self.Dimension" Multiplicity="1" />
-          <End Role="Player" Type="Self.Player" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Dimension">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Player">
-              <PropertyRef Name="dimensionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Player_Effect_Effect">
           <End Role="Effect" Type="Self.Effect" Multiplicity="1" />
           <End Role="Player_Effect" Type="Self.Player_Effect" Multiplicity="*" />
@@ -747,18 +719,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Inventory_Player_Player">
-          <End Role="Player" Type="Self.Player" Multiplicity="1" />
-          <End Role="Inventory_Player" Type="Self.Inventory_Player" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Player">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Inventory_Player">
-              <PropertyRef Name="playerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Recipe_Item">
           <End Role="Item" Type="Self.Item" Multiplicity="1" />
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
@@ -780,42 +740,6 @@
             </Principal>
             <Dependent Role="Recipe_Item">
               <PropertyRef Name="itemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Player_Advancement_Player">
-          <End Role="Player" Type="Self.Player" Multiplicity="1" />
-          <End Role="Player_Advancement" Type="Self.Player_Advancement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Player">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Player_Advancement">
-              <PropertyRef Name="playerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Player_Effect_Player">
-          <End Role="Player" Type="Self.Player" Multiplicity="1" />
-          <End Role="Player_Effect" Type="Self.Player_Effect" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Player">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Player_Effect">
-              <PropertyRef Name="playerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Player_Recipe_Player">
-          <End Role="Player" Type="Self.Player" Multiplicity="1" />
-          <End Role="Player_Recipe" Type="Self.Player_Recipe" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Player">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Player_Recipe">
-              <PropertyRef Name="playerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -887,7 +811,6 @@
           <EntitySet Name="Inventory_Item" EntityType="Self.Inventory_Item" />
           <EntitySet Name="Inventory_Player" EntityType="Self.Inventory_Player" />
           <EntitySet Name="Item" EntityType="Self.Item" />
-          <EntitySet Name="Player" EntityType="Self.Player" />
           <EntitySet Name="Player_Advancement" EntityType="Self.Player_Advancement" />
           <EntitySet Name="Player_Effect" EntityType="Self.Player_Effect" />
           <EntitySet Name="Player_Recipe" EntityType="Self.Player_Recipe" />
@@ -905,10 +828,6 @@
             <End Role="World" EntitySet="World" />
             <End Role="Dimension" EntitySet="Dimension" />
           </AssociationSet>
-          <AssociationSet Name="FK_Player_Dimension" Association="Self.FK_Player_Dimension">
-            <End Role="Dimension" EntitySet="Dimension" />
-            <End Role="Player" EntitySet="Player" />
-          </AssociationSet>
           <AssociationSet Name="FK_Player_Effect_Effect" Association="Self.FK_Player_Effect_Effect">
             <End Role="Effect" EntitySet="Effect" />
             <End Role="Player_Effect" EntitySet="Player_Effect" />
@@ -925,10 +844,6 @@
             <End Role="Item" EntitySet="Item" />
             <End Role="Inventory_Item" EntitySet="Inventory_Item" />
           </AssociationSet>
-          <AssociationSet Name="FK_Inventory_Player_Player" Association="Self.FK_Inventory_Player_Player">
-            <End Role="Player" EntitySet="Player" />
-            <End Role="Inventory_Player" EntitySet="Inventory_Player" />
-          </AssociationSet>
           <AssociationSet Name="FK_Recipe_Item" Association="Self.FK_Recipe_Item">
             <End Role="Item" EntitySet="Item" />
             <End Role="Recipe" EntitySet="Recipe" />
@@ -936,18 +851,6 @@
           <AssociationSet Name="FK_Recipe_Item_Item" Association="Self.FK_Recipe_Item_Item">
             <End Role="Item" EntitySet="Item" />
             <End Role="Recipe_Item" EntitySet="Recipe_Item" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Player_Advancement_Player" Association="Self.FK_Player_Advancement_Player">
-            <End Role="Player" EntitySet="Player" />
-            <End Role="Player_Advancement" EntitySet="Player_Advancement" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Player_Effect_Player" Association="Self.FK_Player_Effect_Player">
-            <End Role="Player" EntitySet="Player" />
-            <End Role="Player_Effect" EntitySet="Player_Effect" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Player_Recipe_Player" Association="Self.FK_Player_Recipe_Player">
-            <End Role="Player" EntitySet="Player" />
-            <End Role="Player_Recipe" EntitySet="Player_Recipe" />
           </AssociationSet>
           <AssociationSet Name="FK_Player_Recipe_Recipe" Association="Self.FK_Player_Recipe_Recipe">
             <End Role="Recipe" EntitySet="Recipe" />
@@ -969,8 +872,110 @@
             <End Role="World" EntitySet="World" />
             <End Role="World_Setting" EntitySet="World_Setting" />
           </AssociationSet>
-        </EntityContainer>
-      </Schema>
+          <EntitySet Name="Player" EntityType="Data_r0696944Model.Player" />
+          <AssociationSet Name="FK_Player_Dimension" Association="Data_r0696944Model.FK_Player_Dimension">
+            <End Role="Dimension" EntitySet="Dimension" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Player_Player" Association="Data_r0696944Model.FK_Inventory_Player_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Inventory_Player" EntitySet="Inventory_Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Advancement_Player" Association="Data_r0696944Model.FK_Player_Advancement_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Advancement" EntitySet="Player_Advancement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Effect_Player" Association="Data_r0696944Model.FK_Player_Effect_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Effect" EntitySet="Player_Effect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Recipe_Player" Association="Data_r0696944Model.FK_Player_Recipe_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Recipe" EntitySet="Player_Recipe" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="uuid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="health" Type="Decimal" Precision="3" Scale="1" />
+          <Property Name="food" Type="Decimal" Precision="3" Scale="1" />
+          <Property Name="armor" Type="Decimal" Precision="3" Scale="1" />
+          <Property Name="skin" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="posX" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="posY" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="posZ" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="dimensionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dimension" Relationship="Data_r0696944Model.FK_Player_Dimension" FromRole="Player" ToRole="Dimension" />
+          <NavigationProperty Name="Inventory_Player" Relationship="Data_r0696944Model.FK_Inventory_Player_Player" FromRole="Player" ToRole="Inventory_Player" />
+          <NavigationProperty Name="Player_Advancement" Relationship="Data_r0696944Model.FK_Player_Advancement_Player" FromRole="Player" ToRole="Player_Advancement" />
+          <NavigationProperty Name="Player_Effect" Relationship="Data_r0696944Model.FK_Player_Effect_Player" FromRole="Player" ToRole="Player_Effect" />
+          <NavigationProperty Name="Player_Recipe" Relationship="Data_r0696944Model.FK_Player_Recipe_Player" FromRole="Player" ToRole="Player_Recipe" />
+        </EntityType>
+        <Association Name="FK_Player_Dimension">
+          <End Type="Data_r0696944Model.Dimension" Role="Dimension" Multiplicity="1" />
+          <End Type="Data_r0696944Model.Player" Role="Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dimension">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="dimensionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Player_Player">
+          <End Type="Data_r0696944Model.Player" Role="Player" Multiplicity="1" />
+          <End Type="Data_r0696944Model.Inventory_Player" Role="Inventory_Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory_Player">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Advancement_Player">
+          <End Type="Data_r0696944Model.Player" Role="Player" Multiplicity="1" />
+          <End Type="Data_r0696944Model.Player_Advancement" Role="Player_Advancement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Advancement">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Effect_Player">
+          <End Type="Data_r0696944Model.Player" Role="Player" Multiplicity="1" />
+          <End Type="Data_r0696944Model.Player_Effect" Role="Player_Effect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Effect">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Recipe_Player">
+          <End Type="Data_r0696944Model.Player" Role="Player" Multiplicity="1" />
+          <End Type="Data_r0696944Model.Player_Recipe" Role="Player_Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Player_Recipe">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1037,23 +1042,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="image" ColumnName="image" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Player">
-            <EntityTypeMapping TypeName="Data_r0696944Model.Player">
-              <MappingFragment StoreEntitySet="Player">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="uuid" ColumnName="uuid" />
-                <ScalarProperty Name="health" ColumnName="health" />
-                <ScalarProperty Name="food" ColumnName="food" />
-                <ScalarProperty Name="armor" ColumnName="armor" />
-                <ScalarProperty Name="skin" ColumnName="skin" />
-                <ScalarProperty Name="posX" ColumnName="posX" />
-                <ScalarProperty Name="posY" ColumnName="posY" />
-                <ScalarProperty Name="posZ" ColumnName="posZ" />
-                <ScalarProperty Name="dimensionId" ColumnName="dimensionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1145,6 +1133,23 @@
                 <ScalarProperty Name="worldId" ColumnName="worldId" />
                 <ScalarProperty Name="settingId" ColumnName="settingId" />
                 <ScalarProperty Name="value" ColumnName="value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player">
+            <EntityTypeMapping TypeName="Data_r0696944Model.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="dimensionId" ColumnName="dimensionId" />
+                <ScalarProperty Name="posZ" ColumnName="posZ" />
+                <ScalarProperty Name="posY" ColumnName="posY" />
+                <ScalarProperty Name="posX" ColumnName="posX" />
+                <ScalarProperty Name="skin" ColumnName="skin" />
+                <ScalarProperty Name="armor" ColumnName="armor" />
+                <ScalarProperty Name="food" ColumnName="food" />
+                <ScalarProperty Name="health" ColumnName="health" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

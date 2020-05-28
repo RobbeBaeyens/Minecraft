@@ -29,10 +29,5 @@ namespace WPFMinecraft
             
             this.DataContext = new WindowViewModel(this);
         }
-
-        public void changePage(ApplicationPage page)
-        {
-
-        }
     }
 }

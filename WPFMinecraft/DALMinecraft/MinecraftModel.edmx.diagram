@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="Data_r0696944Model.Inventory_Item" Width="1.5" PointX="10.25" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Data_r0696944Model.Inventory_Player" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Data_r0696944Model.Item" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Data_r0696944Model.Player" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Data_r0696944Model.Player_Advancement" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Data_r0696944Model.Player_Effect" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Data_r0696944Model.Player_Recipe" Width="1.5" PointX="10.5" PointY="7.875" IsExpanded="true" />
@@ -24,22 +23,23 @@
         <EntityTypeShape EntityType="Data_r0696944Model.World_Setting" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
         <AssociationConnector Association="Data_r0696944Model.FK_Player_Advancement_Advancement" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_Dimension_World" ManuallyRouted="false" />
-        <AssociationConnector Association="Data_r0696944Model.FK_Player_Dimension" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_Player_Effect_Effect" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_Inventory_Item_Inventory" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_Inventory_Player_Inventory" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_Inventory_Item_Item" ManuallyRouted="false" />
-        <AssociationConnector Association="Data_r0696944Model.FK_Inventory_Player_Player" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_Recipe_Item" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_Recipe_Item_Item" ManuallyRouted="false" />
-        <AssociationConnector Association="Data_r0696944Model.FK_Player_Advancement_Player" ManuallyRouted="false" />
-        <AssociationConnector Association="Data_r0696944Model.FK_Player_Effect_Player" ManuallyRouted="false" />
-        <AssociationConnector Association="Data_r0696944Model.FK_Player_Recipe_Player" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_Player_Recipe_Recipe" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_Recipe_Item_Recipe" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_Server_World" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_World_Setting_Setting" ManuallyRouted="false" />
         <AssociationConnector Association="Data_r0696944Model.FK_World_Setting_World" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Data_r0696944Model.Player" Width="1.5" PointX="5.25" PointY="6.875" />
+        <AssociationConnector Association="Data_r0696944Model.FK_Player_Dimension" />
+        <AssociationConnector Association="Data_r0696944Model.FK_Inventory_Player_Player" />
+        <AssociationConnector Association="Data_r0696944Model.FK_Player_Advancement_Player" />
+        <AssociationConnector Association="Data_r0696944Model.FK_Player_Effect_Player" />
+        <AssociationConnector Association="Data_r0696944Model.FK_Player_Recipe_Player" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
