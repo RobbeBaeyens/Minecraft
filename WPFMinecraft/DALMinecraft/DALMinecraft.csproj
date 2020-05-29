@@ -66,9 +66,6 @@
     <Compile Include="Inventory_Item.cs">
       <DependentUpon>MinecraftModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Inventory_Player.cs">
-      <DependentUpon>MinecraftModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Item.cs">
       <DependentUpon>MinecraftModel.tt</DependentUpon>
     </Compile>

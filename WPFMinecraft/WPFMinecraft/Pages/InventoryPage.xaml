@@ -124,7 +124,7 @@
                         <TextBlock x:Name="inv06" Grid.Row="0" Grid.Column="5"/>
                         <TextBlock x:Name="inv07" Grid.Row="0" Grid.Column="6"/>
                         <TextBlock x:Name="inv08" Grid.Row="0" Grid.Column="7"/>
-                        <TextBlock x:Name="inv9" Grid.Row="0" Grid.Column="8"/>
+                        <TextBlock x:Name="inv09" Grid.Row="0" Grid.Column="8"/>
 
                         <!--Rij 2 algemene Inventory-->
                         <TextBlock x:Name="inv10" Grid.Row="1" Grid.Column="0"/>

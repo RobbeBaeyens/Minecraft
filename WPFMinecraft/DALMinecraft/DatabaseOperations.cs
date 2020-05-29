@@ -320,8 +320,51 @@ namespace DALMinecraft
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 entities.Entry(advancement).State = EntityState.Modified;
-
-
+                return entities.SaveChanges();
+            }
+        }
+        /*=====================
+         * Recipes
+         =====================*/
+        //toevoegen
+        public static int AddPlayerRecipe(Player_Recipe playerrecipe)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Player_Recipe.Add(playerrecipe);
+                return entities.SaveChanges();
+            }
+        }
+        //ophalen
+        public static List<Player_Recipe> OphalenPlayerRecipes(int playerId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Player
+                    .Include(x => x.Player_Recipe.Select(y => y.Recipe.Item))
+                    .Where(x => x.id == playerId)
+                    .SingleOrDefault();
+                return query.Player_Recipe.ToList();
+            }
+        }
+        //ophalen
+        public static List<Recipe_Item> OphalenRecipeItems(int recipeId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Recipe_Item
+                    .Include(x => x.Recipe)
+                    .Include(x => x.Item)
+                    .Where(x => x.recipeId == recipeId);
+                return query.ToList();
+            }
+        }
+        //Update
+        public static int UpdatePlayerRecipe(Player_Recipe recipe)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(recipe).State = EntityState.Modified;
                 return entities.SaveChanges();
             }
         }
@@ -342,6 +385,19 @@ namespace DALMinecraft
                 return query.ToList();
             }
         }
+        //Ophalen inventory
+        public static Inventory OphalenInventory(int playerId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Player
+                    .Include(x => x.Inventory)
+                    .OrderBy(x => x.id == playerId)
+                    .SingleOrDefault();
+
+                return query.Inventory.SingleOrDefault();
+            }
+        }
         //Ophalen items
         public static List<Item> OphalenItems()
         {
@@ -355,16 +411,28 @@ namespace DALMinecraft
         }
 
         //Ophalen inventoryItems
-        public static List<Inventory_Item> OphalenInventoryItem(int inventoryid)
+        public static List<Inventory_Item> OphalenInventoryItems(int inventoryid)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Inventory
+                    .Include(x => x.Inventory_Item.Select(y => y.Item))
+                    .Where(x => x.id == inventoryid)
+                    .SingleOrDefault();
+
+                return query.Inventory_Item.ToList();
+            }
+        }
+        //Ophalen inventoryItem
+        public static Inventory_Item OphalenInventoryItem(int slotid)
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 var query = entities.Inventory_Item
-                    .Include(x => x.Inventory)
-                    .Where(x => x.id == inventoryid)
-                    .OrderBy(x => x.slotId);
+                    .Where(x => x.slotId == slotid)
+                    .SingleOrDefault();
 
-                return query.ToList();
+                return query;
             }
         }
         //Update inventoryitems
@@ -373,6 +441,24 @@ namespace DALMinecraft
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 entities.Entry(invItem).State = EntityState.Modified;
+                return entities.SaveChanges();
+            }
+        }
+        //toevoegen
+        public static int AddPlayerInventoryItem(Inventory_Item inventoryitem)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Inventory_Item.Add(inventoryitem);
+                return entities.SaveChanges();
+            }
+        }
+        //toevoegen
+        public static int AddInventory(Inventory inventory)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Inventory.Add(inventory);
                 return entities.SaveChanges();
             }
         }

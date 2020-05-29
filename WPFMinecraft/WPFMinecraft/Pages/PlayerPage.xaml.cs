@@ -112,6 +112,7 @@ namespace WPFMinecraft.Pages
                 windowViewModel.CurrentPage = applicationPage;
                 windowViewModel.WorldId = worldId;
                 windowViewModel.PlayerId = playerId;
+                windowViewModel.InventoryId = DatabaseOperations.OphalenInventory(playerId).id;
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + serverId + "\n");
             }

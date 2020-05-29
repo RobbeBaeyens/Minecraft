@@ -82,6 +82,8 @@ namespace WPFMinecraft.Pages
             {
                 Player player = createNewPlayer(playerName, worldId);
                 createNewPlayerAdvancements(player);
+                createNewPlayerInventoryItems(player);
+                createNewPlayerRecipes(player);
 
                 ListboxPlayers.ItemsSource = getPlayers();
             }
@@ -119,6 +121,36 @@ namespace WPFMinecraft.Pages
                 player_advancement.advancementId = i;
                 player_advancement.advancementObtained = false;
                 DatabaseOperations.AddPlayerAdvancement(player_advancement);
+            }
+        }
+
+        public void createNewPlayerRecipes(Player player)
+        {
+            for (int i = 1; i <= 24; i++)
+            {
+                Player_Recipe playerrecipe = new Player_Recipe();
+                playerrecipe.playerId = player.id;
+                playerrecipe.recipeId = i;
+                playerrecipe.recipeObtained = false;
+                DatabaseOperations.AddPlayerRecipe(playerrecipe);
+            }
+        }
+
+        public void createNewPlayerInventoryItems(Player player)
+        {
+            Inventory inventory = new Inventory();
+            inventory.name = player.name + "'s inventory";
+            inventory.playerId = player.id;
+            DatabaseOperations.AddInventory(inventory);
+
+            for (int i = 1; i <= 40; i++)
+            {
+                Inventory_Item inventoryitem = new Inventory_Item();
+                inventoryitem.inventoryId = inventory.id;
+                inventoryitem.slotId = i;
+                inventoryitem.itemId = 1;
+                inventoryitem.count = 0;
+                DatabaseOperations.AddPlayerInventoryItem(inventoryitem);
             }
         }
 
