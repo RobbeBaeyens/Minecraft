@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DALMinecraft;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,11 @@ namespace WPFMinecraft.Pages
     /// </summary>
     public partial class InventoryPage : Page
     {
+        public int serverId;
+        public int worldId;
+        public int playerId;
+        public int inventoryId;
+
         public InventoryPage()
         {
             InitializeComponent();
@@ -31,23 +37,28 @@ namespace WPFMinecraft.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Zoek het frame
-            Frame frame = null;
-            DependencyObject parent = VisualTreeHelper.GetParent(this);
+            // Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
 
-            while (parent != null && frame == null)
+            while (currParent != null && pageFrame == null)
             {
-                frame = parent as Frame;
-                parent = VisualTreeHelper.GetParent(parent);
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
             }
 
-            //Verander de pagina van het frame
-            if (frame.DataContext != null)
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
             {
-                WindowViewModel windowViewModel = frame.DataContext as WindowViewModel;
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
                 windowViewModel.CurrentPage = ApplicationPage.InventoryManager;
+                windowViewModel.InventoryId = inventoryId;
+                serverId = windowViewModel.ServerId;
+                windowViewModel.WorldId = worldId;
+                windowViewModel.PlayerId = playerId;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nInventory ID : " + inventoryId + "\n" );
             }
-
         }
 
         public void addToInventory()

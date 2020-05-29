@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -95,7 +97,7 @@ namespace DALMinecraft
                     .Include(x => x.Dimension.World)
                     .Where(x => x.id == playerId)
                     .SingleOrDefault();
-                return query.Dimension.World;
+               return query.Dimension.World;
 
             }
         }
@@ -325,8 +327,11 @@ namespace DALMinecraft
         }
 
 
+        /*=====================
+        * Inventory & items
+        =====================*/
 
-        //inventoryPage
+        //Ophalen inventory
         public static List<Inventory> OphalenInventory()
         {
             using (MinecraftEntities entities = new MinecraftEntities())
@@ -337,27 +342,38 @@ namespace DALMinecraft
                 return query.ToList();
             }
         }
-
+        //Ophalen items
         public static List<Item> OphalenItems()
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 var query = entities.Item
-                    .OrderBy(x => x.name);
+                    .OrderBy(x => x.id);
 
                 return query.ToList();
             }
         }
 
-        //inventoryManagerPage
-        public static List<Inventory_Item> OphalenInventoryItem()
+        //Ophalen inventoryItems
+        public static List<Inventory_Item> OphalenInventoryItem(int inventoryid)
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 var query = entities.Inventory_Item
-                    .OrderBy(x => x.Item);
+                    .Include(x => x.Inventory)
+                    .Where(x => x.id == inventoryid)
+                    .OrderBy(x => x.slotId);
 
                 return query.ToList();
+            }
+        }
+        //Update inventoryitems
+        public static int UpdateInventoryItem(Inventory_Item invItem)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(invItem).State = EntityState.Modified;
+                return entities.SaveChanges();
             }
         }
     }
