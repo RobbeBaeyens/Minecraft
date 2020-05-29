@@ -24,6 +24,18 @@ namespace DALMinecraft
                 return query.ToList();
             }
         }
+        //ophalenviaworldid
+        public static Server OphalenServer(int worldId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Server
+                    .Where(x => x.worldId == worldId)
+                    .OrderBy(x => x.name)
+                    .ThenBy(x => x.ipadress);
+                return query.SingleOrDefault();
+            }
+        }
         //toevoegen
         public static int AddServer(Server server)
         {
