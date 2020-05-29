@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFMinecraft.ViewModel;
+using MODELSMinecraft;
 
 namespace WPFMinecraft.Pages
 {
@@ -30,6 +31,8 @@ namespace WPFMinecraft.Pages
         Inventory_Item invItem = new Inventory_Item();
         List<Item> invItems = DatabaseOperations.OphalenItems();
         List<Inventory_Item> inventoryitems;
+
+
 
         public InventoryManagerPage()
         {
@@ -73,12 +76,47 @@ namespace WPFMinecraft.Pages
             cmb1.ItemsSource = invItems;
 
             
+            
 
         }
 
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (cmb1.SelectedIndex != -1 && cmb2.SelectedIndex != -1)
+            {
+
+
+                if (int.TryParse(txtInvoerAmount.Text, out int count))
+                {
+                    InventoryClass inventorySet = new InventoryClass(count);
+                    string valideer = inventorySet.Valideer("count");
+
+                    if (valideer == "ok")
+                    {
+                        Inventory_Item inventoryItem = new Inventory_Item();
+                        inventoryItem.inventoryId = inventoryId;
+                        inventoryItem.itemId = cmb1.SelectedIndex;
+                        inventoryItem.slotId = cmb2.SelectedIndex;
+                        inventoryItem.count = count;
+
+                        DatabaseOperations.UpdateInventoryItem(inventoryItem);
+                    }
+                    else
+                    {
+                        MessageBox.Show(valideer);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Only nummeric alowed in Amount");
+                }
+            }
+            else
+            {
+                MessageBox.Show("You need to select Item & Slot");
+            }
+
+
         }
     }
 }

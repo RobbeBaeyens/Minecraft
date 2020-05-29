@@ -354,6 +354,10 @@
       <Project>{154d77f6-16c7-44af-846f-3925786df5d8}</Project>
       <Name>DALMinecraft</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MODELSMinecraft\MODELSMinecraft.csproj">
+      <Project>{53bd7fc4-5085-48f9-9d34-d4ba5a89e657}</Project>
+      <Name>MODELSMinecraft</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Player\Armor\armor_empty.png" />

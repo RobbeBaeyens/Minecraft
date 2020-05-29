@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -96,7 +97,7 @@ namespace DALMinecraft
                     .Include(x => x.Dimension.World)
                     .Where(x => x.id == playerId)
                     .SingleOrDefault();
-                return query.Dimension.World;
+               return query.Dimension.World;
 
             }
         }
@@ -330,7 +331,7 @@ namespace DALMinecraft
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 var query = entities.Item
-                    .OrderBy(x => x.name);
+                    .OrderBy(x => x.id);
 
                 return query.ToList();
             }
@@ -347,6 +348,15 @@ namespace DALMinecraft
                     .OrderBy(x => x.slotId);
 
                 return query.ToList();
+            }
+        }
+        //Update inventoryitems
+        public static int UpdateInventoryItem(Inventory_Item invItem)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(invItem).State = EntityState.Modified;
+                return entities.SaveChanges();
             }
         }
     }
