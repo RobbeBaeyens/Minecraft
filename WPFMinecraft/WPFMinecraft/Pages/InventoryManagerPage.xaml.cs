@@ -37,7 +37,7 @@ namespace WPFMinecraft.Pages
         public InventoryManagerPage()
         {
             InitializeComponent();
-        }
+        } 
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
