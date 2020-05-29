@@ -77,11 +77,7 @@ namespace WPFMinecraft.Pages
 
             List<string> slots = new List<string>()
             {
-                "armor.helmet" ,
-                "armor.chestplate",
-                "armor.leggings",
-                "armor.boots",
-                "inv.offhand",
+                "armor.helmet" , "armor.chestplate", "armor.leggings", "armor.boots", "inv.offhand",
 
                 "hotbar.0", "hotbar.1", "hotbar.2", "hotbar.3", "hotbar.4",  "hotbar.5",  "hotbar.6", "hotbar.7",  "hotbar.8",
 
@@ -91,8 +87,6 @@ namespace WPFMinecraft.Pages
             };
 
             cmb2.ItemsSource = slots;
-            
-
         }
 
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
@@ -131,6 +125,16 @@ namespace WPFMinecraft.Pages
                 MessageBox.Show("You need to select Item & Slot");
             }
 
+
+        }
+
+        private void cmb1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cmb2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }
