@@ -411,16 +411,28 @@ namespace DALMinecraft
         }
 
         //Ophalen inventoryItems
-        public static List<Inventory_Item> OphalenInventoryItem(int inventoryid)
+        public static List<Inventory_Item> OphalenInventoryItems(int inventoryid)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Inventory
+                    .Include(x => x.Inventory_Item.Select(y => y.Item))
+                    .Where(x => x.id == inventoryid)
+                    .SingleOrDefault();
+
+                return query.Inventory_Item.ToList();
+            }
+        }
+        //Ophalen inventoryItem
+        public static Inventory_Item OphalenInventoryItem(int slotid)
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 var query = entities.Inventory_Item
-                    .Include(x => x.Inventory)
-                    .Where(x => x.id == inventoryid)
-                    .OrderBy(x => x.slotId);
+                    .Where(x => x.slotId == slotid)
+                    .SingleOrDefault();
 
-                return query.ToList();
+                return query;
             }
         }
         //Update inventoryitems

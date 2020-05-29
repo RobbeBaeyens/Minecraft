@@ -48,7 +48,7 @@
                     <Label Background="Transparent" Foreground="White" Content="Select Item" HorizontalAlignment="Center" FontSize="40" Margin="0,40,0,-20"/>
                     
                     <!--Combobox om voorwerpen te selecteren die in de "Inventory" gezet moeten worden-->
-                    <ComboBox x:Name="cmb1" Style="{StaticResource BasicComboBox}" Margin="38,10,38,0" Width="325" Height="70" SelectionChanged="cmb1_SelectionChanged">
+                    <ComboBox x:Name="cmb1" Style="{StaticResource BasicComboBox}" Margin="38,10,38,0" Width="325" Height="70">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
@@ -67,7 +67,7 @@
                     <Label Background="Transparent" Foreground="White" Content="Select Slot" HorizontalAlignment="Center" FontSize="40" Margin="0,40,0,-20"/>
                     
                     <!--Combobox om het juiste vakje te selecteren in "Iventory"-->
-                    <ComboBox  x:Name="cmb2"  Style="{StaticResource BasicComboBox}" Margin="38,10,38,0" Width="325" Height="70" SelectionChanged="cmb2_SelectionChanged">
+                    <ComboBox  x:Name="cmb2"  Style="{StaticResource BasicComboBox}" Margin="38,10,38,0" Width="325" Height="70">
                     </ComboBox>
                 </StackPanel>
 

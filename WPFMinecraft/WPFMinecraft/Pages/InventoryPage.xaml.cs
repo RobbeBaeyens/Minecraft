@@ -52,12 +52,13 @@ namespace WPFMinecraft.Pages
                 serverId = windowViewModel.ServerId;
                 playerId = windowViewModel.PlayerId;
                 worldId = windowViewModel.WorldId;
+                inventoryId = windowViewModel.InventoryId;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + playerId + "\n");
             }
-        }
 
-        int gridNummer = 0;
+            addToInventory();
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -87,18 +88,36 @@ namespace WPFMinecraft.Pages
 
         public void addToInventory()
         {
-
-            int testInt = 0;
-
-            foreach (TextBlock test in Inventory_grid.Children)
+            List<TextBlock> textblokken = new List<TextBlock>()
             {
-                Console.WriteLine(test);
+                invArmorHelmet, invArmorChest, invArmorPants, invArmorBoots, invShield,
+                inv01, inv02, inv03, inv04, inv05, inv06, inv07, inv08, inv09, inv10, inv11,
+                inv12, inv13, inv14, inv15, inv16, inv17, inv18, inv19, inv20, inv21, inv22,
+                inv23,inv24, inv25, inv26, inv27,
+                invHand01, invHand02, invHand03, invHand04, invHand05, invHand06, invHand07, invHand08, invHand09,
+            };
 
-                if (testInt == gridNummer)
-                    test.Inlines.Add(new Label { Content = "tekst" });
+            var counter = 1;
 
-                Console.WriteLine(testInt);
-                testInt++;
+            List<Inventory_Item> invitems = DatabaseOperations.OphalenInventoryItems(inventoryId);
+            Console.WriteLine(invitems.Count());
+            Console.WriteLine(inventoryId);
+            foreach (Inventory_Item invitem in invitems)
+            {
+                if (invitem.count != 0)
+                {
+                    Image image = new Image();
+                    image.Source = new BitmapImage(new Uri(invitem.Item.image));
+                    Label label = new Label();
+                    label.Content = invitem.count; 
+                    textblokken[counter - 1].Inlines.Add(image);
+                    textblokken[counter - 1].Inlines.Add(label);
+
+                    Console.WriteLine(invitem.slotId);
+                }
+                counter++;
+
+                Console.WriteLine(invitem.slotId);
             }
         }
     }
