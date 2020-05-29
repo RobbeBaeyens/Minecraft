@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WPFMinecraft.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="InventoryPage">
+      Title="InventoryPage" Loaded="Page_Loaded">
 
     <!--Basis-drid voor achtergrond en viewbox-->
     <Grid>
