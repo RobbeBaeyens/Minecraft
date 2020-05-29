@@ -320,8 +320,6 @@ namespace DALMinecraft
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 entities.Entry(advancement).State = EntityState.Modified;
-
-
                 return entities.SaveChanges();
             }
         }
@@ -337,7 +335,7 @@ namespace DALMinecraft
                 return entities.SaveChanges();
             }
         }
-
+        //ophalen
         public static List<Player_Recipe> OphalenPlayerRecipes(int playerId)
         {
             using (MinecraftEntities entities = new MinecraftEntities())
@@ -347,6 +345,27 @@ namespace DALMinecraft
                     .Where(x => x.id == playerId)
                     .SingleOrDefault();
                 return query.Player_Recipe.ToList();
+            }
+        }
+        //ophalen
+        public static List<Recipe_Item> OphalenRecipeItems(int recipeId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Recipe_Item
+                    .Include(x => x.Recipe)
+                    .Include(x => x.Item)
+                    .Where(x => x.recipeId == recipeId);
+                return query.ToList();
+            }
+        }
+        //Update
+        public static int UpdatePlayerRecipe(Player_Recipe recipe)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(recipe).State = EntityState.Modified;
+                return entities.SaveChanges();
             }
         }
 

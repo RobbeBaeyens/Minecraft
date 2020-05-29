@@ -153,13 +153,41 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type ListBoxItem}" x:Key="rectangle" BasedOn="{StaticResource HoverlessListBoxItemRecipe}">
+    <Style TargetType="{x:Type ListBoxItem}" x:Key="rectangleRed" BasedOn="{StaticResource HoverlessListBoxItemRecipe}">
        
         <Setter Property="Height" Value="39"/>
         <Setter Property="Width" Value="39"/>
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="/Images/Recipe/RecipeBook.png"/>
+                <ImageBrush ImageSource="/Images/Recipe/RecipeRed.png"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/Images/Recipe/RecipeBook_Selecting.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/Images/Recipe/RecipeBook_Selecting.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type ListBoxItem}" x:Key="rectangleGreen" BasedOn="{StaticResource HoverlessListBoxItemRecipe}">
+        
+        <Setter Property="Height" Value="39"/>
+        <Setter Property="Width" Value="39"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Images/Recipe/RecipeGreen.png"/>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
