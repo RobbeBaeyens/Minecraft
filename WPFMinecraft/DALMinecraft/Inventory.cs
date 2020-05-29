@@ -18,15 +18,14 @@ namespace DALMinecraft
         public Inventory()
         {
             this.Inventory_Item = new HashSet<Inventory_Item>();
-            this.Inventory_Player = new HashSet<Inventory_Player>();
         }
     
         public int id { get; set; }
         public string name { get; set; }
+        public int playerId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inventory_Item> Inventory_Item { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inventory_Player> Inventory_Player { get; set; }
+        public virtual Player Player { get; set; }
     }
 }

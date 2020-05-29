@@ -35,6 +35,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="playerId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Inventory_Item">
           <Key>
@@ -45,14 +46,6 @@
           <Property Name="itemId" Type="int" Nullable="false" />
           <Property Name="slotId" Type="int" Nullable="false" />
           <Property Name="count" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Inventory_Player">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="inventoryId" Type="int" Nullable="false" />
-          <Property Name="playerId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -198,28 +191,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Inventory_Player_Inventory">
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
-          <End Role="Inventory_Player" Type="Self.Inventory_Player" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Inventory">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Inventory_Player">
-              <PropertyRef Name="inventoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Inventory_Player_Player">
-          <End Role="Player" Type="Self.Player" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Inventory_Player" Type="Self.Inventory_Player" Multiplicity="*" />
+        <Association Name="FK_Inventory_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Inventory_Player">
+            <Dependent Role="Inventory">
               <PropertyRef Name="playerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -400,7 +379,6 @@
           <EntitySet Name="Effect" EntityType="Self.Effect" Schema="Minecraft" store:Type="Tables" />
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="Minecraft" store:Type="Tables" />
           <EntitySet Name="Inventory_Item" EntityType="Self.Inventory_Item" Schema="Minecraft" store:Type="Tables" />
-          <EntitySet Name="Inventory_Player" EntityType="Self.Inventory_Player" Schema="Minecraft" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="Minecraft" store:Type="Tables" />
           <EntitySet Name="Player" EntityType="Self.Player" Schema="Minecraft" store:Type="Tables" />
           <EntitySet Name="Player_Advancement" EntityType="Self.Player_Advancement" Schema="Minecraft" store:Type="Tables" />
@@ -424,13 +402,9 @@
             <End Role="Item" EntitySet="Item" />
             <End Role="Inventory_Item" EntitySet="Inventory_Item" />
           </AssociationSet>
-          <AssociationSet Name="FK_Inventory_Player_Inventory" Association="Self.FK_Inventory_Player_Inventory">
-            <End Role="Inventory" EntitySet="Inventory" />
-            <End Role="Inventory_Player" EntitySet="Inventory_Player" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Inventory_Player_Player" Association="Self.FK_Inventory_Player_Player">
+          <AssociationSet Name="FK_Inventory_Player" Association="Self.FK_Inventory_Player">
             <End Role="Player" EntitySet="Player" />
-            <End Role="Inventory_Player" EntitySet="Inventory_Player" />
+            <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
           <AssociationSet Name="FK_Player_Advancement_Advancement" Association="Self.FK_Player_Advancement_Advancement">
             <End Role="Advancement" EntitySet="Advancement" />
@@ -524,7 +498,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Inventory_Item" Relationship="Self.FK_Inventory_Item_Inventory" FromRole="Inventory" ToRole="Inventory_Item" />
-          <NavigationProperty Name="Inventory_Player" Relationship="Self.FK_Inventory_Player_Inventory" FromRole="Inventory" ToRole="Inventory_Player" />
+          <Property Name="playerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="Data_r0696944Model.FK_Inventory_Player" FromRole="Inventory" ToRole="Player" />
         </EntityType>
         <EntityType Name="Inventory_Item">
           <Key>
@@ -537,16 +512,6 @@
           <Property Name="count" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Inventory" Relationship="Self.FK_Inventory_Item_Inventory" FromRole="Inventory_Item" ToRole="Inventory" />
           <NavigationProperty Name="Item" Relationship="Self.FK_Inventory_Item_Item" FromRole="Inventory_Item" ToRole="Item" />
-        </EntityType>
-        <EntityType Name="Inventory_Player">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="inventoryId" Type="Int32" Nullable="false" />
-          <Property Name="playerId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Inventory" Relationship="Self.FK_Inventory_Player_Inventory" FromRole="Inventory_Player" ToRole="Inventory" />
-          <NavigationProperty Name="Player" Relationship="Data_r0696944Model.FK_Inventory_Player_Player" FromRole="Inventory_Player" ToRole="Player" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -707,18 +672,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Inventory_Player_Inventory">
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
-          <End Role="Inventory_Player" Type="Self.Inventory_Player" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Inventory">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Inventory_Player">
-              <PropertyRef Name="inventoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Inventory_Item_Item">
           <End Role="Item" Type="Self.Item" Multiplicity="1" />
           <End Role="Inventory_Item" Type="Self.Inventory_Item" Multiplicity="*" />
@@ -821,7 +774,6 @@
           <EntitySet Name="Effect" EntityType="Self.Effect" />
           <EntitySet Name="Inventory" EntityType="Self.Inventory" />
           <EntitySet Name="Inventory_Item" EntityType="Self.Inventory_Item" />
-          <EntitySet Name="Inventory_Player" EntityType="Self.Inventory_Player" />
           <EntitySet Name="Item" EntityType="Self.Item" />
           <EntitySet Name="Player_Advancement" EntityType="Self.Player_Advancement" />
           <EntitySet Name="Player_Effect" EntityType="Self.Player_Effect" />
@@ -847,10 +799,6 @@
           <AssociationSet Name="FK_Inventory_Item_Inventory" Association="Self.FK_Inventory_Item_Inventory">
             <End Role="Inventory" EntitySet="Inventory" />
             <End Role="Inventory_Item" EntitySet="Inventory_Item" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Inventory_Player_Inventory" Association="Self.FK_Inventory_Player_Inventory">
-            <End Role="Inventory" EntitySet="Inventory" />
-            <End Role="Inventory_Player" EntitySet="Inventory_Player" />
           </AssociationSet>
           <AssociationSet Name="FK_Inventory_Item_Item" Association="Self.FK_Inventory_Item_Item">
             <End Role="Item" EntitySet="Item" />
@@ -889,10 +837,6 @@
             <End Role="Dimension" EntitySet="Dimension" />
             <End Role="Player" EntitySet="Player" />
           </AssociationSet>
-          <AssociationSet Name="FK_Inventory_Player_Player" Association="Data_r0696944Model.FK_Inventory_Player_Player">
-            <End Role="Player" EntitySet="Player" />
-            <End Role="Inventory_Player" EntitySet="Inventory_Player" />
-          </AssociationSet>
           <AssociationSet Name="FK_Player_Advancement_Player" Association="Data_r0696944Model.FK_Player_Advancement_Player">
             <End Role="Player" EntitySet="Player" />
             <End Role="Player_Advancement" EntitySet="Player_Advancement" />
@@ -904,6 +848,10 @@
           <AssociationSet Name="FK_Player_Recipe_Player" Association="Data_r0696944Model.FK_Player_Recipe_Player">
             <End Role="Player" EntitySet="Player" />
             <End Role="Player_Recipe" EntitySet="Player_Recipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Player" Association="Data_r0696944Model.FK_Inventory_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Inventory" EntitySet="Inventory" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Player">
@@ -922,10 +870,10 @@
           <Property Name="posZ" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
           <Property Name="dimensionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Dimension" Relationship="Data_r0696944Model.FK_Player_Dimension" FromRole="Player" ToRole="Dimension" />
-          <NavigationProperty Name="Inventory_Player" Relationship="Data_r0696944Model.FK_Inventory_Player_Player" FromRole="Player" ToRole="Inventory_Player" />
           <NavigationProperty Name="Player_Advancement" Relationship="Data_r0696944Model.FK_Player_Advancement_Player" FromRole="Player" ToRole="Player_Advancement" />
           <NavigationProperty Name="Player_Effect" Relationship="Data_r0696944Model.FK_Player_Effect_Player" FromRole="Player" ToRole="Player_Effect" />
           <NavigationProperty Name="Player_Recipe" Relationship="Data_r0696944Model.FK_Player_Recipe_Player" FromRole="Player" ToRole="Player_Recipe" />
+          <NavigationProperty Name="Inventory" Relationship="Data_r0696944Model.FK_Inventory_Player" FromRole="Player" ToRole="Inventory" />
         </EntityType>
         <Association Name="FK_Player_Dimension">
           <End Type="Data_r0696944Model.Dimension" Role="Dimension" Multiplicity="1" />
@@ -936,18 +884,6 @@
             </Principal>
             <Dependent Role="Player">
               <PropertyRef Name="dimensionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Inventory_Player_Player">
-          <End Type="Data_r0696944Model.Player" Role="Player" Multiplicity="1" />
-          <End Type="Data_r0696944Model.Inventory_Player" Role="Inventory_Player" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Player">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Inventory_Player">
-              <PropertyRef Name="playerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -983,6 +919,18 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Player_Recipe">
+              <PropertyRef Name="playerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Player">
+          <End Type="Data_r0696944Model.Player" Role="Player" Multiplicity="1" />
+          <End Type="Data_r0696944Model.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inventory">
               <PropertyRef Name="playerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1023,6 +971,7 @@
           <EntitySetMapping Name="Inventory">
             <EntityTypeMapping TypeName="Data_r0696944Model.Inventory">
               <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
@@ -1036,15 +985,6 @@
                 <ScalarProperty Name="itemId" ColumnName="itemId" />
                 <ScalarProperty Name="slotId" ColumnName="slotId" />
                 <ScalarProperty Name="count" ColumnName="count" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Inventory_Player">
-            <EntityTypeMapping TypeName="Data_r0696944Model.Inventory_Player">
-              <MappingFragment StoreEntitySet="Inventory_Player">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="inventoryId" ColumnName="inventoryId" />
-                <ScalarProperty Name="playerId" ColumnName="playerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
