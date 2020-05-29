@@ -47,29 +47,6 @@
                             </ListBox.ItemsPanel>
 
                             <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
 
                         </ListBox>
                     </ScrollViewer>

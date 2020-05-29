@@ -22,7 +22,7 @@ namespace WPFMinecraft.Pages
     /// </summary>
     public partial class RecipePage : Page
     {
-        ListBox ListBox = new ListBox();
+        List<Item> RecipeItems = DatabaseOperations.OphalenItems();
 
         public RecipePage()
         {
@@ -34,6 +34,8 @@ namespace WPFMinecraft.Pages
         public int playerId;
 
         public Player player;
+        
+        List<li>
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -58,6 +60,7 @@ namespace WPFMinecraft.Pages
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + playerId + "\n");
             }
 
+            
 
 
         }
