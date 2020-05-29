@@ -30,7 +30,6 @@ namespace DALMinecraft
         public virtual DbSet<Effect> Effect { get; set; }
         public virtual DbSet<Inventory> Inventory { get; set; }
         public virtual DbSet<Inventory_Item> Inventory_Item { get; set; }
-        public virtual DbSet<Inventory_Player> Inventory_Player { get; set; }
         public virtual DbSet<Item> Item { get; set; }
         public virtual DbSet<Player_Advancement> Player_Advancement { get; set; }
         public virtual DbSet<Player_Effect> Player_Effect { get; set; }

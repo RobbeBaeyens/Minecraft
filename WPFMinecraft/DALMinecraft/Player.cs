@@ -17,10 +17,10 @@ namespace DALMinecraft
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Player()
         {
-            this.Inventory_Player = new HashSet<Inventory_Player>();
             this.Player_Advancement = new HashSet<Player_Advancement>();
             this.Player_Effect = new HashSet<Player_Effect>();
             this.Player_Recipe = new HashSet<Player_Recipe>();
+            this.Inventory = new HashSet<Inventory>();
         }
     
         public int id { get; set; }
@@ -37,12 +37,12 @@ namespace DALMinecraft
     
         public virtual Dimension Dimension { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inventory_Player> Inventory_Player { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player_Advancement> Player_Advancement { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player_Effect> Player_Effect { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player_Recipe> Player_Recipe { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Inventory> Inventory { get; set; }
     }
 }

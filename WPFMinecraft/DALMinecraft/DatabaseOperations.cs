@@ -376,5 +376,23 @@ namespace DALMinecraft
                 return entities.SaveChanges();
             }
         }
+        //toevoegen
+        public static int AddPlayerInventoryItem(Inventory_Item inventoryitem)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Inventory_Item.Add(inventoryitem);
+                return entities.SaveChanges();
+            }
+        }
+        //toevoegen
+        public static int AddInventory(Inventory inventory)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Inventory.Add(inventory);
+                return entities.SaveChanges();
+            }
+        }
     }
 }
