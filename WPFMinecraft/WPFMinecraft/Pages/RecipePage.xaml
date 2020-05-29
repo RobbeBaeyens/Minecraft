@@ -6,22 +6,22 @@
       xmlns:local="clr-namespace:WPFMinecraft.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="RecipePage">
+      Title="RecipePage" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.Background>
-                <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
+            <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
                         ViewportUnits="Absolute"
                         Viewport="0,0,256,256" 
                         TileMode="Tile"
                         Stretch="None"
                         AlignmentX="Left"
                         AlignmentY="Top">
-                    <ImageBrush.Transform>
-                        <ScaleTransform ScaleX=".5" ScaleY=".5"/>
-                    </ImageBrush.Transform>
-                </ImageBrush>
-            </Grid.Background>
+                <ImageBrush.Transform>
+                    <ScaleTransform ScaleX=".5" ScaleY=".5"/>
+                </ImageBrush.Transform>
+            </ImageBrush>
+        </Grid.Background>
         <Viewbox>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -37,59 +37,25 @@
                         </Border.Background>
                     </Border>
 
-                    
-                        <ScrollViewer Width="185" Height="210" Margin="20,8,10,0">
-                        <ListBox Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+
+                    <ScrollViewer Width="185" Height="210" Margin="20,8,10,0">
+                        <ListBox x:Name="lstBxRecipes" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel Width="156" Margin="5,5,5,5" />
                                 </ItemsPanelTemplate>
                             </ListBox.ItemsPanel>
-                            
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-
                         </ListBox>
                     </ScrollViewer>
 
-           
 
-                   
+
+
                 </Grid>
 
                 <Grid Width="305" Grid.Column="2">
-                    <Button Style="{StaticResource AddRecipeButton}" />
-                    <Button Style="{StaticResource RemoveRecipeButton}"/>
+                    <Button x:Name="btnAddRecipe" Style="{StaticResource AddRecipeButton}" Click="btnAddRecipe_Click"/>
+                    <Button x:Name="btnRemoveRecipe" Style="{StaticResource RemoveRecipeButton}" Click="btnRemoveRecipe_Click"/>
                     <TextBlock Foreground="White" Style="{StaticResource ButtonRecipeText}"> Add</TextBlock>
                     <TextBlock Foreground="White" Style="{StaticResource RemoveButtonRecipeText}" > Remove</TextBlock>
 
@@ -97,39 +63,40 @@
                         <Border.Background>
                             <ImageBrush ImageSource="../Images/Recipe/craftingGrid.png" />
                         </Border.Background>
-                    
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
 
-                        <TextBlock Style="{StaticResource GridRecipe}" Grid.Column="0"/>
-                        <TextBlock Style="{StaticResource GridRecipe}" Grid.Column="1"/>
-                        <TextBlock Style="{StaticResource GridRecipe}" Grid.Column="2"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
-                        <TextBlock Style="{StaticResource GridRecipe}" Grid.Column="0" Grid.Row="1"/>
-                        <TextBlock Style="{StaticResource GridRecipe}" Grid.Column="1" Grid.Row="1"/>
-                        <TextBlock Style="{StaticResource GridRecipe}" Grid.Column="2" Grid.Row="1"/>
+                            <TextBlock x:Name="txtGrid1" Style="{StaticResource GridRecipe}" Grid.Column="0"/>
+                            <TextBlock x:Name="txtGrid2" Style="{StaticResource GridRecipe}" Grid.Column="1"/>
+                            <TextBlock x:Name="txtGrid3" Style="{StaticResource GridRecipe}" Grid.Column="2"/>
 
-                        <TextBlock Style="{StaticResource GridRecipe}" Grid.Column="0" Grid.Row="2"/>
-                        <TextBlock Style="{StaticResource GridRecipe}" Grid.Column="1" Grid.Row="2"/>
-                        <TextBlock Style="{StaticResource GridRecipe}" Grid.Column="2" Grid.Row="2"/>
-                    </Grid>
+                            <TextBlock x:Name="txtGrid4" Style="{StaticResource GridRecipe}" Grid.Column="0" Grid.Row="1"/>
+                            <TextBlock x:Name="txtGrid5" Style="{StaticResource GridRecipe}" Grid.Column="1" Grid.Row="1"/>
+                            <TextBlock x:Name="txtGrid6" Style="{StaticResource GridRecipe}" Grid.Column="2" Grid.Row="1"/>
+
+                            <TextBlock x:Name="txtGrid7" Style="{StaticResource GridRecipe}" Grid.Column="0" Grid.Row="2"/>
+                            <TextBlock x:Name="txtGrid8" Style="{StaticResource GridRecipe}" Grid.Column="1" Grid.Row="2"/>
+                            <TextBlock x:Name="txtGrid9" Style="{StaticResource GridRecipe}" Grid.Column="2" Grid.Row="2"/>
+                        </Grid>
                     </Border>
                 </Grid>
             </Grid>
         </Viewbox>
     </Grid>
-    
+
 </Page>
+
 
 
 

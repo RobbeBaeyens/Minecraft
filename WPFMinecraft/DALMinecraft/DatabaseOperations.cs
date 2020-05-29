@@ -326,7 +326,7 @@ namespace DALMinecraft
             }
         }
         /*=====================
-         * Advancement
+         * Recipes
          =====================*/
         //toevoegen
         public static int AddPlayerRecipe(Player_Recipe playerrecipe)
@@ -335,6 +335,18 @@ namespace DALMinecraft
             {
                 entities.Player_Recipe.Add(playerrecipe);
                 return entities.SaveChanges();
+            }
+        }
+
+        public static List<Player_Recipe> OphalenPlayerRecipes(int playerId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Player
+                    .Include(x => x.Player_Recipe.Select(y => y.Recipe.Item))
+                    .Where(x => x.id == playerId)
+                    .SingleOrDefault();
+                return query.Player_Recipe.ToList();
             }
         }
 
