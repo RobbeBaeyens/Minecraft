@@ -385,6 +385,19 @@ namespace DALMinecraft
                 return query.ToList();
             }
         }
+        //Ophalen inventory
+        public static Inventory OphalenInventory(int playerId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.Player
+                    .Include(x => x.Inventory)
+                    .OrderBy(x => x.id == playerId)
+                    .SingleOrDefault();
+
+                return query.Inventory.SingleOrDefault();
+            }
+        }
         //Ophalen items
         public static List<Item> OphalenItems()
         {
