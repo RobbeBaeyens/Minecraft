@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALMinecraft", "DALMinecraf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MODELSMinecraft", "MODELSMinecraft\MODELSMinecraft.csproj", "{53BD7FC4-5085-48F9-9D34-D4BA5A89E657}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting_Minecraft", "UnitTesting_Minecraft\UnitTesting_Minecraft.csproj", "{6B9F96C8-4F6F-4926-BD08-1A1901EC6FB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{53BD7FC4-5085-48F9-9D34-D4BA5A89E657}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53BD7FC4-5085-48F9-9D34-D4BA5A89E657}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53BD7FC4-5085-48F9-9D34-D4BA5A89E657}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B9F96C8-4F6F-4926-BD08-1A1901EC6FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B9F96C8-4F6F-4926-BD08-1A1901EC6FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B9F96C8-4F6F-4926-BD08-1A1901EC6FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B9F96C8-4F6F-4926-BD08-1A1901EC6FB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
