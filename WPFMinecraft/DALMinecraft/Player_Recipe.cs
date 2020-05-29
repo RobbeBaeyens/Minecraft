@@ -17,6 +17,7 @@ namespace DALMinecraft
         public int id { get; set; }
         public int playerId { get; set; }
         public int recipeId { get; set; }
+        public bool recipeObtained { get; set; }
     
         public virtual Recipe Recipe { get; set; }
         public virtual Player Player { get; set; }

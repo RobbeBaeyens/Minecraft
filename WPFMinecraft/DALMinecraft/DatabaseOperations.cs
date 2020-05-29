@@ -325,6 +325,18 @@ namespace DALMinecraft
                 return entities.SaveChanges();
             }
         }
+        /*=====================
+         * Advancement
+         =====================*/
+        //toevoegen
+        public static int AddPlayerRecipe(Player_Recipe playerrecipe)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Player_Recipe.Add(playerrecipe);
+                return entities.SaveChanges();
+            }
+        }
 
 
         /*=====================

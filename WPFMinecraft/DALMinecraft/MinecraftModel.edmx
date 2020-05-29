@@ -95,6 +95,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="playerId" Type="int" Nullable="false" />
           <Property Name="recipeId" Type="int" Nullable="false" />
+          <Property Name="recipeObtained" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Recipe">
           <Key>
@@ -168,7 +169,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Inventory_Item_Inventory">
-          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Inventory_Item" Type="Self.Inventory_Item" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Inventory">
@@ -192,7 +195,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Inventory_Player">
-          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
@@ -554,6 +559,7 @@
           <Property Name="recipeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Recipe" Relationship="Self.FK_Player_Recipe_Recipe" FromRole="Player_Recipe" ToRole="Recipe" />
           <NavigationProperty Name="Player" Relationship="Data_r0696944Model.FK_Player_Recipe_Player" FromRole="Player_Recipe" ToRole="Player" />
+          <Property Name="recipeObtained" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Recipe">
           <Key>
@@ -1019,6 +1025,7 @@
           <EntitySetMapping Name="Player_Recipe">
             <EntityTypeMapping TypeName="Data_r0696944Model.Player_Recipe">
               <MappingFragment StoreEntitySet="Player_Recipe">
+                <ScalarProperty Name="recipeObtained" ColumnName="recipeObtained" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="playerId" ColumnName="playerId" />
                 <ScalarProperty Name="recipeId" ColumnName="recipeId" />
