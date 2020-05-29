@@ -1,4 +1,4 @@
-﻿using DALMinecraft;
+using DALMinecraft;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -100,11 +100,7 @@ namespace WPFMinecraft.Pages
                     if (valideer == "Ok")
                     {
                         Console.WriteLine(inventoryId + "/" + cmb1.SelectedIndex + "/" + cmb2.SelectedIndex + "/" + count);
-<<<<<<< HEAD
                         Inventory_Item inventoryItem = DatabaseOperations.OphalenInventoryItem(cmb2.SelectedIndex + 1);
-=======
-                        Inventory_Item inventoryItem = new Inventory_Item();
->>>>>>> 4d26a01e2840d93c4a73cbe60a53ce100c9a42e4
                         inventoryItem.inventoryId = inventoryId;
                         inventoryItem.itemId = cmb1.SelectedIndex + 1;
                         inventoryItem.count = count;
