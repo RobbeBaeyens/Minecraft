@@ -154,25 +154,42 @@ namespace DALMinecraft
         /*=====================
          * Setting
          =====================*/
-        //toevoegen
-        public static int AddSetting(Setting setting)
+        //ophalen
+        public static Setting OphalenSetting(int settingId)
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
-                entities.Setting.Add(setting);
-                return entities.SaveChanges();
-            }
-        }
-        //verwijderen
-        public static int RemoveSetting(Setting setting)
-        {
-            using (MinecraftEntities entities = new MinecraftEntities())
-            {
-                entities.Entry(setting).State = EntityState.Deleted;
-                return entities.SaveChanges();
+                var query = entities.Setting
+                    .Where(x => x.id == settingId)
+                    .OrderBy(x => x.name);
+                return query.SingleOrDefault();
             }
         }
 
+        //ophalen World settings
+        public static World OphalenSettings(int worldId)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                var query = entities.World
+                    .Include(x => x.World_Setting.Select(y => y.Setting))
+                    .Where(x => x.id == worldId)
+                    .OrderBy(x => x.id)
+                    .SingleOrDefault();
+                return query ;
+            }
+        }
+
+        //Updaten
+        public static int UpdateWorldSetting(World_Setting worldsetting)
+        {
+            using (MinecraftEntities entities = new MinecraftEntities())
+            {
+                entities.Entry(worldsetting).State = EntityState.Modified;
+                return entities.SaveChanges();
+
+            }
+        }
 
         /*=====================
          * Dimension
