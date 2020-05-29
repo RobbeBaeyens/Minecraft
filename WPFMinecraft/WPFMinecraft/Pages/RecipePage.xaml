@@ -45,9 +45,6 @@
                                     <WrapPanel Width="156" Margin="5,5,5,5" />
                                 </ItemsPanelTemplate>
                             </ListBox.ItemsPanel>
-
-                            <ListBoxItem Style="{StaticResource rectangle}"/>
-
                         </ListBox>
                     </ScrollViewer>
 

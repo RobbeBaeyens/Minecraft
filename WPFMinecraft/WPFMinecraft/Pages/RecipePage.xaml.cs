@@ -32,10 +32,8 @@ namespace WPFMinecraft.Pages
         public int serverId;
         public int worldId;
         public int playerId;
-
+        public List<Player_Recipe> player_Recipes;
         public Player player;
-        
-       
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -60,10 +58,31 @@ namespace WPFMinecraft.Pages
                 Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + playerId + "\n");
             }
 
-            
+            player_Recipes = DatabaseOperations.OphalenPlayerRecipes(playerId);
 
+            Style RedBlock = (Style)FindResource("rectangle");
+
+            var count = 0;
+            foreach (Player_Recipe player_Recipe in player_Recipes)
+            {
+                Image image = new Image();
+                image.Source = new BitmapImage(new Uri(player_Recipe.Recipe.Item.image));
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Style = RedBlock;
+                listBoxItem.Selected += new RoutedEventHandler(lstBx_select);
+                listBoxItem.Content = image; 
+                
+                lstBxRecipes.Items.Add(listBoxItem);
+                count++;
+            }
 
         }
+
+        private void lstBx_select(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         private void btnAddRecipe_Click(object sender, RoutedEventArgs e)
         {
 
