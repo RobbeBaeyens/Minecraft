@@ -83,6 +83,7 @@ namespace WPFMinecraft.Pages
                 Player player = createNewPlayer(playerName, worldId);
                 createNewPlayerAdvancements(player);
                 createNewPlayerInventoryItems(player);
+                createNewPlayerRecipes(player);
 
                 ListboxPlayers.ItemsSource = getPlayers();
             }
@@ -120,6 +121,18 @@ namespace WPFMinecraft.Pages
                 player_advancement.advancementId = i;
                 player_advancement.advancementObtained = false;
                 DatabaseOperations.AddPlayerAdvancement(player_advancement);
+            }
+        }
+
+        public void createNewPlayerRecipes(Player player)
+        {
+            for (int i = 1; i <= 24; i++)
+            {
+                Player_Recipe playerrecipe = new Player_Recipe();
+                playerrecipe.playerId = player.id;
+                playerrecipe.recipeId = i;
+                playerrecipe.recipeObtained = false;
+                DatabaseOperations.AddPlayerRecipe(playerrecipe);
             }
         }
 
