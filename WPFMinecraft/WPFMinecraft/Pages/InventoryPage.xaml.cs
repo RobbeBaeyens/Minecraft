@@ -33,6 +33,30 @@ namespace WPFMinecraft.Pages
 
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Find the frame.
+            Frame pageFrame = null;
+            DependencyObject currParent = VisualTreeHelper.GetParent(this);
+
+            while (currParent != null && pageFrame == null)
+            {
+                pageFrame = currParent as Frame;
+                currParent = VisualTreeHelper.GetParent(currParent);
+            }
+
+            //Change the page of the frame.
+            if (pageFrame.DataContext != null)
+            {
+                WindowViewModel windowViewModel = pageFrame.DataContext as WindowViewModel;
+                serverId = windowViewModel.ServerId;
+                playerId = windowViewModel.PlayerId;
+                worldId = windowViewModel.WorldId;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Server ID: " + serverId + "\nWorld ID: " + worldId + "\nPlayer ID: " + playerId + "\n");
+            }
+        }
+
         int gridNummer = 0;
 
         private void Button_Click(object sender, RoutedEventArgs e)
