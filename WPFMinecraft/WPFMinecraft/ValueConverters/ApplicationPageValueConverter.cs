@@ -26,6 +26,35 @@ namespace WPFMinecraft.ValueConverters
                 case ApplicationPage.ServerManagement:
                     return new ServerManagementPage();
 
+
+                case ApplicationPage.Inventory:
+                    return new InventoryPage();
+
+                case ApplicationPage.InventoryManager:
+                    return new InventoryManagerPage();
+
+                case ApplicationPage.Advancements:
+                    return new AdvancementsPage();
+
+
+                case ApplicationPage.Player:
+                    return new PlayerPage();
+
+                case ApplicationPage.Effects:
+                    return new EffectPage();
+
+                case ApplicationPage.Recipes:
+                    return new RecipePage();
+
+                case ApplicationPage.Settings:
+                    return new WorldSettingsPage();
+
+                case ApplicationPage.GameRule:
+                    return new GameRulePage();
+
+                case ApplicationPage.MoreOption:
+                    return new MoreOptionPage();
+
                 default:
                     Debugger.Break();
                     return null;

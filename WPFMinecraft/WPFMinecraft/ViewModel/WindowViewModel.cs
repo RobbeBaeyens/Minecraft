@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DALMinecraft;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -122,7 +123,16 @@ namespace WPFMinecraft.ViewModel
         /// <summary>
         /// The current page of the application
         /// </summary>
+
         public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Home;
+
+        /// <summary>
+        /// The current data from database for the application
+        /// </summary>
+        public int ServerId { get; set; } = -1;
+        public int WorldId { get; set; } = -1;
+        public int PlayerId { get; set; } = -1;
+        public int InventoryId { get; set; } = -1;
 
         #endregion
 
@@ -144,6 +154,10 @@ namespace WPFMinecraft.ViewModel
         /// Command to show the system menu of the window
         /// </summary>
         public ICommand MenuCommand { get; set; }
+        /// <summary>
+        /// Command to go back a page
+        /// </summary>
+        public ICommand PreviousPageCommand { get; set; }
 
         #endregion
 
@@ -172,6 +186,7 @@ namespace WPFMinecraft.ViewModel
             MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => mWindow.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+            PreviousPageCommand = new RelayCommand(() => PreviousPage());
 
             // Fix window resize issue
             var resizer = new WindowResizer(mWindow);
@@ -216,6 +231,62 @@ namespace WPFMinecraft.ViewModel
             OnPropertyChanged(nameof(WindowCornerRadius));
         }
 
+        private void PreviousPage()
+        {
+            switch (CurrentPage)
+            {
+                case ApplicationPage.ServerManagement:
+                    CurrentPage = ApplicationPage.Home;
+                    break;
+
+                case ApplicationPage.PlayerManagement:
+                    if(ServerId ==-1)
+                        CurrentPage = ApplicationPage.Home;
+                    else
+                        CurrentPage = ApplicationPage.Settings;
+                    break;
+
+                case ApplicationPage.Settings:
+                    CurrentPage = ApplicationPage.ServerManagement;
+                    break;
+
+                case ApplicationPage.MoreOption:
+                    CurrentPage = ApplicationPage.Settings;
+                    break;
+
+                case ApplicationPage.GameRule:
+                    CurrentPage = ApplicationPage.Settings;
+                    break;
+
+                case ApplicationPage.Player:
+                    CurrentPage = ApplicationPage.PlayerManagement;
+                    break;
+
+                case ApplicationPage.InventoryManager:
+                    CurrentPage = ApplicationPage.Inventory;
+                    break;
+
+                case ApplicationPage.Inventory:
+                    CurrentPage = ApplicationPage.Player;
+                    break;
+
+                case ApplicationPage.Advancements:
+                    CurrentPage = ApplicationPage.Player;
+                    break;
+
+                case ApplicationPage.Effects:
+                    CurrentPage = ApplicationPage.Player;
+                    break;
+
+                case ApplicationPage.Recipes:
+                    CurrentPage = ApplicationPage.Player;
+                    break;
+
+                default:
+                    CurrentPage = ApplicationPage.Home;
+                    break;
+            }
+        }
         #endregion
     }
 }

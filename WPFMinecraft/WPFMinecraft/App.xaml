@@ -12,6 +12,9 @@
                 <ResourceDictionary Source="Styles/Buttons.xaml" />
                 <ResourceDictionary Source="Styles/Texts.xaml" />
                 <ResourceDictionary Source="Styles/Windows.xaml" />
+                <ResourceDictionary Source="Styles/ComboBox.xaml" />
+                <ResourceDictionary Source="Styles/Recipes.xaml" />
+                <ResourceDictionary Source="Styles/Effects.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

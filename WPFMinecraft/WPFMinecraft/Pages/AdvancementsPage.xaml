@@ -1,0 +1,581 @@
+﻿<Page x:Class="WPFMinecraft.Pages.AdvancementsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFMinecraft.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdvancementsPage" Loaded="Page_Loaded">
+
+    <Page.Resources>
+
+        <!--Stijl voor selected-->
+        <Style TargetType="{x:Type ToggleButton}" x:Key="TbHoverless">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--Stijl voor normale ongeselecteerde knoppen (bruin)-->
+        <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource TbHoverless}" x:Key="normalAdvancementBrown">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../Images/Props/normal_advancement_brown.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/Props/selected_normal_advancement_brown.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Stijl voor normale geselecteerde (grijs)-->
+        <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource TbHoverless}" x:Key="normalAdvancementGrey">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../Images/Props/normal_advancement_grey.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/Props/selected_normal_advancement_grey.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Stijl voor de speciale ongeselecteerde knop (bruin)-->
+        <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource TbHoverless}" x:Key="specialAdvancementBrown">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../Images/Props/special_advancement_brown.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/Props/selected_special_advancement_brown.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Stijl voor de speciale ongeselecteerde knop (grijs)-->
+        <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource TbHoverless}" x:Key="specialAdvancementGrey">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../Images/Props/special_advancement_grey.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="/Images/Props/selected_special_advancement_grey.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Page.Resources>
+
+    <!--Basis-grid voor achtergrond en viewbox-->
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
+                        ViewportUnits="Absolute"
+                        Viewport="0, 0, 256, 256"
+                        TileMode="Tile"
+                        Stretch="None"
+                        AlignmentX="Left"
+                        AlignmentY="Top">
+                <ImageBrush.Transform>
+                    <ScaleTransform ScaleX=".3" ScaleY=".3"/>
+                </ImageBrush.Transform>
+            </ImageBrush>
+        </Grid.Background>
+
+        <!--Viewbox en Grid voor gehele pagina-->
+        <Viewbox Margin="20">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!--Grid voor knoppen-->
+                <Grid Width="800" Height="100" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Knop voor geselecteerde "Advancement" te geven-->
+                    <Button x:Name="btnGrantAdvancement" Grid.Column="0" Grid.Row="0"  Height="Auto" Margin="0,17,10,17" Width="Auto" Style="{StaticResource MinecraftGreenMediumLongButton}" Click="btnGrantAdvancement_Click">
+                        <TextBlock FontSize="28" Text="Grant Advancement" HorizontalAlignment="Center" Margin="0, 10, 0, 0"/>
+                    </Button>
+
+                    <!--Knop voor geselecteerde "Advancement" te verwijderen-->
+                    <Button x:Name="btnRevokeAdvancement" Grid.Column="1" Grid.Row="0"  Height="Auto" Margin="0,17,10,17" Width="Auto" Style="{StaticResource MinecraftRedMediumLongButton}" Click="btnRevokeAdvancement_Click" >
+                        <TextBlock FontSize="28" Text="Revoke Advancement" HorizontalAlignment="Center" Margin="0, 10, 0, 0"/>
+                    </Button>
+                </Grid>
+
+                <!--Grid voor Advancements scherm-->
+                <Grid Height="350" Width="800" Grid.Row="1">
+                    <Grid.Background>
+                        <ImageBrush  ImageSource="../Images/Props/advancements_window.png"/>
+                    </Grid.Background>
+
+                    <!--Canvas voor verlooplijnen onder de Advancements knoppen te trekken-->
+                    <Canvas>
+
+                        <!--Grid om de Advancements knoppen in het canvas te kunnen zetten-->
+                        <Grid Height="284" Canvas.Left="28" Canvas.Top="43" Width="754">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="../Images/Background/cave.png"
+                                        ViewportUnits="Absolute"
+                                        Viewport="0, 0, 2048, 2048"
+                                        TileMode="Tile"
+                                        Stretch="None"
+                                        AlignmentX="Left"
+                                        AlignmentY="Top"
+                                        >
+                                    <ImageBrush.Transform>
+                                        <ScaleTransform ScaleX=".22" ScaleY=".22"/>
+                                    </ImageBrush.Transform>
+                                </ImageBrush>
+                            </Grid.Background>
+
+
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+
+                            <!--Horizontale lijnen-->
+
+                            <!--Lijn 1-->
+                            <Line
+		                        Grid.Row="5"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="5"
+                                X1="10" Y1="0"
+                                X2="336" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+
+                            <!--Lijn 2-->
+                            <Line
+                                Grid.Row="1"
+                                Grid.Column="4"
+                                Grid.ColumnSpan="2"
+                                X1="-2" Y1="0"
+                                X2="150" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 3-->
+                            <Line
+                                Grid.Row="3"
+                                Grid.Column="4"
+                                Grid.ColumnSpan="3"
+                                X1="-2" Y1="0"
+                                X2="250" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+
+                            <!--Lijn 4-->
+                            <Line
+                                Grid.Row="6"
+                                Grid.Column="4"
+                                Grid.ColumnSpan="3"
+                                X1="-2" Y1="0"
+                                X2="168" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 5-->
+                            <Line
+                                Grid.Row="4"
+                                Grid.Column="7"
+                                Grid.ColumnSpan="2"
+                                X1="10" Y1="0"
+                                X2="150" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 6-->
+                            <Line
+                                Grid.Row="4"
+                                Grid.Column="7"
+                                Grid.ColumnSpan="2"
+                                X1="10" Y1="0"
+                                X2="150" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 7-->
+                            <Line
+                                Grid.Row="4"
+                                Grid.Column="7"
+                                Grid.ColumnSpan="2"
+                                X1="-2" Y1="0"
+                                X2="150" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 8-->
+                            <Line
+                                Grid.Row="2"
+                                Grid.Column="7"
+                                Grid.ColumnSpan="2"
+                                X1="0" Y1="0"
+                                X2="50" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 9-->
+                            <Line
+                                Grid.Row="5"
+                                Grid.Column="6"
+                                Grid.ColumnSpan="1"
+                                X1="0" Y1="0"
+                                X2="50" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 10-->
+                            <Line
+                                Grid.Row="7"
+                                Grid.Column="6"
+                                Grid.ColumnSpan="2"
+                                X1="-2" Y1="0"
+                                X2="50" Y2="0"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+
+                            <!--Verticale lijnen-->
+
+                            <!--Lijn 1-->
+                            <Line
+                                Grid.Row="1"
+                                Grid.Column="4"
+                                Grid.RowSpan="6"
+                                X1="0" Y1="0"
+                                X2="0" Y2="178"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 2-->
+                            <Line
+                                Grid.Row="5"
+                                Grid.Column="6"
+                                Grid.RowSpan="4"
+                                X1="0" Y1="-2"
+                                X2="0" Y2="72"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+                            <!--Lijn 3-->
+                            <Line
+                                Grid.Row="2"
+                                Grid.Column="7"
+                                Grid.RowSpan="4"
+                                X1="0" Y1="-2"
+                                X2="0" Y2="72"
+                                Stroke="White"
+                                StrokeThickness="4"
+                            />
+
+
+                            <!--Advancements knoppen-->
+
+                            <!--Rij 0 (boven naar onder)-->
+                            <ToggleButton x:Name="btnAdvancementIjzerBorst" Width="65" Height="65" ClickMode="Press" Style="{StaticResource normalAdvancementBrown}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="4">
+                                <Image Source="../Images/Props/AdvancementsItems/ijzeren_borstplaat.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Suit Up!</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Protect yourself with a piece of iron armor</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementHoutenSchild" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="5" >
+                                <Image Source="../Images/Props/AdvancementsItems/houten_schield.png" Margin="5"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">	Not Today, Thank You</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Deflect an arrow with a shield, Deflect a projectile with a shield‌</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+
+                            <!--Rij 1-->
+                            <ToggleButton x:Name="btnAdvancementGoudenAppel" Width="65" Height="65" Style="{StaticResource specialAdvancementBrown}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="7">
+                                <Image Source="../Images/Props/AdvancementsItems/gouden_apple.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Zombie Doctor</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Weaken and then cure a Zombie Villager</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+
+                            <!--Rij 2-->
+                            <ToggleButton x:Name="btnAdvancementEmmerLava" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="4">
+                                <Image Source="../Images/Props/AdvancementsItems/emmer_lava.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Hot Stuff</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Fill a bucket with lava</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementObsidiaan" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="5">
+                                <Image Source="../Images/Props/AdvancementsItems/obsidiaan.png" Margin="10"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Ice Bucket Challenge</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Form and mine a block of Obsidian, Obtain a block of obsidian‌</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementVuursteen" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="6">
+                                <Image Source="../Images/Props/AdvancementsItems/vuursteen_en_ijzer.png" Margin="8"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">We Need to Go Deeper</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Build, light and enter a Nether Portal</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+
+                            <!--Rij 3-->
+                            <ToggleButton x:Name="btnAdvancementEnderOog" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="7" >
+                                <Image Source="../Images/Props/AdvancementsItems/ender_oog.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Eye Spy</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Follow an Eye of Ender</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementEindeSteen" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="3" Grid.RowSpan="2" Grid.Column="8">
+                                <Image Source="../Images/Props/AdvancementsItems/einde_steen.png" Margin="10"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">The End?</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Enter the End Portal</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+
+                            <!--Rij 4-->
+                            <ToggleButton x:Name="btnAdvancementGrasBlok" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="0">
+                                <Image Source="../Images/Props/AdvancementsItems/gras_blok.png" Margin="10"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Minecraft</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">The heart and story of the game</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementHoutenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1">
+                                <Image Source="../Images/Props/AdvancementsItems/houten_pikhouweel.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Stone Age</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Mine stone with your new pickaxe</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementStenenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2">
+                                <Image Source="../Images/Props/AdvancementsItems/stenen_pikhouweel.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Getting an Upgrade</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Construct a better pickaxe</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementIjzerKlomp" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="3">
+                                <Image Source="../Images/Props/AdvancementsItems/ijzer_klomp.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Acquire Hardware</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Smelt an iron ingot</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementDiamantenBorst" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="4" Grid.RowSpan="2" Grid.Column="6">
+                                <Image Source="../Images/Props/AdvancementsItems/diamanten_borstplaat.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Cover Me With Diamonds</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Diamond armor saves lives</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+
+                            <!--Rij 5-->
+                            <ToggleButton x:Name="btnAdvancementIjzerenPikhouweel" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="4">
+                                <Image Source="../Images/Props/AdvancementsItems/ijzeren_pikhouweel.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Isn't It Iron Pick</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Upgrade your pickaxe</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+                            <ToggleButton x:Name="btnAdvancementDiamant" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="5" Grid.RowSpan="2" Grid.Column="5">
+                                <Image Source="../Images/Props/AdvancementsItems/diamant.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Diamonds!</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Acquire diamonds</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+
+                            <!--Rij 6-->
+                            <ToggleButton x:Name="btnAdvancementBetoverdBoek" Width="65" Height="65" Style="{StaticResource normalAdvancementBrown}" Grid.Row="6" Grid.RowSpan="2" Grid.Column="6">
+                                <Image Source="../Images/Props/AdvancementsItems/betoverd_boek.png" Margin="7"/>
+                                <ToggleButton.ToolTip>
+                                    <ToolTip BorderBrush="Gray" BorderThickness="5" Background="Black" FontFamily="{StaticResource Minecraftia}">
+                                        <Border Background="Black">
+                                            <StackPanel Margin="5" Background="Black">
+                                                <TextBlock Foreground="WhiteSmoke">Enchanter</TextBlock>
+                                                <TextBlock Foreground="LimeGreen">Enchant an item at an Enchanting Table</TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </ToolTip>
+                                </ToggleButton.ToolTip>
+                            </ToggleButton>
+
+                        </Grid>
+                    </Canvas>
+                </Grid>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Page>

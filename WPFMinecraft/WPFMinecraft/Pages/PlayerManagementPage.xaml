@@ -6,9 +6,94 @@
       xmlns:local="clr-namespace:WPFMinecraft.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PlayerManagementPage">
+      Title="PlayerManagementPage" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
+                        ViewportUnits="Absolute"
+                        Viewport="0, 0, 256, 256"
+                        TileMode="Tile"
+                        Stretch="None"
+                        AlignmentX="Left"
+                        AlignmentY="Top">
+                <ImageBrush.Transform>
+                    <ScaleTransform ScaleX=".3" ScaleY=".3"/>
+                </ImageBrush.Transform>
+            </ImageBrush>
+        </Grid.Background>
+
+        <Viewbox VerticalAlignment="Top">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" x:Name="gridChangeablePlayerPage">
+                    <Border CornerRadius="10" Margin="5" Padding="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="300"/>
+                                <ColumnDefinition Width="600"/>
+                                <ColumnDefinition Width="600"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="150"/>
+                                <RowDefinition Height="150"/>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="imgPlayerImagePreview" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="../Images/Skin/skin.png" Width="200" Height="200"/>
+
+                            <StackPanel Grid.Row="1" Grid.Column="1" Width="600" VerticalAlignment="Center">
+                                <Label Background="Transparent" Foreground="White" Content="Player Name" HorizontalAlignment="Center" Margin="0 0 0 -20" FontSize="40"/>
+                                <TextBox x:Name="textBoxPlayerName" TextAlignment="Center" Padding="0 15 0 0" FontSize="40" Grid.Column="0" Margin="38,10,38,0" Grid.Row="1" Height="70" Width="500"/>
+                            </StackPanel>
+                            <Button x:Name="btnAddPlayer" Grid.Row="1" Grid.Column="2" Style="{StaticResource MinecraftGreenMediumLongButton}" Height="75" Width="400" VerticalAlignment="Center" Click="btnAddPlayer_Click">
+                                <TextBlock Text="Add player" FontSize="40" Margin="0 8 0 0"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="1" MinWidth="1600" MaxHeight="600">
+                    <ListBox SelectionChanged="ListboxPlayers_SelectionChanged" x:Name="ListboxPlayers" Background="Transparent" Margin="50,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Grid.ColumnSpan="2">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" MinWidth="1450">
+                                    <Image Source="../Images/Skin/skin.png" Margin="5" Height="75"/>
+                                    <Label Width="600" Margin="50 0 0 0" Padding="0 15"  FontFamily="{StaticResource Minecraftia}" Content="{Binding name}" FontSize="40" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Click="btnViewPlayer_Click" x:Name="btnViewPlayer" Grid.Row="1" Style="{StaticResource MinecraftMediumLongButton}" Height="75" Width="400" VerticalAlignment="Center" Margin="0 20" HorizontalAlignment="Right">
+                        <TextBlock Text="View player" FontSize="40" Margin="0 8 0 0"/>
+                    </Button>
+                    <Button Grid.Column="1" Click="btnUpdatePlayer_Click" x:Name="btnUpdatePlayer" Grid.Row="1" Style="{StaticResource MinecraftBlueMediumLongButton}" Height="75" Width="400" VerticalAlignment="Center" Margin="0 20">
+                        <TextBlock Text="Update player" FontSize="40" Margin="0 8 0 0"/>
+                    </Button>
+                    <Button Grid.Column="2" Click="btnRemovePlayer_Click" x:Name="btnRemovePlayer" Grid.Row="1" Style="{StaticResource MinecraftRedMediumLongButton}" Height="75" Width="400" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 20">
+                        <TextBlock Text="Remove player" FontSize="40" Margin="0 8 0 0"/>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Page>

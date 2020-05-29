@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -40,6 +41,12 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Windows.Shell, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Windows.Shell.3.0.1.0\lib\net40\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
@@ -48,6 +55,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,14 +76,41 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataModels\ApplicationPage.cs" />
+    <Compile Include="Pages\AdvancementsPage.xaml.cs">
+      <DependentUpon>AdvancementsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EffectPage.xaml.cs">
+      <DependentUpon>EffectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GameRulePage.xaml.cs">
+      <DependentUpon>GameRulePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InventoryManagerPage.xaml.cs">
+      <DependentUpon>InventoryManagerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InventoryPage.xaml.cs">
+      <DependentUpon>InventoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MoreOptionPage.xaml.cs">
+      <DependentUpon>MoreOptionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PlayerManagementPage.xaml.cs">
       <DependentUpon>PlayerManagementPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PlayerPage.xaml.cs">
+      <DependentUpon>PlayerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RecipePage.xaml.cs">
+      <DependentUpon>RecipePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ServerManagementPage.xaml.cs">
       <DependentUpon>ServerManagementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WorldSettingsPage.xaml.cs">
+      <DependentUpon>WorldSettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
@@ -95,7 +130,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AdvancementsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EffectPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\GameRulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InventoryManagerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\InventoryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\MoreOptionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -103,7 +162,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PlayerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RecipePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\ServerManagementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WorldSettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,7 +186,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Styles\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Effects.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Styles\Fonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Recipes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -182,6 +265,121 @@
   <ItemGroup>
     <Resource Include="Images\Button\button_long_selected.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\dark_transparant.png" />
+    <Resource Include="Images\Background\overworld_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\button_square.png" />
+    <Resource Include="Images\Button\button_square_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Skin\skin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Props\1_slot.png" />
+    <Resource Include="Images\Props\inventory.png" />
+    <Resource Include="Images\Props\inventory_empty.png" />
+    <Resource Include="Images\Props\player_space.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\spruce_planks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Recipe\AddRecipe.png" />
+    <Resource Include="Images\Recipe\AddRecipe_Selected.png" />
+    <Resource Include="Images\Recipe\craftingGrid.png" />
+    <Resource Include="Images\Recipe\CraftingGridBlocks.png" />
+    <Resource Include="Images\Recipe\recipe.png" />
+    <Resource Include="Images\Recipe\RecipeBook.png" />
+    <Resource Include="Images\Recipe\RecipeBookSelected.png" />
+    <Resource Include="Images\Recipe\RecipeBook_Selecting.png" />
+    <Resource Include="Images\Recipe\RemoveRecipe.png" />
+    <Resource Include="Images\Recipe\RemoveRecipe_Selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Effects\effectBalk.png" />
+    <Resource Include="Images\Effects\effectBalkSelected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\World\isles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Props\advancements_window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Props\normal_advancement_brown.png" />
+    <Resource Include="Images\Props\normal_advancement_grey.png" />
+    <Resource Include="Images\Props\special_advancement_brown.png" />
+    <Resource Include="Images\Props\special_advancement_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Props\AdvancementsItems\betoverd_boek.png" />
+    <Resource Include="Images\Props\AdvancementsItems\diamant.png" />
+    <Resource Include="Images\Props\AdvancementsItems\diamanten_borstplaat.png" />
+    <Resource Include="Images\Props\AdvancementsItems\einde_steen.png" />
+    <Resource Include="Images\Props\AdvancementsItems\emmer_lava.png" />
+    <Resource Include="Images\Props\AdvancementsItems\ender_oog.png" />
+    <Resource Include="Images\Props\AdvancementsItems\gouden_apple.png" />
+    <Resource Include="Images\Props\AdvancementsItems\gras_blok.png" />
+    <Resource Include="Images\Props\AdvancementsItems\houten_pikhouweel.png" />
+    <Resource Include="Images\Props\AdvancementsItems\houten_schield.png" />
+    <Resource Include="Images\Props\AdvancementsItems\ijzeren_borstplaat.png" />
+    <Resource Include="Images\Props\AdvancementsItems\ijzeren_pikhouweel.png" />
+    <Resource Include="Images\Props\AdvancementsItems\ijzer_klomp.png" />
+    <Resource Include="Images\Props\AdvancementsItems\obsidiaan.png" />
+    <Resource Include="Images\Props\AdvancementsItems\stenen_pikhouweel.png" />
+    <Resource Include="Images\Props\AdvancementsItems\vuursteen_en_ijzer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\button_extra_long.png" />
+    <Resource Include="Images\Button\button_extra_long_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\blue_button_long.png" />
+    <Resource Include="Images\Button\blue_button_long_selected.png" />
+    <Resource Include="Images\Button\green_button_long.png" />
+    <Resource Include="Images\Button\green_button_long_selected.png" />
+    <Resource Include="Images\Button\red_button_long.png" />
+    <Resource Include="Images\Button\red_button_long_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Props\selected_normal_advancement_brown.png" />
+    <Resource Include="Images\Props\selected_normal_advancement_grey.png" />
+    <Resource Include="Images\Props\selected_special_advancement_brown.png" />
+    <Resource Include="Images\Props\selected_special_advancement_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DALMinecraft\DALMinecraft.csproj">
+      <Project>{154d77f6-16c7-44af-846f-3925786df5d8}</Project>
+      <Name>DALMinecraft</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODELSMinecraft\MODELSMinecraft.csproj">
+      <Project>{53bd7fc4-5085-48f9-9d34-d4ba5a89e657}</Project>
+      <Name>MODELSMinecraft</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Player\Armor\armor_empty.png" />
+    <Resource Include="Images\Player\Armor\armor_full.png" />
+    <Resource Include="Images\Player\Armor\armor_half.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Player\Food\food_empty.png" />
+    <Resource Include="Images\Player\Food\food_full.png" />
+    <Resource Include="Images\Player\Food\food_half.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Player\Health\health_empty.png" />
+    <Resource Include="Images\Player\Health\health_full.png" />
+    <Resource Include="Images\Player\Health\health_half.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Skin\darthvader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Skin\panda.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.2\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -189,5 +387,8 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.2\build\dotnet\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

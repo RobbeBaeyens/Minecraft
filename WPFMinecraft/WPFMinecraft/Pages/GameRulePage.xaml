@@ -1,0 +1,215 @@
+﻿<Page x:Class="WPFMinecraft.Pages.GameRulePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFMinecraft.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GameRulePage" Loaded="Page_Loaded">
+
+    <Grid>
+        
+        <!--Houte achtergrond-->
+        <Grid.Background>
+            <ImageBrush ImageSource="../Images/Background/spruce_planks.png"
+                        ViewportUnits="Absolute"
+                        Viewport="0,0,256,256" 
+                        TileMode="Tile"
+                        Stretch="None"
+                        AlignmentX="Left"
+                        AlignmentY="Top">
+                <ImageBrush.Transform>
+                    <ScaleTransform ScaleX=".5" ScaleY=".5"/>
+                </ImageBrush.Transform>
+            </ImageBrush>
+        </Grid.Background>
+    
+        <!--Scrollviewer zorgt ervoor dat er een scroll aanwezig is -->
+        <ScrollViewer>
+            <Grid Height="3200">
+                
+                <!--Zorgt voor een style enkel op deze pagina-->
+                <Grid.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="FontFamily" Value="{StaticResource Minecraftia}"/>
+                    </Style>
+
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource Hoverless}">
+                        <Setter Property="Width" Value="665"/>
+                        <Setter Property="Height" Value="80"/>
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="../Images/Button/button_extra_long.png"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/Images/Button/button_extra_long_selected.png"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="FontFamily" Value="{StaticResource Minecraftia}"/>
+                    </Style>
+                </Grid.Resources>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                </Grid.RowDefinitions>
+
+
+
+
+
+                <Label Content="player" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25"/>
+
+                <Button x:Name="btnEltyraMovement" FontFamily="{StaticResource Minecraftia}" Grid.Row="1" FontSize="25" Click="btnGameRuleToggle_Click" />
+
+
+                <Button x:Name="btnRespawnImmediatly" FontFamily="{StaticResource Minecraftia}"  Grid.Row="2" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnRecipeCrafting" FontFamily="{StaticResource Minecraftia}" Grid.Row="3" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnDrowningDmg" FontFamily="{StaticResource Minecraftia}" Grid.Row="4" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnFallDmg" FontFamily="{StaticResource Minecraftia}" Grid.Row="5" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnFireDmg" FontFamily="{StaticResource Minecraftia}" Grid.Row="6" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnKeepInv" FontFamily="{StaticResource Minecraftia}" Grid.Row="7" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnHealthRegen" FontFamily="{StaticResource Minecraftia}" Grid.Row="8" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnGenerateTerrain" FontFamily="{StaticResource Minecraftia}" Grid.Row="9" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <!-- MOBS Options -->
+
+                <Label Content="Mobs" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="10" Margin="0,30,0,0" />
+
+                <Button x:Name="btnDisableRaids" FontFamily="{StaticResource Minecraftia}" Grid.Row="11" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnAllowDestructiveMob" FontFamily="{StaticResource Minecraftia}" Grid.Row="12" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <!-- SPAWNING Options -->
+
+                <Label Content="Spawning" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="13" Margin="0,30,0,0"/>
+
+                <Button x:Name="btnSpawnPhantoms" FontFamily="{StaticResource Minecraftia}" Grid.Row="14" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnSpawnMobs" FontFamily="{StaticResource Minecraftia}" Grid.Row="15" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnPillagerPatrol" FontFamily="{StaticResource Minecraftia}" Grid.Row="16" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnWanderingTraders" FontFamily="{StaticResource Minecraftia}" Grid.Row="17" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <!-- DROPS Options -->
+
+                <Label Content="Drops" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="18" Margin="0,30,0,0"/>
+
+                <Button x:Name="btnEntetyEquipment" FontFamily="{StaticResource Minecraftia}" Grid.Row="19" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnMobLoot" FontFamily="{StaticResource Minecraftia}" Grid.Row="20" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnDropBlocks" FontFamily="{StaticResource Minecraftia}" Grid.Row="21" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                                <!-- WORLD UPDATES Options -->
+                <Label Content="World updates" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="22" Margin="0,30,0,0"/>
+
+                <Button x:Name="btnInGameTime" FontFamily="{StaticResource Minecraftia}" Grid.Row="23" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnUpdateFire" FontFamily="{StaticResource Minecraftia}" Grid.Row="24" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnUpdateWeather" FontFamily="{StaticResource Minecraftia}" Grid.Row="25" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+
+                <!-- CHAT Options -->
+
+                <Label Content="Chat" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="26" Margin="0,30,0,0" />
+
+                <Button x:Name="btnAnnounceAdvancements" FontFamily="{StaticResource Minecraftia}" Grid.Row="27" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnBlockOutput" FontFamily="{StaticResource Minecraftia}" Grid.Row="28" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnAdminCommands" FontFamily="{StaticResource Minecraftia}" Grid.Row="29" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnFeedback" FontFamily="{StaticResource Minecraftia}" Grid.Row="30" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+                <Button x:Name="btnDeathMessages" FontFamily="{StaticResource Minecraftia}" Grid.Row="31" FontSize="25" Click="btnGameRuleToggle_Click"/>
+
+
+
+                <!-- MISCELLANEOUS Options -->
+
+                <Label Content="Miscellaneous" Foreground="Yellow" HorizontalAlignment="Center" FontSize="25" Grid.Row="32" Margin="0,30,0,0"/>
+
+                <Button x:Name="btnDebugInfo" FontFamily="{StaticResource Minecraftia}" Grid.Row="33" FontSize="25" Click="btnGameRuleToggle_Click"/>
+                    
+
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>
