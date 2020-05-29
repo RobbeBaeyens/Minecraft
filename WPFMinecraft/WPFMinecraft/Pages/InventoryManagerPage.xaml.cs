@@ -100,8 +100,9 @@ namespace WPFMinecraft.Pages
                     InventoryClass inventorySet = new InventoryClass(count);
                     string valideer = inventorySet.Valideer("count");
 
-                    if (valideer == "ok")
+                    if (valideer == "Ok")
                     {
+                        Console.WriteLine(inventoryId + "/" + cmb1.SelectedIndex + "/" + cmb2.SelectedIndex + "/" + count);
                         Inventory_Item inventoryItem = new Inventory_Item();
                         inventoryItem.inventoryId = inventoryId;
                         inventoryItem.itemId = cmb1.SelectedIndex;
