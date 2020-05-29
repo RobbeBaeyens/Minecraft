@@ -95,33 +95,71 @@
                         <Label x:Name="lblPlayerName" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Content="Steve" Style="{StaticResource MinecraftText}"/>
 
                         <Label Grid.Row="1" Grid.Column="0" Content="UUID:" Style="{StaticResource MinecraftText}"/>
-                        <Label x:Name="lblPlayerUUID" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Content="5168-uygz-4564-iuhz" Style="{StaticResource MinecraftText}"/>
+                        <Viewbox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Width="200">
+                            <Label x:Name="lblPlayerUUID" Content="5168-uygz-4564-iuhz-546546-654" Style="{StaticResource MinecraftText}"/>
+                        </Viewbox>
 
                         <Label Grid.Row="2" Grid.Column="0" Content="Health:" Style="{StaticResource MinecraftText}"/>
-                        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                        <Button x:Name="btnHealthMin" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}" Click="btnHealthMin_Click">
                             <TextBlock Margin="0 -2 0 0" Text="-"/>
                         </Button>
-                        <Button Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                        <StackPanel x:Name="stckpnlPlayerHealth" Grid.Row="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="../Images/Player/Health/health_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Health/health_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Health/health_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Health/health_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Health/health_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Health/health_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Health/health_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Health/health_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Health/health_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Health/health_empty.png" Width="15"/>
+                        </StackPanel>
+                        <Button x:Name="btnHealthPlus" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}" Click="btnHealthPlus_Click">
                             <TextBlock Margin="0 -2 0 0" Text="+"/>
                         </Button>
 
                         <Label Grid.Row="3" Grid.Column="0" Content="Food:" Style="{StaticResource MinecraftText}"/>
-                        <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                        <Button x:Name="btnFoodMin" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}" Click="btnFoodMin_Click">
                             <TextBlock Margin="0 -2 0 0" Text="-"/>
                         </Button>
-                        <Button Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                        <StackPanel x:Name="stckpnlPlayerFood" Grid.Row="3" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="../Images/Player/Food/food_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Food/food_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Food/food_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Food/food_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Food/food_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Food/food_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Food/food_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Food/food_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Food/food_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Food/food_empty.png" Width="15"/>
+                        </StackPanel>
+                        <Button x:Name="btnFoodPlus" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}" Click="btnFoodPlus_Click">
                             <TextBlock Margin="0 -2 0 0" Text="+"/>
                         </Button>
 
                         <Label Grid.Row="4" Grid.Column="0" Content="Armor:" Style="{StaticResource MinecraftText}"/>
-                        <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                        <Button x:Name="btnArmorMin" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}" Click="btnArmorMin_Click">
                             <TextBlock Margin="0 -2 0 0" Text="-"/>
                         </Button>
-                        <Button Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}">
+                        <StackPanel x:Name="stckpnlPlayerArmor" Grid.Row="4" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="../Images/Player/Armor/armor_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Armor/armor_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Armor/armor_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Armor/armor_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Armor/armor_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Armor/armor_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Armor/armor_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Armor/armor_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Armor/armor_empty.png" Width="15"/>
+                            <Image Source="../Images/Player/Armor/armor_empty.png" Width="15"/>
+                        </StackPanel>
+                        <Button x:Name="btnArmorPlus" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" Style="{StaticResource MinecraftSmallSquareButton}" Click="btnArmorPlus_Click">
                             <TextBlock Margin="0 -2 0 0" Text="+"/>
                         </Button>
 
-                        <Button x:Name="btnInventory" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" Style="{StaticResource MinecraftMediumLongButton}">
+                        <Button x:Name="btnInventory" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" Style="{StaticResource MinecraftMediumLongButton}" Click="btnInventory_Click">
                             <TextBlock Margin="0 1 0 0" Text="Inventory"/>
                         </Button>
                     </Grid>

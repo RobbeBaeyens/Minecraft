@@ -355,6 +355,27 @@
       <Name>DALMinecraft</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Player\Armor\armor_empty.png" />
+    <Resource Include="Images\Player\Armor\armor_full.png" />
+    <Resource Include="Images\Player\Armor\armor_half.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Player\Food\food_empty.png" />
+    <Resource Include="Images\Player\Food\food_full.png" />
+    <Resource Include="Images\Player\Food\food_half.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Player\Health\health_empty.png" />
+    <Resource Include="Images\Player\Health\health_full.png" />
+    <Resource Include="Images\Player\Health\health_half.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Skin\darthvader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Skin\panda.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.2\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
