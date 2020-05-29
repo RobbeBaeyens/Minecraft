@@ -35,7 +35,7 @@ namespace WPFMinecraft.Pages
 
         public Player player;
         
-        List<li>
+       
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
