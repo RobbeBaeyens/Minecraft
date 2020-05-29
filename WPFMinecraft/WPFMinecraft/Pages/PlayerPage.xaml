@@ -209,7 +209,8 @@
                     </Canvas>
                 </Grid>
 
-                <Button x:Name="btnFlip" Grid.Row="2" Margin="5" Style="{StaticResource MinecraftMediumLongButton}">
+                <!--Ik kreeg geen images geupload, plus we hadden te weinig tijd om dit te implementeren-->
+                <Button Visibility="Hidden" IsEnabled="False" x:Name="btnFlip" Grid.Row="2" Margin="5" Style="{StaticResource MinecraftMediumLongButton}">
                     <TextBlock Margin="0 1 0 0" Text="FLIP"/>
                 </Button>
                 <!--RenderOptions.BitmapScalingMode="NearestNeighbor" RenderOptions.EdgeMode="Aliased"-->
