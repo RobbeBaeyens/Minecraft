@@ -100,7 +100,7 @@ namespace WPFMinecraft.Pages
                     if (valideer == "Ok")
                     {
                         Console.WriteLine(inventoryId + "/" + cmb1.SelectedIndex + "/" + cmb2.SelectedIndex + "/" + count);
-                        Inventory_Item inventoryItem = DatabaseOperations.OphalenInventoryItem(cmb2.SelectedIndex + 1);
+                        Inventory_Item inventoryItem = DatabaseOperations.OphalenInventoryItem(cmb2.SelectedIndex + 1, inventoryId);
                         inventoryItem.inventoryId = inventoryId;
                         inventoryItem.itemId = cmb1.SelectedIndex + 1;
                         inventoryItem.count = count;
