@@ -424,12 +424,13 @@ namespace DALMinecraft
             }
         }
         //Ophalen inventoryItem
-        public static Inventory_Item OphalenInventoryItem(int slotid)
+        public static Inventory_Item OphalenInventoryItem(int slotid, int inventoryId)
         {
             using (MinecraftEntities entities = new MinecraftEntities())
             {
                 var query = entities.Inventory_Item
                     .Where(x => x.slotId == slotid)
+                    .Where(x => x.inventoryId == inventoryId)
                     .SingleOrDefault();
 
                 return query;
