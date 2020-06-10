@@ -392,7 +392,7 @@ namespace DALMinecraft
             {
                 var query = entities.Player
                     .Include(x => x.Inventory)
-                    .OrderBy(x => x.id == playerId)
+                    .Where(x => x.id == playerId)
                     .SingleOrDefault();
 
                 return query.Inventory.SingleOrDefault();
